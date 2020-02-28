@@ -1,29 +1,26 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import { ThemeProvider } from '@material-ui/core/styles';
-import { Button } from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { ThemeProvider } from "@material-ui/core/styles"
+import Button from "@material-ui/core/Button"
+import LandingPage from '../pages/LandingPage'
 
-import "./App.css";
-import theme from '../utils/themeUtil'
+import theme from '../../utils/themeUtil'
 
-const App =() => (
- <Router>
-        <ThemeProvider theme={theme} />
-        <Switch>
-          <Route exact path="/" component={ HomePage } />
-          <Route exact path="/login" component={ LoginPage } />
-          <Route exact path="/signup" component={ SignupPage } />
-        </Switch>
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Typography variant="h2">Welcome to React</Typography>
-        </div>
-
-        <Button variant={outlined}>Hello World</Button>
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <ThemeProvider theme={theme}>
+          <Switch>
+            <Route exact path='/' component={LandingPage} />
+            {/*<Route exact path='/login' component={LoginPage} />
+            <Route exact path='/signup' component={SignupPage} />
+            <Route exact path='/mytrove' component={TrovePage} />*/}
+          </Switch>
+        </ThemeProvider>
       </Router>
-    )
-
+    );
+  }
+}
 
 export default App;

@@ -1,27 +1,28 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
+
 const theme = createMuiTheme({
-  palette: {
-    primary: {
-        light:"b2ab6d",
-        main:"",
-        dark:"",
+    palette: {
+        primary: {
+            light: '#84c887',
+            main: '#66bb6a',
+            dark: '#47824a'
+        },
+        secondary: {
+            light: '#51d1e1',
+            main: '#26c6da',
+            dark: '#1a8a98'
+        },
     },
-    secondary: {
-        light:"b2ab6d",
-        main:"",
-        dark:"",
+    typography: {
+        fontFamily: ''
     },
-  },
-  typography:{
-      fontFamily:"Spartan, Helvetica, sans-serif"
-  },
-  overrides: {
-    MuiButton:{
-        root:{
-            borderRadius:'12px'
+    overrides: { //override a specific feature of the component we name below
+        MuiButton: {
+            root: {
+                borderRadius: '25px'
+            }
         }
     }
-  },
 });
+
+export default theme
