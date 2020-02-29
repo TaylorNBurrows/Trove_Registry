@@ -2,7 +2,10 @@ import React from 'react'
 
 const LandingPage = () => {
     return (
-        <div>Hello Landing Page</div>
+        <div>
+            <h1>Welcome to Trove!</h1>
+            <p>This is the start of something beautiful</p>
+        </div>
     )
 }
 
