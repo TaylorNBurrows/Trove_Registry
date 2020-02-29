@@ -26,10 +26,10 @@ const UserSchema = new Schema({
     required: true
   },
   treasures: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'ItemTransaction'
+    type: mongoose.Schema.Types.ObjectId, ref: 'ItemPost'
   },
   friends: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'UserTransaction'
+    type: mongoose.Schema.Types.ObjectId, ref: 'UserPost'
   },
   date: {
     type: Date,
