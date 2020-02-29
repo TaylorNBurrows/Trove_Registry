@@ -1,8 +1,8 @@
 import React from "react";
 
-const main = () => {
+const Nav = () => {
     
     
     }
 
-    export default main;
+    export default Nav;

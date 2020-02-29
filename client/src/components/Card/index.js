@@ -1,8 +1,8 @@
 import React from "react";
 
-const nav = () => {
+const Card = () => {
     
     
     }
 
-    export default nav;
+    export default Card;

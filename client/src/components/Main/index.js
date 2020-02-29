@@ -1,8 +1,8 @@
 import React from "react";
 
-const card = () => {
+const Main = () => {
     
     
     }
 
-    export default card;
+    export default Main;
