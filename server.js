@@ -4,11 +4,15 @@ const mongoose = require("mongoose");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const passport = require('passport');
+
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+const PORT = process.env.PORT || 3001;
 
 const db = require("./models");
 
@@ -19,15 +23,33 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+const url = process.env.MONGODB_URI //|| config.dbUri
+
+mongoose.connect(url)
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/trovedb", { useNewUrlParser: true });
 // Send every request to the React app
 // Define any API routes before this runs
 
+// load passport strategies
+const localSignupStrategy = require('./server/passport/local-signup');
+const localLoginStrategy = require('./server/passport/local-login');
+passport.use('local-signup', localSignupStrategy);
+passport.use('local-login', localLoginStrategy);
 
-app.get("*", function(req, res) {
+// pass the authenticaion checker middleware
+const authCheckMiddleware = require('./server/middleware/auth-check');
+app.use('/api', authCheckMiddleware);
+
+// routes
+const authRoutes = require('./server/routes/auth');
+const apiRoutes = require('./server/routes/api');
+app.use('/auth', authRoutes);
+app.use('/api', apiRoutes);
+
+app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
