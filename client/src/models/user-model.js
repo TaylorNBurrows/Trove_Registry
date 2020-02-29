@@ -64,5 +64,5 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
         cb(null, isMatch);
     });
 };
-const UserTransaction = mongoose.model("Transaction", UserSchema);
-module.exports = UserTransaction;
+const UserPost = mongoose.model("post", UserSchema);
+module.exports = UserPost;
