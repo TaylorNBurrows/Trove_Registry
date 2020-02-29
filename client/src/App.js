@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { ThemeProvider } from "@material-ui/core/styles"
-import Button from "@material-ui/core/Button"
-import LandingPage from '../pages/LandingPage'
-import LoginPage from '../pages/LogInPage'
-import SignupPage from '../pages/Sign-UpPage'
+import { ThemeProvider } from "@material-ui/styles"
+// import Button from "@material-ui/core/Button"
+import LandingPage from './pages/LandingPage'
+import LoginPage from './pages/LogInPage'
+import SignupPage from './pages/Sign-UpPage'
 
-import theme from '../utils/themeUtil'
+import theme from './utils/themeUtil'
 
 class App extends Component {
   render() {
