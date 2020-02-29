@@ -6,7 +6,7 @@ import LandingPage from '../pages/LandingPage'
 import LoginPage from '../pages/LogInPage'
 import SignupPage from '../pages/Sign-UpPage'
 
-import theme from '../../utils/themeUtil'
+import theme from '../utils/themeUtil'
 
 class App extends Component {
   render() {
