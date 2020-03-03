@@ -3,7 +3,8 @@ const puppeteer = require('puppeteer');
 
 
 const etsyScraper = (async (url) => {
-    const url = 'https://www.etsy.com/listing/153535737/handmade-black-fingerless-steampunk?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=&ref=sr_gallery-1-3&frs=1';
+    const url = 'https://www.amazon.com/Echo-Dot/dp/B07FZ8S74R/ref=zg_bs_electronics_home_3?_encoding=UTF8&psc=1&refRID=ZBJ62K7CYMVZF0HSXZMR';
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(url);
@@ -11,10 +12,10 @@ const etsyScraper = (async (url) => {
     let html = await page.content();
     const $ = cheerio.load(html);
     console.log($.html())
-    var title = $('.wt-text-body-03').first().text()
-    var price = $('.wt-text-title-03').text()
-    var description = $('.wt-content-toggle__body > p').text()
-    var imgSource = $('.carousel-pane-list > .carousel-pane > .carousel-image').attr('src')
+    let title = $('#productTitle').text().trim();
+    let price = $('#priceblock_ourprice').text();
+    let description = $('#feature-bullets > ul > li > span.a-list-item').first().text().trim()
+    let imgSource = $('[data-a-image-name=landingImage]').attr('src')
     console.log('=========================')
     console.log(title)
     console.log(price)
