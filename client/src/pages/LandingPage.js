@@ -1,23 +1,22 @@
 import React from 'react';
-// import Main from '../components/main/index';
+import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
+
+import animatedLogo from '../images/Logos/LogoAnimation.gif'
+import donutGIF from '../images/Donut-Chest.gif'
+
 
 const LandingPage = () => {
     return (
-
-                <div>
-                <h1>Welcome to Trove!</h1>
-                <p>This is the start of something beautiful</p>
-            </div>
-
-
-
-
-
-
-
-
-
+        <div
+        // style={{ backgroundImage: `url(${donutGIF})`, backgroundSize: 'cover', backgroundPosition: "center", height: "100vh" }}
+        >
+            <img src={animatedLogo} alt="Trove Logo" width="350px" />
+            <br></br>
+            <Link to="/signup"><Button>Sign Up</Button></Link>
+            <Link to="/login"><Button>Login</Button></Link>
+        </div>
     )
 }
 
-export default LandingPage
+export default LandingPage;
