@@ -12,9 +12,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-const PORT = process.env.PORT || 3001;
-
-const db = require("./models");
+const db = require("./server/models");
 
 app.use(logger("dev"));
 
@@ -23,9 +21,6 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-const url = process.env.MONGODB_URI //|| config.dbUri
-
-mongoose.connect(url)
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/trovedb", { useNewUrlParser: true });
 // Send every request to the React app
 // Define any API routes before this runs
@@ -37,7 +32,7 @@ passport.use('local-signup', localSignupStrategy);
 passport.use('local-login', localLoginStrategy);
 
 // pass the authenticaion checker middleware
-const authCheckMiddleware = require('./server/middleware/auth-check');
+const authCheckMiddleware = require('./server/middleware/middleware');
 app.use('/api', authCheckMiddleware);
 
 // routes

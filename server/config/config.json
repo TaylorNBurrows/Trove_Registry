@@ -1,4 +1,0 @@
-{
-    "dbUri": "mongodb://localhost/react_passport",
-    "jwtSecret": "a secret phrase!!"
-}
