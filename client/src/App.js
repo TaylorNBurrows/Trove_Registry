@@ -18,6 +18,7 @@ const App =() => {
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/signup' component={SignupPage} />
             <Route exact path='/profile' component ={UserProfilePage} />
+            <Route exact path='/discover' component ={UserProfilePage} />
             {/*<Route exact path='/mytrove' component={TrovePage} />*/}
           </Switch>
         </ThemeProvider>
