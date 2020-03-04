@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button'
 import animatedLogo from '../images/Logos/LogoAnimation.gif'
 import donutGIF from '../images/Donut-Chest.gif'
 
+
 const LandingPage = () => {
     return (
         <div>
