@@ -7,8 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import CardHeader from '@material-ui/core/CardHeader';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles = makeStyles(theme => ({
     container: {
       display: 'flex',
       flexWrap: 'wrap',
@@ -21,15 +20,13 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     header: {
       textAlign: 'center',
-      background: '#212121',
+      background: theme.palette.primary.main, 
       color: '#fff'
     },
     card: {
       marginTop: theme.spacing(10)
     }
-
-  }),
-);
+}))
 
 const LogInPage = () => {
   const classes = useStyles();
@@ -67,7 +64,7 @@ const LogInPage = () => {
     <React.Fragment>
       <form className={classes.container} noValidate autoComplete="off">
         <Card className={classes.card}>
-          <CardHeader className={classes.header} title="Login App" />
+          <CardHeader className={classes.header} title="Login" color="primary"/>
           <CardContent>
             <div>
               <TextField
