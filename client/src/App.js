@@ -6,6 +6,7 @@ import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LogInPage'
 import SignupPage from './pages/Sign-UpPage'
 import UserProfilePage from './pages/UserProfilePage'
+import DiscoverPage from './pages/DiscoverPage'
 
 import theme from './utils/themeUtil'
 
@@ -18,7 +19,7 @@ const App =() => {
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/signup' component={SignupPage} />
             <Route exact path='/profile' component ={UserProfilePage} />
-            <Route exact path='/discover' component ={UserProfilePage} />
+            <Route exact path='/discover' component ={DiscoverPage} />
             {/*<Route exact path='/mytrove' component={TrovePage} />*/}
           </Switch>
         </ThemeProvider>
