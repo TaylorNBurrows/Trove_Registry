@@ -4,16 +4,12 @@ import Nav from '../components/Nav/index';
 
 const LandingPage = () => {
     return (
-      
-            <Nav>
 
-            </Nav>
+        <Nav></Nav>
+    
 
-            // <div>
-            //     <h1>Welcome to Trove!</h1>
-            //     <p>This is the start of something beautiful</p>
-            // </div>
-        
+
+
 
 
 
