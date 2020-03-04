@@ -1,42 +1,45 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from "react-router-dom";
 import axios from 'axios'
 
 const SignupPage = () => {
 
-    const [state, setState] = useState({});
+    const [formState, setFormState] = useState({
+        username: "",
+        name: "",
+        email: "",
+        password: ""
+    });
 
     const handleChange = (event) => {
-        setState({
-            [event.target.name]: event.target.value
-        })
+        const { name, value } = event.target;
+        setFormState({...formState, [name]: value});
     }
 
     const handleSubmit = (event) => {
         console.log('sign-up handleSubmit, username: ')
-        console.log(state.username)
+        console.log(formState.username)
         event.preventDefault()
 
         //request to server to add a new username/password
-        axios.post('/user/', {
-            username: state.username,
-            name: state.name,
-            email: state.email,
-            password: state.password
+        axios.post('/auth/signup', {
+            username: formState.username,
+            name: formState.name,
+            email: formState.email,
+            password: formState.password
         })
             .then(response => {
                 console.log(response)
                 if (!response.data.errmsg) {
                     console.log('successful signup')
-                    setState({ //redirect to login page
-                        redirectTo: '/login'
-                    })
+                    const { useHistory } = this.props.useHistory;
+                    useHistory.push('/login')
                 } else {
                     console.log('username already taken')
                 }
             }).catch(error => {
                 console.log('signup error: ')
                 console.log(error)
-
             })
     }
 
@@ -58,7 +61,7 @@ const SignupPage = () => {
                                 id="username"
                                 name="username"
                                 placeholder="Username"
-                                value={state.username}
+                                value={formState.username}
                                 onChange={handleChange}
                             />
                         </div>
@@ -73,7 +76,7 @@ const SignupPage = () => {
                                 id="name"
                                 name="name"
                                 placeholder="Name"
-                                value={state.name}
+                                value={formState.name}
                                 onChange={handleChange}
                             />
                         </div>
@@ -88,7 +91,7 @@ const SignupPage = () => {
                                 id="email"
                                 name="email"
                                 placeholder="email"
-                                value={state.email}
+                                value={formState.email}
                                 onChange={handleChange}
                             />
                         </div>
@@ -102,7 +105,7 @@ const SignupPage = () => {
                                 placeholder="password"
                                 type="password"
                                 name="password"
-                                value={state.password}
+                                value={formState.password}
                                 onChange={handleChange}
                             />
                         </div>
@@ -121,4 +124,4 @@ const SignupPage = () => {
     )
 }
 
-export default SignupPage
+export default SignupPage;
