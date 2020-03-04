@@ -31,6 +31,11 @@ function validateSignupForm(payload) {
     errors.name = 'Please provide your name.';
   }
 
+  if (!payload || typeof payload.username !== 'string' || payload.username.trim().length === 0) {
+    isFormValid = false;
+    errors.username = 'Please provide your username.';
+  }
+
   if (!isFormValid) {
     message = 'Check the form for errors.';
   }
@@ -54,9 +59,9 @@ function validateLoginForm(payload) {
   let isFormValid = true;
   let message = '';
 
-  if (!payload || typeof payload.email !== 'string' || payload.email.trim().length === 0) {
+  if (!payload || typeof payload.username !== 'string' || payload.username.trim().length === 0) {
     isFormValid = false;
-    errors.email = 'Please provide your email address.';
+    errors.username = 'Please provide your username address.';
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0) {
