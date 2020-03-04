@@ -1,9 +1,13 @@
 import React from 'react'
-import Nav from '../components/Nav/index'
+import Main from '../components/Main'
 
 const UserProfilePage = () => {
     return (
-        <Nav></Nav>
+        <Main>
+            <div>
+                This is my main on the profile page
+            </div>
+        </Main>
     )
 }
 

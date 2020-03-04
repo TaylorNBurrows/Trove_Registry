@@ -6,6 +6,7 @@ import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LogInPage'
 import SignupPage from './pages/Sign-UpPage'
 import UserProfilePage from './pages/UserProfilePage'
+import Nav from './components/Nav'
 
 import theme from './utils/themeUtil'
 
@@ -13,6 +14,7 @@ const App =() => {
   return (
       <Router>
         <ThemeProvider theme={theme}>
+          <Nav />
           <Switch>
             <Route exact path='/' component={LandingPage} />
             <Route exact path='/login' component={LoginPage} />
@@ -20,6 +22,7 @@ const App =() => {
             <Route exact path='/profile' component ={UserProfilePage} />
             {/*<Route exact path='/mytrove' component={TrovePage} />*/}
           </Switch>
+
         </ThemeProvider>
       </Router>
     );
