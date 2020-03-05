@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require('body-parser');
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -24,6 +25,11 @@ app.use(express.static("public"));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/trovedb", { useNewUrlParser: true });
 // Send every request to the React app
 // Define any API routes before this runs
+// tell the app to parse HTTP body messages
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+// pass the passport middleware
+app.use(passport.initialize());
 
 // load passport strategies
 const localSignupStrategy = require('./server/passport/local-signup');

@@ -1,5 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import logo from "../../images/Logos/TroveLogo.png";
 
 const useStyles = makeStyles(theme => ({
     logo: {
@@ -12,7 +13,7 @@ const BrandLogo = () => {
     const classes = useStyles()
     
     return(
-        <img className={ classes.logo } src="/images/Logos/TroveLogo.png"/>
+        <img className={ classes.logo } src={logo} alt="Trove"/>
     )
  
 }

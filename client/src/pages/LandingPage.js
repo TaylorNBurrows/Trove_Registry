@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button'
 
-import animatedLogo from '../images/Logos/LogoAnimation.gif'
-import donutGIF from '../images/Donut-Chest.gif'
+import animatedLogo from '../images/Logos/TroveLogo.png'
+// import donutGIF from '../images/Donut-Chest.gif'
 
 
 const LandingPage = () => {
