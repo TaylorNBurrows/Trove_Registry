@@ -52,8 +52,8 @@ const Nav = () => {
         42 // This will be a condition to see if user is authenticated --> user.isAuthenticated
             ? <div className={classes.root}>
                 <CssBaseline />
-                <AppBar position="fixed" className={ classes.appBar }>
-                    <Toolbar classes={{root: classes.toolbarRoot}}>
+                <AppBar position="fixed" className={classes.appBar}>
+                    <Toolbar classes={{ root: classes.toolbarRoot }}>
                         <BrandLogo />
                         <Button color="inherit">Logout</Button>
                     </Toolbar>
