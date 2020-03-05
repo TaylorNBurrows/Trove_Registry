@@ -1,127 +1,68 @@
-import React, { useState, useEffect } from 'react'
-import { useHistory } from "react-router-dom";
-import axios from 'axios'
+import React, { useState } from 'react'
+import SignUpForm from "../components/SignUpForm"
+import PropTypes from 'prop-types';
+import API from '../utils/API';
 
 const SignupPage = () => {
 
     const [formState, setFormState] = useState({
-        username: "",
-        name: "",
-        email: "",
-        password: ""
+        errors: {},
+        user: {
+            username: "",
+            name: "",
+            email: "",
+            password: ""
+        }
+
     });
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormState({...formState, [name]: value});
+    const processForm = (event) => {
+        // prevent default action. in this case, action is the form submission event
+        event.preventDefault();
+
+        // create a string for an HTTP body message
+        const { username, name, email, password } = formState.user;
+
+        //const formData = `email=${email}&password=${password}`;
+        API.signUp({ username, name, email, password }).then(res => {
+            // change the component-container state
+            // set a message
+            localStorage.setItem('successMessage', res.data.message);
+
+            // redirect user after sign up to login page
+            this.props.history.push('/login');
+            setFormState({ ...formState, errors: {} });
+
+        }).catch(({ response }) => {
+
+            const errors = response.data.errors ? response.data.errors : {};
+            errors.summary = response.data.message;
+
+            setFormState({ ...formState, errors });
+        });
     }
 
-    const handleSubmit = (event) => {
-        console.log('sign-up handleSubmit, username: ')
-        console.log(formState.username)
-        event.preventDefault()
+    const changeUser = event => {
+        const field = event.target.name;
+        const user = formState.user;
+        user[field] = event.target.value;
 
-        //request to server to add a new username/password
-        axios.post('/auth/signup', {
-            username: formState.username,
-            name: formState.name,
-            email: formState.email,
-            password: formState.password
-        })
-            .then(response => {
-                console.log(response)
-                if (!response.data.errmsg) {
-                    console.log('successful signup')
-                    const { useHistory } = this.props.useHistory;
-                    useHistory.push('/login')
-                } else {
-                    console.log('username already taken')
-                }
-            }).catch(error => {
-                console.log('signup error: ')
-                console.log(error)
-            })
-    }
-
+        console.log(user)
+    
+        setFormState({ ...formState, user });
+      }
 
     return (
-
-        <div>
-            <h1>Hello Signup Page</h1>
-            <div className="SignupForm">
-                <h4>Sign up</h4>
-                <form className="form-horizontal">
-                    <div className="form-group">
-                        <div className="col-1 col-ml-auto">
-                            <label className="form-label" htmlFor="username">Username</label>
-                        </div>
-                        <div className="col-3 col-mr-auto">
-                            <input className="form-input"
-                                type="text"
-                                id="username"
-                                name="username"
-                                placeholder="Username"
-                                value={formState.username}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <div className="col-1 col-ml-auto">
-                            <label className="form-label" htmlFor="name">Name</label>
-                        </div>
-                        <div className="col-3 col-mr-auto">
-                            <input className="form-input"
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="Name"
-                                value={formState.name}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <div className="col-1 col-ml-auto">
-                            <label className="form-label" htmlFor="email">Email</label>
-                        </div>
-                        <div className="col-3 col-mr-auto">
-                            <input className="form-input"
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="email"
-                                value={formState.email}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <div className="col-1 col-ml-auto">
-                            <label className="form-label" htmlFor="password">Password: </label>
-                        </div>
-                        <div className="col-3 col-mr-auto">
-                            <input className="form-input"
-                                placeholder="password"
-                                type="password"
-                                name="password"
-                                value={formState.password}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                    <div className="form-group ">
-                        <div className="col-7"></div>
-                        <button
-                            className="btn btn-primary col-1 col-mr-auto"
-                            onClick={handleSubmit}
-                            type="submit"
-                        >Sign up</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+<SignUpForm
+        onSubmit={processForm}
+        onChange={changeUser}
+        errors={formState.errors}
+        user={formState.user}
+      />
     )
 }
+SignupPage.contextTypes = {
+    router: PropTypes.object.isRequired
+  };
 
 export default SignupPage;

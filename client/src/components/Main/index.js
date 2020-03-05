@@ -14,11 +14,12 @@ const useStyles = makeStyles(theme => ({
 
 const Main = ({ children }) => {
     const classes = useStyles();
-    
-    return(
-    <main className={classes.content}>
-    { children }
-</main> 
-    )}
 
-    export default Main;
+    return (
+        <main className={classes.content}>
+            {children}
+        </main>
+    )
+}
+
+export default Main;

@@ -61,7 +61,7 @@ function validateLoginForm(payload) {
 
   if (!payload || typeof payload.username !== 'string' || payload.username.trim().length === 0) {
     isFormValid = false;
-    errors.username = 'Please provide your username address.';
+    errors.username = 'Please provide your username.';
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0) {
@@ -118,7 +118,7 @@ router.post('/signup', (req, res, next) => {
   })(req, res, next);
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/auth/login', (req, res, next) => {
   const validationResult = validateLoginForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({
