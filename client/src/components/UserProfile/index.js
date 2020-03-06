@@ -8,7 +8,7 @@ const UserProfile = ({ secretData, user }) => (
       title="Profile"
       subtitle="You should get access to this page only after authentication."
     />
-  {secretData && <CardContent style={{ fontSize: '16px', color: 'green' }}>Welcome <strong>{user.name}</strong>!<br />{secretData}</CardContent>}
+    {secretData && <CardContent style={{ fontSize: '16px', color: 'green' }}>Welcome <strong>{user.name}</strong>!<br />{secretData}</CardContent>}
   </Card>
 );
 

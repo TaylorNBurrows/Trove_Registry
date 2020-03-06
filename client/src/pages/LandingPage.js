@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button'
 
+
 import animatedLogo from '../images/Logos/TroveLogo.png'
 // import donutGIF from '../images/Donut-Chest.gif'
 
@@ -16,6 +17,7 @@ const LandingPage = () => {
             <br></br>
             <Link to="/signup"><Button>Sign Up</Button></Link>
             <Link to="/login"><Button>Login</Button></Link>
+
         </div>
     )
 }
