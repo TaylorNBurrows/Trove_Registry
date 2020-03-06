@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import Auth from '../utils/Auth';
 import LoginForm from '../components/LoginForm';
 import API from '../utils/API';
+import Main from '../components/Main'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import React, { useState, useEffect } from 'react';;
 
 class LoginPage extends React.Component {
   // set the initial component state

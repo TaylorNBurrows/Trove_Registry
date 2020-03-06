@@ -1,12 +1,12 @@
 import React from 'react';
 import Auth from '../utils/Auth';
 import Nav from '../components/Nav';
-import Profile from '../components/Profile';
+import UserProfile from '../components/UserProfile';
 import SideBar from '../components/SideBar'
 import Main from '../components/Main'
 import API from '../utils/API';
 
-class ProfilePage extends React.Component {
+class UserProfilePage extends React.Component {
     state = {
         secretData: '',
         user: {}
@@ -34,7 +34,7 @@ class ProfilePage extends React.Component {
                 <Nav />
                 <SideBar />
                 <Main>
-                    <Profile />
+                    <UserProfile />
                 </Main>
             </div>
 
@@ -43,4 +43,5 @@ class ProfilePage extends React.Component {
     }
 
 }
-export default ProfilePage;
+
+export default UserProfilePage;

@@ -18,7 +18,7 @@ import treasureChest from '../../images/pngIcons/046-treasureChest.png'
 import pirate from '../../images/pngIcons/029-pirate.png'
 import compass from '../../images/pngIcons/001-compass.png'
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -31,22 +31,6 @@ const useStyles = makeStyles(theme => ({
     toolbarRoot: {
         justifyContent: 'space-between',
     },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
-    },
-    toolbar: theme.mixins.toolbar,
-    icon: {
-        width: '24px',
-        height: '24px',
-    }
 }));
 
 const Nav = (props) => {
@@ -61,38 +45,6 @@ const Nav = (props) => {
                     <Button color="inherit" onClick={props.LogoutFunction}>Logout</Button>
                 </Toolbar>
             </AppBar>
-            <Drawer
-                className={classes.drawer}
-                variant="permanent"
-                classes={{
-                    paper: classes.drawerPaper,
-                }}>
-                <div className={classes.toolbar} />
-                <List>
-                    <Divider />
-                    <ListItem button key='Home'>
-                        <ListItemIcon><img className={classes.icon} src={island} alt="Home" /></ListItemIcon>
-                        <Typography>Home</Typography>
-                    </ListItem>
-                    <Divider />
-                    <ListItem button key='MyTrove'>
-                        <ListItemIcon><img className={classes.icon} src={treasureChest} alt="Trove" /></ListItemIcon>
-                        <Typography>My Trove</Typography>
-                    </ListItem>
-                    <Divider />
-                    <ListItem button key='Friends'>
-                        <ListItemIcon><img className={classes.icon} src={pirate} alt='Friends' /></ListItemIcon>
-                        <Typography>Friends</Typography>
-                    </ListItem>
-                    <Divider />
-                    <ListItem button key='Discover'>
-                        <ListItemIcon><img className={classes.icon} src={compass} alt='discover' /></ListItemIcon>
-                        <Typography>Discover</Typography>
-                    </ListItem>
-                </List>
-                <Divider />
-
-            </Drawer>
         </div>
     );
 }

@@ -3,12 +3,16 @@ import Grid from '@material-ui/core/Grid';
 import Nav from './components/Nav';
 import { ThemeProvider } from "@material-ui/styles";
 import theme from './utils/themeUtil'
+<<<<<<< HEAD
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from 'react-router-dom'
+=======
+import MyFriendsPage from './pages/MyFriendsPage'
+>>>>>>> 084e61de6516203e0d3ddd76106b43b90d2c3c89
 
 import {
   PrivateRoute,
@@ -47,9 +51,8 @@ const App = () => {
     <Router>
       <ThemeProvider theme={theme}>
         <Grid container direction="row">
-        {Authenticate.authenticated ? (
-          <Nav />) : null}
           <Switch>
+<<<<<<< HEAD
             <Route exact path='/' component={LandingPage} toggleAuthenticateStatus={toggleAuthenticateStatus}/>
             <Route exact path='/profile' component={ProfilePage} />
             <Route exact path='/login' component={LoginPage} toggleAuthenticateStatus={toggleAuthenticateStatus}/>
@@ -57,6 +60,15 @@ const App = () => {
             <Route exact path='/discover' component={DiscoverPage} />
             <Route path="/logout" component={LogoutFunction}/>
             {/*<Route exact path='/mytrove' component={TrovePage} />*/}
+=======
+            <PropsRoute exact path='/' component={LandingPage} toggleAuthenticateStatus={toggleAuthenticateStatus}/>
+            <LoggedOutRoute exact path='/login' component={LogInPage} toggleAuthenticateStatus={toggleAuthenticateStatus}/>
+            <LoggedOutRoute exact path='/signup' component={SignupPage} />
+            <LoggedOutRoute exact path='/profile' component={UserProfilePage} />
+            <LoggedOutRoute exact path='/discover' component={DiscoverPage} />
+            <LoggedOutRoute exact path='/myfriends' component={MyFriendsPage} />
+    
+>>>>>>> 084e61de6516203e0d3ddd76106b43b90d2c3c89
           </Switch>
         </Grid>
 
