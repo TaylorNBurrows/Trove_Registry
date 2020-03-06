@@ -4,7 +4,6 @@ import Nav from '../components/Nav';
 import UserProfile from '../components/UserProfile';
 import SideBar from '../components/SideBar'
 import Main from '../components/Main'
-import TroveCard from '../components/TroveCard'
 import API from '../utils/API';
 
 class UserProfilePage extends React.Component {
@@ -32,13 +31,12 @@ class UserProfilePage extends React.Component {
     render() {
         return (
             <div>
-            <Nav />
-            <SideBar />
-            <Main>
-               <UserProfile />
-               <TroveCard />
-            </Main>
-        </div>
+                <Nav />
+                <SideBar />
+                <Main>
+                    <UserProfile />
+                </Main>
+            </div>
 
         )
 
