@@ -10,6 +10,7 @@ import UserProfilePage from './pages/UserProfilePage';
 import Nav from './components/Nav';
 import DiscoverPage from './pages/DiscoverPage';
 import theme from './utils/themeUtil'
+import MyFriendsPage from './pages/MyFriendsPage'
 
 import { 
   PrivateRoute, 
@@ -39,15 +40,14 @@ const App = () => {
     <Router>
       <ThemeProvider theme={theme}>
         <Grid container direction="row">
-        {Authenticate.authenticated ? (
-          <Nav />) : null}
           <Switch>
             <PropsRoute exact path='/' component={LandingPage} toggleAuthenticateStatus={toggleAuthenticateStatus}/>
-            <PrivateRoute exact path='/profile' component={UserProfilePage} />
             <LoggedOutRoute exact path='/login' component={LogInPage} toggleAuthenticateStatus={toggleAuthenticateStatus}/>
             <LoggedOutRoute exact path='/signup' component={SignupPage} />
-            <PrivateRoute exact path='/discover' component={DiscoverPage} />
-            {/*<Route exact path='/mytrove' component={TrovePage} />*/}
+            <LoggedOutRoute exact path='/profile' component={UserProfilePage} />
+            <LoggedOutRoute exact path='/discover' component={DiscoverPage} />
+            <LoggedOutRoute exact path='/myfriends' component={MyFriendsPage} />
+    
           </Switch>
         </Grid>
 
