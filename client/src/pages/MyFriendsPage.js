@@ -3,18 +3,18 @@ import Main from '../components/Main'
 import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
 
-const DiscoverPage = () => {
+const MyFriendsPage = () => {
     return (
         <div>
             <Nav />
             <SideBar />
             <Main>
 
-                <div>This is the discover page</div>
+                <div>This is the list of friends page</div>
             </Main>
         </div>
 
     )
 }
 
-export default DiscoverPage
+export default MyFriendsPage
