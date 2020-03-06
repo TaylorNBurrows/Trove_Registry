@@ -1,30 +1,35 @@
-const express = require("express");
+const express = require('express');
 const bodyParser = require('body-parser');
-const logger = require("morgan");
-const mongoose = require("mongoose");
 const path = require("path");
-const PORT = process.env.PORT || 3001;
-const app = express();
 const passport = require('passport');
+const config = require('./server/config');
+const logger = require('morgan')
+const mongoose = require('mongoose')
 
+const PORT = process.env.PORT || 3001;
+
+const app = express();
+
+// connect to the database and load models
+// uses environmental variable for deployment (Heroku) or defaults to local config
+const uri = process.env.MONGODB_URI || config.dbUri;
+
+mongoose.connect(uri);
+// plug in the promise library:
+mongoose.Promise = global.Promise;
+
+mongoose.connection.on('error', (err) => {
+	console.error(`Mongoose connection error: ${err}`);
+	process.exit(1);
+});
+
+// Use morgan logger for logging requests
+app.use(logger("dev"));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-
-const db = require("./server/models");
-
-app.use(logger("dev"));
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-app.use(express.static("public"));
-
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/trovedb", { useNewUrlParser: true });
-// Send every request to the React app
-// Define any API routes before this runs
 // tell the app to parse HTTP body messages
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -38,7 +43,7 @@ passport.use('local-signup', localSignupStrategy);
 passport.use('local-login', localLoginStrategy);
 
 // pass the authenticaion checker middleware
-const authCheckMiddleware = require('./server/middleware/middleware');
+const authCheckMiddleware = require('./server/middleware/auth-check');
 app.use('/api', authCheckMiddleware);
 
 // routes
@@ -47,10 +52,13 @@ const apiRoutes = require('./server/routes/api');
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
-app.get("*", function (req, res) {
+// Send every request to the React app
+// Define any API routes before this runs
+app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, function () {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+app.listen(PORT, function() {
+  console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
+

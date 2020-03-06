@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardHeader, CardContent } from '@material-ui/core';
 
-const UserProfile = ({ secretData, user }) => (
+const Profile = ({ secretData, user }) => (
   <Card className="container">
     <CardHeader
-      title="Profile"
+      title="Dashboard"
       subtitle="You should get access to this page only after authentication."
     />
-  {secretData && <CardContent style={{ fontSize: '16px', color: 'green' }}>Welcome <strong>{user.name}</strong>!<br />{secretData}</CardContent>}
+  {secretData && <CardContent style={{ fontSize: '16px', color: 'green' }}>Welcome <strong>{user.username}</strong>!<br />{secretData}</CardContent>}
   </Card>
 );
 
-UserProfile.propTypes = {
+Profile.propTypes = {
   secretData: PropTypes.string.isRequired
 };
 
-export default UserProfile;
+export default Profile;

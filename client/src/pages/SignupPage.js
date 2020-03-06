@@ -1,36 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Auth from '../utils/Auth';
-import LoginForm from '../components/LoginForm';
+import SignUpForm from '../components/SignUpForm';
 import API from '../utils/API';
 
-class LoginPage extends React.Component {
+class SignUpPage extends React.Component {
   // set the initial component state
   state = {
     errors: {},
-    successMessage: '',
     user: {
       username: '',
+      name: '',
+      email: '',
       password: ''
     }
   }
-  
-  componentDidMount(){
-    const storedMessage = localStorage.getItem('successMessage');
-    let successMessage = '';
 
-    if (storedMessage) {
-      successMessage = storedMessage;
-      localStorage.removeItem('successMessage');
-    }
-    this.setState({ successMessage });
-  }
-
-  componentDidUnmount(){
-    this.setState({
-          errors: {}
-        });
-  }
   /**
    * Process the form.
    *
@@ -39,20 +23,22 @@ class LoginPage extends React.Component {
   processForm = event => {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault();
-
+    
     // create a string for an HTTP body message
-    const { username, password } = this.state.user;
+    const { username, name, email, password } = this.state.user;
 
-    API.login({username, password}).then(res => {
-        // save the token
-        Auth.authenticateUser(res.data.token);
+    //const formData = `email=${email}&password=${password}`;
+    API.signUp({username, name, email, password}).then(res => {
+      // change the component-container state
+        // set a message
+        localStorage.setItem('successMessage', res.data.message);
 
-        // update authenticated state
-        this.props.toggleAuthenticateStatus()
-        
-        // redirect signed in user to dashboard
-        this.props.history.push('/dashboard');
-        
+        // redirect user after sign up to login page
+        this.props.history.push('/login');
+        this.setState({
+          errors: {}
+        });
+
     }).catch(( {response} ) => {
 
         const errors = response.data.errors ? response.data.errors : {};
@@ -62,7 +48,6 @@ class LoginPage extends React.Component {
           errors
         });
       });
-    
   }
 
   /**
@@ -85,11 +70,10 @@ class LoginPage extends React.Component {
    */
   render() {
     return (
-      <LoginForm
+      <SignUpForm
         onSubmit={this.processForm}
         onChange={this.changeUser}
         errors={this.state.errors}
-        successMessage={this.state.successMessage}
         user={this.state.user}
       />
     );
@@ -97,8 +81,8 @@ class LoginPage extends React.Component {
 
 }
 
-LoginPage.contextTypes = {
+SignUpPage.contextTypes = {
   router: PropTypes.object.isRequired
 };
 
-export default LoginPage;
+export default SignUpPage;

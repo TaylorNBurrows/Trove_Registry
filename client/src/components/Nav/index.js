@@ -11,6 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import BrandLogo from '../BrandLogo/index';
+import LogoutFunction from '../../pages/LogoutFunction';
 
 import island from '../../images/pngIcons/049-island.png'
 import treasureChest from '../../images/pngIcons/046-treasureChest.png'
@@ -48,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Nav = () => {
+const Nav = (props) => {
     const classes = useStyles();
 
     return (
@@ -57,7 +58,7 @@ const Nav = () => {
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar classes={{ root: classes.toolbarRoot }}>
                     <BrandLogo />
-                    <Button color="inherit">Logout</Button>
+                    <Button color="inherit" onClick={props.LogoutFunction}>Logout</Button>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -70,22 +71,22 @@ const Nav = () => {
                 <List>
                     <Divider />
                     <ListItem button key='Home'>
-                        <ListItemIcon> <img className={classes.icon} src={island} alt="home" /> </ListItemIcon>
+                        <ListItemIcon><img className={classes.icon} src={island} alt="Home" /></ListItemIcon>
                         <Typography>Home</Typography>
                     </ListItem>
                     <Divider />
                     <ListItem button key='MyTrove'>
-                        <ListItemIcon> <img className={classes.icon} src={treasureChest} alt="Trove" /> </ListItemIcon>
+                        <ListItemIcon><img className={classes.icon} src={treasureChest} alt="Trove" /></ListItemIcon>
                         <Typography>My Trove</Typography>
                     </ListItem>
                     <Divider />
-                    <ListItem button key='Discover'>
-                        <ListItemIcon> <img className={classes.icon} src={pirate} alt='Friends' /> </ListItemIcon>
+                    <ListItem button key='Friends'>
+                        <ListItemIcon><img className={classes.icon} src={pirate} alt='Friends' /></ListItemIcon>
                         <Typography>Friends</Typography>
                     </ListItem>
                     <Divider />
                     <ListItem button key='Discover'>
-                        <ListItemIcon> <img className={classes.icon} src={compass} alt='discover' /> </ListItemIcon>
+                        <ListItemIcon><img className={classes.icon} src={compass} alt='discover' /></ListItemIcon>
                         <Typography>Discover</Typography>
                     </ListItem>
                 </List>

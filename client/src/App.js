@@ -1,23 +1,31 @@
-import LogInPage from './pages/LogInPage';
-import SignupPage from './pages/Sign-UpPage';
 import React, { Component, useState, useEffect } from "react";
 import Grid from '@material-ui/core/Grid';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { ThemeProvider } from "@material-ui/styles";
-import Button from "@material-ui/core/Button"
-import LandingPage from './pages/LandingPage';
-import UserProfilePage from './pages/UserProfilePage';
 import Nav from './components/Nav';
-import DiscoverPage from './pages/DiscoverPage';
+import { ThemeProvider } from "@material-ui/styles";
 import theme from './utils/themeUtil'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom'
 
-import { 
-  PrivateRoute, 
-  PropsRoute, 
-  LoggedOutRoute 
+import {
+  PrivateRoute,
+  PropsRoute,
+  LoggedOutRoute
 } from './components/Routes';
 
+import LoginPage from './pages/LogInPage.js';
+import LandingPage from './pages/LandingPage.js';
+import LogoutFunction from './pages/LogoutFunction.jsx';
+import SignupPage from './pages/SignupPage.js';
+import ProfilePage from './pages/ProfilePage.js';
+import DiscoverPage from './pages/DiscoverPage';
+
 import Auth from './utils/Auth';
+
+// remove tap delay, essential for MaterialUI to work properly
 
 const App = () => {
 
@@ -28,7 +36,7 @@ const App = () => {
   useEffect(() => {
     // check if user is logged in on refresh
     toggleAuthenticateStatus()
-  },[]);
+  }, []);
 
   const toggleAuthenticateStatus = () => {
     // check authenticated status and toggle state based on that
@@ -42,11 +50,12 @@ const App = () => {
         {Authenticate.authenticated ? (
           <Nav />) : null}
           <Switch>
-            <PropsRoute exact path='/' component={LandingPage} toggleAuthenticateStatus={toggleAuthenticateStatus}/>
-            <PrivateRoute exact path='/profile' component={UserProfilePage} />
-            <LoggedOutRoute exact path='/login' component={LogInPage} toggleAuthenticateStatus={toggleAuthenticateStatus}/>
-            <LoggedOutRoute exact path='/signup' component={SignupPage} />
-            <PrivateRoute exact path='/discover' component={DiscoverPage} />
+            <Route exact path='/' component={LandingPage} toggleAuthenticateStatus={toggleAuthenticateStatus}/>
+            <Route exact path='/profile' component={ProfilePage} />
+            <Route exact path='/login' component={LoginPage} toggleAuthenticateStatus={toggleAuthenticateStatus}/>
+            <Route exact path='/signup' component={SignupPage} />
+            <Route exact path='/discover' component={DiscoverPage} />
+            <Route path="/logout" component={LogoutFunction}/>
             {/*<Route exact path='/mytrove' component={TrovePage} />*/}
           </Switch>
         </Grid>
@@ -54,7 +63,7 @@ const App = () => {
 
       </ThemeProvider>
     </Router>
-  );
-}
+
+)}
 
 export default App;

@@ -5,7 +5,7 @@ import { Card, CardContent } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-const LogInForm = ({
+const LoginForm = ({
   onSubmit,
   onChange,
   errors,
@@ -13,7 +13,6 @@ const LogInForm = ({
   user,
   toggleAuthenticateStatus
 }) => (
-
   <Card className="container">
     <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading">Login</h2>
@@ -43,7 +42,7 @@ const LogInForm = ({
       </div>
 
       <div className="button-line">
-        <Button variant="contained" color="secondary" type="submit" label="Log in" primary="true" />
+        <Button type="submit" label="Log in" primary="true" >Login</Button>
       </div>
 
       <CardContent>Don't have an account? <Link to={'/signup'}>Create one</Link>.</CardContent>
@@ -51,7 +50,7 @@ const LogInForm = ({
   </Card>
 );
 
-LogInForm.propTypes = {
+LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
@@ -59,4 +58,4 @@ LogInForm.propTypes = {
   user: PropTypes.object.isRequired
 };
 
-export default LogInForm;
+export default LoginForm;
