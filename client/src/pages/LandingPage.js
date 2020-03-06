@@ -9,7 +9,7 @@ import animatedLogo from '../images/Logos/TroveLogo.png'
 
 const LandingPage = () => {
     return (
-        <div
+        <div style={{ textAlign: 'center' }}
         // style={{ backgroundImage: `url(${donutGIF})`, backgroundSize: 'cover', backgroundPosition: "center", height: "100vh" }}
         >
             <img src={animatedLogo} alt="Trove Logo" width="350px" />
