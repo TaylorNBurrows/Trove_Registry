@@ -29,7 +29,7 @@ const UserSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId, ref: 'ItemPost'
   },
   friends: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'UserPost'
+    type: mongoose.Schema.Types.ObjectId, ref: 'User'
   },
   date: {
     type: Date,
