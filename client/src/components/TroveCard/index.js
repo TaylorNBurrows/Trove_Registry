@@ -6,7 +6,6 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
@@ -22,10 +21,7 @@ const useStyles = makeStyles(theme => ({
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
-    },
-    image: {
-        width: '340px',
-        height: '190px',
+        backgroundSize:'contain'
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -54,7 +50,7 @@ const TroveCard = () => {
         <Card className={classes.root}>
             <CardHeader />
             <CardMedia
-                className={clsx(classes.media, classes.image)}
+                className={classes.media}
                 image={DefaultImage}
                 title="Default Image"
             />
