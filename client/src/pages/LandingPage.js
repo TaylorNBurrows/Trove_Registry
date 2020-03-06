@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Main from '../components/Main'
 import Button from '@material-ui/core/Button'
 
+
 import animatedLogo from '../images/Logos/TroveLogo.png'
 // import donutGIF from '../images/Donut-Chest.gif'
 
