@@ -67,6 +67,7 @@ const App = () => {
             <Route exact path='/profile' component={ProfilePage} />
             <Route exact path='/discover' component={DiscoverPage} />
             <Route path='/myfriends' component={MyFriendsPage} />
+            <Route path="/logout" render={(props) => <LogoutFunction {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
 
           </Switch>
       </ThemeProvider>
