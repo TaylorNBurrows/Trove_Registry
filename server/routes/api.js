@@ -10,4 +10,9 @@ router.get('/profile', (req, res) => {
   });
 });
 
+router.get('/friends', (req, res)=> {
+  res.status(200).json({
+    
+  })
+})
 module.exports = router;
