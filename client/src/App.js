@@ -11,8 +11,6 @@ import {
   Link
 } from 'react-router-dom'
 
-import MyFriendsPage from './pages/MyFriendsPage'
-
 import {
   PropsRoute,
   LoggedOutRoute
@@ -24,6 +22,8 @@ import LogoutFunction from './pages/LogoutFunction';
 import SignupPage from './pages/SignupPage.js';
 import ProfilePage from './pages/ProfilePage';
 import DiscoverPage from './pages/DiscoverPage';
+import MyFriendsPage from './pages/MyFriendsPage'
+
 
 import Auth from './utils/Auth';
 
@@ -58,6 +58,7 @@ const App = () => {
             <Route exact path='/discover' component={DiscoverPage} />
             {/* <Route exact path='/mytrove' component={TrovePage} /> */}
             <Route path="/logout" component={LogoutFunction} />
+            <Route path='/myfriends' component={MyFriendsPage} />
 
           </Switch>
         </Grid>
