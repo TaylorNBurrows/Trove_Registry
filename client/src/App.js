@@ -7,7 +7,6 @@ import { ThemeProvider } from "@material-ui/styles";
 import Button from "@material-ui/core/Button"
 import LandingPage from './pages/LandingPage';
 import UserProfilePage from './pages/UserProfilePage';
-import Nav from './components/Nav';
 import DiscoverPage from './pages/DiscoverPage';
 import theme from './utils/themeUtil'
 import MyFriendsPage from './pages/MyFriendsPage'
