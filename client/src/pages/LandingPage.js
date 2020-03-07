@@ -11,7 +11,7 @@ import animatedLogo from '../images/Logos/TroveLogo.png'
 const LandingPage = () => {
     return (
         <Main>
-            <Grid container direction="row">
+            <Grid item alignContent="center">
                 <div style={{ textAlign: 'center' }}
                 // style={{ backgroundImage: `url(${donutGIF})`, backgroundSize: 'cover', backgroundPosition: "center", height: "100vh" }}
                 >

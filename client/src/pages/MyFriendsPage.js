@@ -7,8 +7,6 @@ import FriendsList from '../components/FriendTable'
 const MyFriendsPage = () => {
     return (
         <div>
-            <Nav />
-            <SideBar />
             <Main>
                 <FriendsList />
             </Main>

@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar'
 import SideBar from '../components/SideBar'
 import Main from '../components/Main'
 import API from '../utils/API';
+import LoginPage from './LogInPage';
 
 const ProfilePage = () => {
     const [secretData, setSecretData] = useState('');
@@ -27,9 +28,15 @@ const ProfilePage = () => {
      * Render the component.
      */
         return (
+{localStorage.getItem('token') ? (
             <div>
-                 <Nav />
-                <SideBar />
+              <Nav />
+              <SideBar />
+            </div>
+
+          ) : (
+              null
+            )}
                 <Main>
                     <SearchBar />
                     <Profile />
