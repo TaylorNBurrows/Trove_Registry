@@ -9,6 +9,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 const LoginPage = (props) => {
   console.log(props)
   // set the initial component state
+
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
   const [user, setUser] = useState({
@@ -25,12 +26,14 @@ const LoginPage = (props) => {
       successMessage = storedMessage;
       localStorage.removeItem('successMessage');
     }
+
     setSuccessMessage(successMessage);
     console.log(successMessage)
     setErrors({
       errors: {}
     });
   }, [])
+
   /**
    * Process the form.
    *
@@ -41,15 +44,17 @@ const LoginPage = (props) => {
     event.preventDefault();
 
     // create a string for an HTTP body message
+
     const { username, password } = user;
 
     API.login({ username, password }).then(res => {
       console.log(res)
+
       // save the token
       Auth.authenticateUser(res.data.token);
 
       // update authenticated state
-      // checkAuthenticateStatus();
+      checkAuthenticateStatus();
 
       // redirect signed in user to dashboard
       props.history.push('/profile');
@@ -63,6 +68,7 @@ const LoginPage = (props) => {
       setErrors(
         errors
       );
+
     });
 
   }

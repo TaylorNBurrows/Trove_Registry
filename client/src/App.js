@@ -1,8 +1,8 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from '@material-ui/core/Grid';
-import Nav from './components/Nav';
 import { ThemeProvider } from "@material-ui/styles";
 import theme from './utils/themeUtil'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,16 +13,15 @@ import {
 import MyFriendsPage from './pages/MyFriendsPage'
 
 import {
-  PrivateRoute,
   PropsRoute,
   LoggedOutRoute
 } from './components/Routes';
 
-import LoginPage from './pages/LogInPage.js';
-import LandingPage from './pages/LandingPage.js';
-import LogoutFunction from './pages/LogoutFunction.jsx';
+import LoginPage from './pages/LogInPage';
+import LandingPage from './pages/LandingPage';
+import LogoutFunction from './pages/LogoutFunction';
 import SignupPage from './pages/SignupPage.js';
-import ProfilePage from './pages/ProfilePage.js';
+import ProfilePage from './pages/ProfilePage';
 import DiscoverPage from './pages/DiscoverPage';
 
 import Auth from './utils/Auth';
@@ -51,6 +50,7 @@ const App = () => {
         <Grid container direction="row">
         <Nav />
           <Switch>
+
             <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />}/>
             <Route exact path='/profile' component={ProfilePage}/>
             <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />}/>
@@ -61,11 +61,10 @@ const App = () => {
             
           </Switch>
         </Grid>
-
-
       </ThemeProvider>
     </Router>
 
-)}
+  )
+}
 
 export default App;

@@ -1,5 +1,6 @@
 import React from 'react';
-import TroveCard from './TroveCard';
+import TroveCard from './TroveCard/index';
+
 import Grid from '@material-ui/core/Grid'
 
 const Profile = () => {
@@ -28,7 +29,8 @@ const Profile = () => {
 
     </div>
 
-  )}
+  )
+}
 
 
 
