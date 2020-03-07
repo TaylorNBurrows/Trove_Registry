@@ -24,7 +24,6 @@ import ProfilePage from './pages/ProfilePage';
 import DiscoverPage from './pages/DiscoverPage';
 import MyFriendsPage from './pages/MyFriendsPage'
 
-
 import Auth from './utils/Auth';
 import SideBar from "./components/SideBar";
 
@@ -51,7 +50,7 @@ const App = () => {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <Grid container direction="row">
+
           {localStorage.getItem('token') ? (
             <div>
               <Nav />
@@ -61,21 +60,18 @@ const App = () => {
           ) : (
               null
             )}
-          <Switch>
 
+          <Switch>
             <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
-            <Route exact path='/profile' component={ProfilePage} />
             <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
             <Route exact path='/signup' component={SignupPage} />
+            <Route exact path='/profile' component={ProfilePage} />
             <Route exact path='/discover' component={DiscoverPage} />
-            {/* <Route exact path='/mytrove' component={TrovePage} /> */}
-            <Route path="/logout" render={(props) => <LogoutFunction {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
             <Route path='/myfriends' component={MyFriendsPage} />
 
           </Switch>
-        </Grid>
       </ThemeProvider>
-    </Router>
+    </Router >
 
   )
 }

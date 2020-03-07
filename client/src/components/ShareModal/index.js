@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const ShareModel = () => {
+const ShareModal = () => {
     const classes = useStyles();
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
@@ -66,4 +66,4 @@ const ShareModel = () => {
 
 }
 
-export default ShareModel;
+export default ShareModal;
