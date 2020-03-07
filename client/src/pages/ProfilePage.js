@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Auth from '../utils/Auth';
 import Nav from '../components/Nav';
-import Profile from '../components/Profile';
+import Profile from '../components/Profile/index'
+import SearchBar from '../components/SearchBar'
 import SideBar from '../components/SideBar'
 import Main from '../components/Main'
 import API from '../utils/API';
@@ -27,9 +28,10 @@ const ProfilePage = () => {
      */
         return (
             <div>
-                <Nav />
+                 <Nav />
                 <SideBar />
                 <Main>
+                    <SearchBar />
                     <Profile />
                 </Main>
             </div>
