@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Auth from '../utils/Auth';
 import Nav from '../components/Nav';
-import Profile from '../components/Profile';
+import Profile from '../components/Profile/index'
+import SearchBar from '../components/SearchBar'
 import SideBar from '../components/SideBar'
 import Main from '../components/Main'
 import API from '../utils/API';
@@ -27,8 +28,17 @@ const ProfilePage = () => {
      * Render the component.
      */
         return (
+{localStorage.getItem('token') ? (
             <div>
+              <Nav />
+              <SideBar />
+            </div>
+
+          ) : (
+              null
+            )}
                 <Main>
+                    <SearchBar />
                     <Profile />
                 </Main>
             </div>

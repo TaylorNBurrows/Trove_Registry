@@ -1,5 +1,5 @@
 import React from 'react';
-import TroveCard from './TroveCard/index';
+import TroveCard from '../TroveCard/index';
 
 import Grid from '@material-ui/core/Grid'
 
