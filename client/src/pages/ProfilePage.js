@@ -28,17 +28,9 @@ const ProfilePage = () => {
      * Render the component.
      */
         return (
-{localStorage.getItem('token') ? (
             <div>
-              <Nav />
-              <SideBar />
-            </div>
-
-          ) : (
-              null
-            )}
                 <Main>
-                    <SearchBar />
+                <SearchBar />
                     <Profile />
                 </Main>
             </div>
