@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Auth from '../utils/Auth';
 import Nav from '../components/Nav';
 import Profile from '../components/Profile';
@@ -6,29 +6,25 @@ import SideBar from '../components/SideBar'
 import Main from '../components/Main'
 import API from '../utils/API';
 
-class ProfilePage extends React.Component {
-    state = {
-        secretData: '',
-        user: {}
-    }
+const ProfilePage = () => {
+    const [secretData, setSecretData] = useState('');
+    const [user, setUser] = useState({});
 
     /**
      * This method will be executed after initial rendering.
      */
-    componentDidMount() {
+    useEffect(() => {
         API.dashboard(Auth.getToken())
             .then(res => {
-                this.setState({
-                    secretData: res.data.message,
-                    user: res.data.user
-                });
-            })
-    }
+                setSecretData(res.data.message)
+                setUser(res.data.user)
+            });
+    }, [])
+
 
     /**
      * Render the component.
      */
-    render() {
         return (
             <div>
                 <Nav />
@@ -42,5 +38,4 @@ class ProfilePage extends React.Component {
 
     }
 
-}
 export default ProfilePage;

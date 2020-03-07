@@ -1,24 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect, useHistory } from 'react';
+import {Redirect} from 'react-router-dom';
 import Auth from '../utils/Auth';
 import LoginForm from '../components/LoginForm';
 import API from '../utils/API';
 import Main from '../components/Main'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import React, { useState, useEffect } from 'react';;
 
-class LoginPage extends React.Component {
+const LoginPage = (props) => {
+  console.log(props)
   // set the initial component state
-  state = {
-    errors: {},
-    successMessage: '',
-    user: {
-      username: '',
-      password: ''
-    }
-  }
-  
-  componentDidMount(){
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState('');
+  const [user, setUser] = useState({
+    username: '',
+    password: ''
+  })
+
+
+  useEffect(() => {
     const storedMessage = localStorage.getItem('successMessage');
     let successMessage = '';
 
@@ -26,46 +25,46 @@ class LoginPage extends React.Component {
       successMessage = storedMessage;
       localStorage.removeItem('successMessage');
     }
-    this.setState({ successMessage });
-  }
-
-  componentDidUnmount(){
-    this.setState({
-          errors: {}
-        });
-  }
+    setSuccessMessage(successMessage);
+    console.log(successMessage)
+    setErrors({
+      errors: {}
+    });
+  }, [])
   /**
    * Process the form.
    *
    * @param {object} event - the JavaScript event object
    */
-  processForm = event => {
+  const processForm = event => {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const { username, password } = this.state.user;
+    const { username, password } = user;
 
-    API.login({username, password}).then(res => {
-        // save the token
-        Auth.authenticateUser(res.data.token);
+    API.login({ username, password }).then(res => {
+      console.log(res)
+      // save the token
+      Auth.authenticateUser(res.data.token);
 
-        // update authenticated state
-        this.props.toggleAuthenticateStatus()
-        
-        // redirect signed in user to dashboard
-        this.props.history.push('/dashboard');
-        
-    }).catch(( {response} ) => {
+      // update authenticated state
+      // checkAuthenticateStatus();
 
-        const errors = response.data.errors ? response.data.errors : {};
-        errors.summary = response.data.message;
+      // redirect signed in user to dashboard
+      props.history.push('/profile');
 
-        this.setState({
-          errors
-        });
-      });
-    
+    }).catch((err) => {
+      console.log(err)
+
+      const errors = err.data.errors ? err.data.errors : {};
+      errors.summary = err.data.message;
+
+      setErrors(
+        errors
+      );
+    });
+
   }
 
   /**
@@ -73,35 +72,24 @@ class LoginPage extends React.Component {
    *
    * @param {object} event - the JavaScript event object
    */
-  changeUser = event => {
-    const field = event.target.name;
-    const user = this.state.user;
-    user[field] = event.target.value;
-
-    this.setState({
-      user
-    });
-  }
+  const changeUser = (e) => setUser({
+    ...user,
+    [e.target.name]: e.target.value,
+  });
 
   /**
    * Render the component.
    */
-  render() {
+
     return (
       <LoginForm
-        onSubmit={this.processForm}
-        onChange={this.changeUser}
-        errors={this.state.errors}
-        successMessage={this.state.successMessage}
-        user={this.state.user}
+        onSubmit={processForm}
+        onChange={changeUser}
+        errors={errors}
+        successMessage={successMessage}
+        user={user}
       />
     );
-  }
-
 }
-
-LoginPage.contextTypes = {
-  router: PropTypes.object.isRequired
-};
 
 export default LoginPage;

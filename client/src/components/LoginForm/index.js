@@ -5,14 +5,10 @@ import { Card, CardContent } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-const LoginForm = ({
-  onSubmit,
-  onChange,
-  errors,
-  successMessage,
-  user,
-  toggleAuthenticateStatus
-}) => (
+const LoginForm = ({successMessage, errors, onSubmit, onChange, user}) => {
+  console.log(successMessage)
+
+  return (
   <Card className="container">
     <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading">Login</h2>
@@ -22,9 +18,10 @@ const LoginForm = ({
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Username"
+          placeholder="Username"
           name="username"
-          errorText={errors.username}
+          error={user.username === ""}
+          helperText={user.username === "" ? errors.username : ' '}
           onChange={onChange}
           value={user.username}
         />
@@ -32,11 +29,12 @@ const LoginForm = ({
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Password"
+          placeholder="Password"
           type="password"
           name="password"
           onChange={onChange}
-          errorText={errors.password}
+          error={user.password === ""}
+          helperText={user.password === "" ? errors.name : ' '}
           value={user.password}
         />
       </div>
@@ -48,14 +46,6 @@ const LoginForm = ({
       <CardContent>Don't have an account? <Link to={'/signup'}>Create one</Link>.</CardContent>
     </form>
   </Card>
-);
-
-LoginForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  successMessage: PropTypes.string.isRequired,
-  user: PropTypes.object.isRequired
-};
+)};
 
 export default LoginForm;

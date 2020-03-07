@@ -1,53 +1,51 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useHistory } from 'react';
 import SignUpForm from '../components/SignUpForm';
 import API from '../utils/API';
 
-class SignUpPage extends React.Component {
+const SignUpPage = (props) => {
   // set the initial component state
-  state = {
-    errors: {},
-    user: {
-      username: '',
-      name: '',
-      email: '',
-      password: ''
-    }
-  }
+  const [errors, setErrors] = useState({});
+  const [user, setUser] = useState({
+    username: '',
+    name: '',
+    email: '',
+    password: ''
+  })
 
   /**
    * Process the form.
    *
    * @param {object} event - the JavaScript event object
    */
-  processForm = event => {
+  let history = useHistory
+  const processForm = (event) => {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault();
-    
+
     // create a string for an HTTP body message
-    const { username, name, email, password } = this.state.user;
+    const { username, name, email, password } = user;
 
     //const formData = `email=${email}&password=${password}`;
-    API.signUp({username, name, email, password}).then(res => {
+    API.signUp({ username, name, email, password }).then(res => {
       // change the component-container state
-        // set a message
-        localStorage.setItem('successMessage', res.data.message);
+      // set a message
+      localStorage.setItem('successMessage', res.data.message);
 
-        // redirect user after sign up to login page
-        this.props.history.push('/login');
-        this.setState({
-          errors: {}
-        });
-
-    }).catch(( {response} ) => {
-
-        const errors = response.data.errors ? response.data.errors : {};
-        errors.summary = response.data.message;
-
-        this.setState({
-          errors
-        });
+      // redirect user after sign up to login page
+      props.history.push('/login');
+      setErrors({
+        errors: {},
       });
+
+    }).catch(({ response }) => {
+      console.log(response)
+      const errors = response.data.errors ? response.data.errors : {};
+      errors.summary = response.data.message;
+
+      setErrors(
+        errors
+      );
+    });
   }
 
   /**
@@ -55,34 +53,27 @@ class SignUpPage extends React.Component {
    *
    * @param {object} event - the JavaScript event object
    */
-  changeUser = event => {
-    const field = event.target.name;
-    const user = this.state.user;
-    user[field] = event.target.value;
-
-    this.setState({
-      user
-    });
-  }
+  const changeUser = (e) => setUser(
+    {
+    ...user,
+    
+    [e.target.name]: e.target.value,
+  });
 
   /**
    * Render the component.
    */
-  render() {
-    return (
-      <SignUpForm
-        onSubmit={this.processForm}
-        onChange={this.changeUser}
-        errors={this.state.errors}
-        user={this.state.user}
-      />
-    );
-  }
+
+  return (
+    <SignUpForm
+      onSubmit={processForm}
+      onChange={changeUser}
+      errors={errors}
+      user={user}
+    />
+  );
+
 
 }
-
-SignUpPage.contextTypes = {
-  router: PropTypes.object.isRequired
-};
 
 export default SignUpPage;

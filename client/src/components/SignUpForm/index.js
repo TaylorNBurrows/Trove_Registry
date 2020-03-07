@@ -4,58 +4,66 @@ import { Card, CardContent } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-const SignUpForm = (props) =>{
-
+const SignUpForm = ({errors, user, onChange, onSubmit}) =>{
+console.log(user)
 return(
   <Card className="container">
-    <form action="/" >
+    <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading">Sign Up</h2>
-      {console.log(props.errors.summary)}
-      {/* {props.state.errors.summary && <p className="error-message">{props.state.errors.summary}</p>} */}
+      {console.log(errors.summary)}
+      {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
         <TextField
-          placeholder="Username"
+          label="Username"
+          type="text"
           name="username"
-          error={props.errors.username}
-          onChange={props.onChange}
-          value={props.user.username}
+          error={user.username === ""}
+          helperText={user.username === "" ? errors.username : ' '}
+          onChange={onChange}
+          value={user.username}
         />
       </div>
 
       <div className="field-line">
         <TextField
-          placeholder="Name"
+        type="text"
+          label="Name"
           name="name"
-          error={props.errors.name}
-          onChange={props.onChange}
-          value={props.user.name}
+          error={user.name === ""}
+          helperText={user.name === "" ? errors.name : ' '}
+          onChange={onChange}
+          value={user.name}
         />
       </div>
 
       <div className="field-line">
         <TextField
-          placeholder="Email"
+        type="text"
+          label="Email"
           name="email"
-          error={props.errors.email}
-          onChange={props.onChange}
-          value={props.user.email}
+          error={user.email === ""}
+          helperText={user.email === "" ? errors.email : ' '}
+          onChange={onChange}
+          value={user.email}
         />
       </div>
 
       <div className="field-line">
         <TextField
-          placeholder="Password"
+        
+          label="Password"
           type="password"
           name="password"
-          onChange={props.onChange}
-          error={props.errors.password}
-          value={props.user.password}
+          onChange={onChange}
+          error={user.password === ""}
+          helperText={user.password === "" ? errors.name : ' '}
+          value={user.password}
         />
       </div>
 
       <div className="button-line">
-        <Button variant="outlined" type="submit" label="Create New Account" primary="true" onSubmit={props.onSubmit}>Create New</Button>
+        <Button variant="outlined" type="submit" label="Create New Account" primary="true">Create User</Button>
       </div>
 
       <CardContent>Already have an account? <Link to={'/login'}>Log in</Link></CardContent>
