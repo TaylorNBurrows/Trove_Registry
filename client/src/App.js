@@ -23,10 +23,6 @@ import SignupPage from './pages/SignupPage.js';
 import ProfilePage from './pages/ProfilePage';
 import DiscoverPage from './pages/DiscoverPage';
 import MyFriendsPage from './pages/MyFriendsPage'
-<<<<<<< HEAD
-=======
-
->>>>>>> e2839461f3a1a2eed72557ed98cea5faa0adb5e7
 
 import Auth from './utils/Auth';
 
@@ -51,20 +47,17 @@ const App = () => {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <Grid container direction="row">
           <Switch>
-
             <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
-            <Route exact path='/profile' component={ProfilePage} />
+            
             <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
             <Route exact path='/signup' component={SignupPage} />
-            <Route exact path='/discover' component={DiscoverPage} />
-            {/* <Route exact path='/mytrove' component={TrovePage} /> */}
-            <Route path="/logout" component={LogoutFunction} />
+            <Route exact path='/profile' component={ProfilePage} />
+            <Route exact path='/discover' component={DiscoverPage} />    
             <Route path='/myfriends' component={MyFriendsPage} />
+            <Route path="/logout" component={LogoutFunction} />
 
           </Switch>
-        </Grid>
       </ThemeProvider>
     </Router >
 
