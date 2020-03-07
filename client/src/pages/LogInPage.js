@@ -54,7 +54,7 @@ const LoginPage = (props) => {
       Auth.authenticateUser(res.data.token);
 
       // update authenticated state
-      checkAuthenticateStatus();
+      props.checkAuthenticateStatus();
 
       // redirect signed in user to dashboard
       props.history.push('/profile');

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import Main from '../components/Main'
 import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
 
 import animatedLogo from '../images/Logos/TroveLogo.png'
 // import donutGIF from '../images/Donut-Chest.gif'
