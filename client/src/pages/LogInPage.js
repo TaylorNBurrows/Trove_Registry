@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useHistory } from 'react';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Auth from '../utils/Auth';
 import LoginForm from '../components/LoginForm';
 import API from '../utils/API';
@@ -87,15 +87,15 @@ const LoginPage = (props) => {
    * Render the component.
    */
 
-    return (
-      <LoginForm
-        onSubmit={processForm}
-        onChange={changeUser}
-        errors={errors}
-        successMessage={successMessage}
-        user={user}
-      />
-    );
+  return (
+    <LoginForm
+      onSubmit={processForm}
+      onChange={changeUser}
+      errors={errors}
+      successMessage={successMessage}
+      user={user}
+    />
+  );
 }
 
 export default LoginPage;
