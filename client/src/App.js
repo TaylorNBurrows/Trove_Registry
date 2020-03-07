@@ -50,8 +50,7 @@ const App = () => {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-
-          {localStorage.getItem('token') ? (
+          { localStorage.getItem('token') ? (
             <div>
               <Nav />
               <SideBar />
