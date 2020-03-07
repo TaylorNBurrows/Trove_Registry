@@ -49,7 +49,6 @@ const App = () => {
     <Router>
       <ThemeProvider theme={theme}>
         <Grid container direction="row">
-          <Nav />
           <Switch>
 
             <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />

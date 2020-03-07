@@ -2,6 +2,7 @@ import React from 'react'
 import Main from '../components/Main'
 import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
+import FriendsList from '../components/FriendList'
 
 const MyFriendsPage = () => {
     return (
@@ -9,8 +10,7 @@ const MyFriendsPage = () => {
             <Nav />
             <SideBar />
             <Main>
-
-                <div>This is the list of friends page</div>
+                <FriendsList />
             </Main>
         </div>
 

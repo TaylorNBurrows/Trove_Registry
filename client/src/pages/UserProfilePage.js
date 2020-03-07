@@ -3,6 +3,7 @@ import Auth from '../utils/Auth';
 import Nav from '../components/Nav';
 import UserProfile from '../components/ProfilePage/index';
 import SideBar from '../components/SideBar'
+import SearchBar from '../components/SearchBar'
 import Main from '../components/Main'
 import API from '../utils/API';
 
@@ -34,6 +35,7 @@ class UserProfilePage extends React.Component {
                 <Nav />
                 <SideBar />
                 <Main>
+                    <SearchBar />
                     <UserProfile />
                 </Main>
             </div>
