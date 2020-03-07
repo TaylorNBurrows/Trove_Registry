@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Auth from '../utils/Auth';
 import LoginForm from '../components/LoginForm';
 import API from '../utils/API';
-import Main from '../components/Main'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import React, { useState, useEffect } from 'react';;
+// import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+
 
 class LoginPage extends React.Component {
   // set the initial component state
@@ -17,8 +16,8 @@ class LoginPage extends React.Component {
       password: ''
     }
   }
-  
-  componentDidMount(){
+
+  componentDidMount() {
     const storedMessage = localStorage.getItem('successMessage');
     let successMessage = '';
 
@@ -29,10 +28,10 @@ class LoginPage extends React.Component {
     this.setState({ successMessage });
   }
 
-  componentDidUnmount(){
+  componentDidUnmount() {
     this.setState({
-          errors: {}
-        });
+      errors: {}
+    });
   }
   /**
    * Process the form.
@@ -46,26 +45,26 @@ class LoginPage extends React.Component {
     // create a string for an HTTP body message
     const { username, password } = this.state.user;
 
-    API.login({username, password}).then(res => {
-        // save the token
-        Auth.authenticateUser(res.data.token);
+    API.login({ username, password }).then(res => {
+      // save the token
+      Auth.authenticateUser(res.data.token);
 
-        // update authenticated state
-        this.props.toggleAuthenticateStatus()
-        
-        // redirect signed in user to dashboard
-        this.props.history.push('/dashboard');
-        
-    }).catch(( {response} ) => {
+      // update authenticated state
+      this.props.toggleAuthenticateStatus()
 
-        const errors = response.data.errors ? response.data.errors : {};
-        errors.summary = response.data.message;
+      // redirect signed in user to dashboard
+      this.props.history.push('/dashboard');
 
-        this.setState({
-          errors
-        });
+    }).catch(({ response }) => {
+
+      const errors = response.data.errors ? response.data.errors : {};
+      errors.summary = response.data.message;
+
+      this.setState({
+        errors
       });
-    
+    });
+
   }
 
   /**
