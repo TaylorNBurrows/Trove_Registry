@@ -9,8 +9,6 @@ import TroveCard from '../components/TroveCard'
 const DiscoverPage = () => {
     return (
         <div>
-            <Nav />
-            <SideBar />
             <Main>
                 <div>
                     <ProfileBanner />
