@@ -1,28 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Auth from '../utils/Auth';
 
 
-class LogoutFunction extends React.Component {
+const LogoutFunction = (props) => {
 
-  componentDidMount() {
-    // deauthenticate user
     Auth.deauthenticateUser();
     // change the current URL to / after logout
-    this.props.history.push('/');
-  }
+    props.history.push('/');
+    props.checkAuthenticateStatus();
 
-  render() {
     return (
       <div>
         <p>Logging out...</p>
       </div>
     )
-  }
-}
 
-LogoutFunction.contextTypes = {
-  router: PropTypes.object.isRequired
-};
+}
 
 export default LogoutFunction;

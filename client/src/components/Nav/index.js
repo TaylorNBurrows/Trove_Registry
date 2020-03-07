@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -23,6 +24,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Nav = (props) => {
+    console.log(props)
     const classes = useStyles();
 
     return (
@@ -31,7 +33,7 @@ const Nav = (props) => {
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar classes={{ root: classes.toolbarRoot }}>
                     <BrandLogo />
-                    <Button color="inherit" onClick={props.LogoutFunction}>Logout</Button>
+                    <Link to="/logout"><Button color="inherit" >Logout</Button></Link>
                 </Toolbar>
             </AppBar>
         </div>

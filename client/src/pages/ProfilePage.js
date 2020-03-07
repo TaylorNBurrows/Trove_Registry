@@ -5,6 +5,7 @@ import Profile from '../components/Profile';
 import SideBar from '../components/SideBar'
 import Main from '../components/Main'
 import API from '../utils/API';
+import LoginPage from './LogInPage';
 
 const ProfilePage = () => {
     const [secretData, setSecretData] = useState('');
@@ -27,8 +28,6 @@ const ProfilePage = () => {
      */
         return (
             <div>
-                <Nav />
-                <SideBar />
                 <Main>
                     <Profile />
                 </Main>

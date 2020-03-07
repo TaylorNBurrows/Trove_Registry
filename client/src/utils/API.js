@@ -7,5 +7,7 @@ export default {
   signUp: userData => 
   	 axios.post('/auth/signup', userData),
   dashboard: token =>
-     axios.get('/api/profile', {headers: {Authorization: `bearer ${token}`}})
+     axios.get('/api/profile', {headers: {Authorization: `bearer ${token}`}}),
+   getFriends: token =>
+      axios.get('/api/friends', {headers: {Authorization: `bearer ${token}`}})
 };

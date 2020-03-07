@@ -6,8 +6,6 @@ import SideBar from '../components/SideBar'
 const DiscoverPage = () => {
     return (
         <div>
-            <Nav />
-            <SideBar />
             <Main>
 
                 <div>This is the discover page</div>
