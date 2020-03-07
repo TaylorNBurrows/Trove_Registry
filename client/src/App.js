@@ -1,23 +1,33 @@
-import LogInPage from './pages/LogInPage';
-import SignupPage from './pages/Sign-UpPage';
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from '@material-ui/core/Grid';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from "@material-ui/styles";
-import Button from "@material-ui/core/Button"
-import LandingPage from './pages/LandingPage';
-import UserProfilePage from './pages/UserProfilePage';
-import DiscoverPage from './pages/DiscoverPage';
 import theme from './utils/themeUtil'
+import Nav from './components/Nav/index'
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom'
+
 import MyFriendsPage from './pages/MyFriendsPage'
 
-import { 
-  PrivateRoute, 
-  PropsRoute, 
-  LoggedOutRoute 
+import {
+  PropsRoute,
+  LoggedOutRoute
 } from './components/Routes';
 
+import LoginPage from './pages/LogInPage';
+import LandingPage from './pages/LandingPage';
+import LogoutFunction from './pages/LogoutFunction';
+import SignupPage from './pages/SignupPage.js';
+import ProfilePage from './pages/ProfilePage';
+import DiscoverPage from './pages/DiscoverPage';
+
 import Auth from './utils/Auth';
+
+// remove tap delay, essential for MaterialUI to work properly
 
 const App = () => {
 
@@ -28,7 +38,7 @@ const App = () => {
   useEffect(() => {
     // check if user is logged in on refresh
     toggleAuthenticateStatus()
-  },[]);
+  }, []);
 
   const toggleAuthenticateStatus = () => {
     // check authenticated status and toggle state based on that
@@ -40,20 +50,21 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Grid container direction="row">
           <Switch>
-            <PropsRoute exact path='/' component={LandingPage} toggleAuthenticateStatus={toggleAuthenticateStatus}/>
-            <LoggedOutRoute exact path='/login' component={LogInPage} toggleAuthenticateStatus={toggleAuthenticateStatus}/>
-            <LoggedOutRoute exact path='/signup' component={SignupPage} />
-            <LoggedOutRoute exact path='/profile' component={UserProfilePage} />
-            <LoggedOutRoute exact path='/discover' component={DiscoverPage} />
-            <LoggedOutRoute exact path='/myfriends' component={MyFriendsPage} />
-    
+
+            <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
+            <Route exact path='/profile' component={ProfilePage} />
+            <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
+            <Route exact path='/signup' component={SignupPage} />
+            <Route exact path='/discover' component={DiscoverPage} />
+            {/* <Route exact path='/mytrove' component={TrovePage} /> */}
+            <Route path="/logout" component={LogoutFunction} />
+
           </Switch>
         </Grid>
-
-
       </ThemeProvider>
     </Router>
-  );
+
+  )
 }
 
 export default App;

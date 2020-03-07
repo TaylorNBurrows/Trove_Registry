@@ -1,46 +1,39 @@
-var mongoose = require('mongoose'),
-  Schema = mongoose.Schema,
-  bcrypt = require('bcrypt'),
-  SALT_WORK_FACTOR = 10;
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
-const UserSchema = new Schema({
-  username: {
-    type: String,
-    trim: true,
-    required: "Create a Username",
-    unique: true
-  },
-  name: {
-    type: String,
-    trim: true,
-    required: "Enter Your Name"
-  },
+// define the User model schema
+const UserSchema = new mongoose.Schema({
+  username: String,
+  name: String,
   email: {
     type: String,
-    trim: true,
-    required: "Must be a valid email",
-    validation: RegExp("/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"),
+    index: { unique: true }
   },
-  password: {
-    type: String,
-    required: true
-  },
+  password: String,
   treasures: {
     type: mongoose.Schema.Types.ObjectId, ref: 'ItemPost'
   },
   friends: {
     type: mongoose.Schema.Types.ObjectId, ref: 'User'
-  },
-  date: {
-    type: Date,
-    default: Date.now
   }
+  
 });
 
+
+/**
+ * Compare the passed password with the value in the database. A model method.
+ *
+ * @param {string} password
+ * @returns {object} callback
+ */
 UserSchema.methods.comparePassword = function comparePassword(password, callback) {
   bcrypt.compare(password, this.password, callback);
 };
 
+
+/**
+ * The pre-save hook method.
+ */
 UserSchema.pre('save', function saveHook(next) {
   const user = this;
 
@@ -62,5 +55,5 @@ UserSchema.pre('save', function saveHook(next) {
   });
 });
 
-const User = mongoose.model("User", UserSchema);
-module.exports = User;
+
+module.exports = mongoose.model('User', UserSchema);

@@ -1,29 +1,29 @@
 import React from 'react';
-import TroveCard from '../TroveCard';
+import TroveCard from './TroveCard/index';
+
 import Grid from '@material-ui/core/Grid'
 
-
-const UserProfile = () => {
+const Profile = () => {
   return (
     <div>
       <Grid container spacing={6}>
         <Grid item xs={4}>
-          <TroveCard/>
+          <TroveCard />
         </Grid>
         <Grid item xs={4}>
-          <TroveCard/>
+          <TroveCard />
         </Grid>
         <Grid item xs={4}>
-          <TroveCard/>
+          <TroveCard />
         </Grid>
         <Grid item xs={4}>
-          <TroveCard/>
+          <TroveCard />
         </Grid>
         <Grid item xs={4}>
-          <TroveCard/>
+          <TroveCard />
         </Grid>
         <Grid item xs={4}>
-          <TroveCard/>
+          <TroveCard />
         </Grid>
       </Grid>
 
@@ -33,4 +33,5 @@ const UserProfile = () => {
 }
 
 
-export default UserProfile;
+
+export default Profile;

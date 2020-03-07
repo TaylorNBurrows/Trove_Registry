@@ -1,27 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card } from '@material-ui/core';
-import RaisedButton from '@material-ui/core/Button';
+import { Card, CardContent } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-const SignUpForm = ({
-  onSubmit,
-  onChange,
-  errors,
-  user,
-}) => (
+const SignUpForm = ({errors, user, onChange, onSubmit}) =>{
+console.log(user)
+return(
   <Card className="container">
     <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading">Sign Up</h2>
-
+      {console.log(errors.summary)}
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Username"
+          label="Username"
+          type="text"
           name="username"
-          errorText={errors.username}
+          error={user.username === ""}
+          helperText={user.username === "" ? errors.username : ' '}
           onChange={onChange}
           value={user.username}
         />
@@ -29,9 +27,11 @@ const SignUpForm = ({
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Name"
+        type="text"
+          label="Name"
           name="name"
-          errorText={errors.name}
+          error={user.name === ""}
+          helperText={user.name === "" ? errors.name : ' '}
           onChange={onChange}
           value={user.name}
         />
@@ -39,9 +39,11 @@ const SignUpForm = ({
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Email"
+        type="text"
+          label="Email"
           name="email"
-          errorText={errors.email}
+          error={user.email === ""}
+          helperText={user.email === "" ? errors.email : ' '}
           onChange={onChange}
           value={user.email}
         />
@@ -49,29 +51,24 @@ const SignUpForm = ({
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Password"
+        
+          label="Password"
           type="password"
           name="password"
           onChange={onChange}
-          errorText={errors.password}
+          error={user.password === ""}
+          helperText={user.password === "" ? errors.name : ' '}
           value={user.password}
         />
       </div>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Create New Account" primary />
+        <Button variant="outlined" type="submit" label="Create New Account" primary="true">Create User</Button>
       </div>
 
-      <Card>Already have an account? <Link to={'/login'}>Log in</Link></Card>
+      <CardContent>Already have an account? <Link to={'/login'}>Log in</Link></CardContent>
     </form>
   </Card>
-);
-
-SignUpForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
-};
+)};
 
 export default SignUpForm;

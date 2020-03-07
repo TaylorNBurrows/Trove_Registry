@@ -7,16 +7,14 @@ const PassportLocalStrategy = require('passport-local').Strategy;
  */
 module.exports = new PassportLocalStrategy({
   usernameField: 'username',
-  nameField: 'name',
-  emailField: 'email',
   passwordField: 'password',
   session: false,
   passReqToCallback: true
-}, (username, name, email, password, done) => {
+}, (req, username, password, done) => {
   const userData = {
     username: username.trim(),
-    name: name.trim(),
-    email: email.trim(),
+    name: req.body.name.trim(),
+    email: req.body.email.trim(),
     password: password.trim()
   };
 

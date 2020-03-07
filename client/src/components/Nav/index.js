@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button'
 import Toolbar from '@material-ui/core/Toolbar';
 import BrandLogo from '../BrandLogo/index';
 
+const drawerWidth = 200;
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -20,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Nav = () => {
+const Nav = (props) => {
     const classes = useStyles();
 
     return (
@@ -29,7 +31,7 @@ const Nav = () => {
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar classes={{ root: classes.toolbarRoot }}>
                     <BrandLogo />
-                    <Button color="inherit">Logout</Button>
+                    <Button color="inherit" onClick={props.LogoutFunction}>Logout</Button>
                 </Toolbar>
             </AppBar>
         </div>

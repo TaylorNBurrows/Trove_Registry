@@ -24,6 +24,7 @@
     "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.2",
     "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
     "cheerio": "^1.0.0-rc.3",
     "clsx": "^1.1.0",
     "express": "^4.16.3",
@@ -36,6 +37,8 @@
     "passport-local": "^1.0.0",
     "puppeteer": "^2.1.1",
     "puppeteer-core": "^2.1.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "validator": "^12.2.0"
   }
 }
