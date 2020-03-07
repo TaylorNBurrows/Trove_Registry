@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Grid from '@material-ui/core/Grid';
 import { ThemeProvider } from "@material-ui/styles";
 import theme from './utils/themeUtil'
+import Nav from './components/Nav/index'
 
 import {
   BrowserRouter as Router,
@@ -48,17 +49,17 @@ const App = () => {
     <Router>
       <ThemeProvider theme={theme}>
         <Grid container direction="row">
-        <Nav />
+          <Nav />
           <Switch>
 
-            <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />}/>
-            <Route exact path='/profile' component={ProfilePage}/>
-            <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />}/>
-            <Route exact path='/signup' component={SignupPage}/>
-            <Route exact path='/discover' component={DiscoverPage}/>
+            <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
+            <Route exact path='/profile' component={ProfilePage} />
+            <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
+            <Route exact path='/signup' component={SignupPage} />
+            <Route exact path='/discover' component={DiscoverPage} />
             {/* <Route exact path='/mytrove' component={TrovePage} /> */}
-            <Route path="/logout" component={LogoutFunction}/>
-            
+            <Route path="/logout" component={LogoutFunction} />
+
           </Switch>
         </Grid>
       </ThemeProvider>
