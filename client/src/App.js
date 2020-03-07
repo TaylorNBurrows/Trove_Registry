@@ -24,7 +24,6 @@ import ProfilePage from './pages/ProfilePage';
 import DiscoverPage from './pages/DiscoverPage';
 import MyFriendsPage from './pages/MyFriendsPage'
 
-
 import Auth from './utils/Auth';
 
 // remove tap delay, essential for MaterialUI to work properly
@@ -48,22 +47,19 @@ const App = () => {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <Grid container direction="row">
           <Switch>
-
             <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
-            <Route exact path='/profile' component={ProfilePage} />
+            
             <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
             <Route exact path='/signup' component={SignupPage} />
-            <Route exact path='/discover' component={DiscoverPage} />
-            {/* <Route exact path='/mytrove' component={TrovePage} /> */}
-            <Route path="/logout" component={LogoutFunction} />
+            <Route exact path='/profile' component={ProfilePage} />
+            <Route exact path='/discover' component={DiscoverPage} />    
             <Route path='/myfriends' component={MyFriendsPage} />
+            <Route path="/logout" component={LogoutFunction} />
 
           </Switch>
-        </Grid>
       </ThemeProvider>
-    </Router>
+    </Router >
 
   )
 }
