@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useHistory } from "react";
 import Grid from '@material-ui/core/Grid';
 import { ThemeProvider } from "@material-ui/styles";
 import theme from './utils/themeUtil'
@@ -9,6 +9,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
   Link
 } from 'react-router-dom'
 
@@ -30,7 +31,7 @@ import SideBar from "./components/SideBar";
 // remove tap delay, essential for MaterialUI to work properly
 
 const App = () => {
-
+  
   const [Authenticate, setAuthenticate] = useState({
     authenticated: false
   })
@@ -56,9 +57,7 @@ const App = () => {
               <SideBar />
             </div>
 
-          ) : (
-              null
-            )}
+          ) : <Redirect to = "/" />}
 
           <Switch>
             <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
