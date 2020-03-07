@@ -8,6 +8,7 @@ import BrandLogo from '../BrandLogo/index';
 
 const drawerWidth = 200;
 
+
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'inline-block',
