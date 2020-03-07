@@ -8,8 +8,10 @@ import animatedLogo from '../images/Logos/TroveLogo.png'
 // import donutGIF from '../images/Donut-Chest.gif'
 
 
-const LandingPage = () => {
+const LandingPage = (props) => {
+    console.log(props)
     return (
+        
         <Main>
             <Grid item alignContent="center">
                 <div style={{ textAlign: 'center' }}
