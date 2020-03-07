@@ -12,6 +12,7 @@ const router = new express.Router();
  *                   errors tips, and a global message for the whole form.
  */
 function validateSignupForm(payload) {
+  console.log(payload)
   const errors = {};
   let isFormValid = true;
   let message = '';

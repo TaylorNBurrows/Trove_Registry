@@ -6,6 +6,9 @@ import Button from '@material-ui/core/Button'
 import Toolbar from '@material-ui/core/Toolbar';
 import BrandLogo from '../BrandLogo/index';
 
+const drawerWidth = 200;
+
+
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'inline-block',

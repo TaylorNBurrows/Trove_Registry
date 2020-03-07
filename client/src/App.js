@@ -2,8 +2,15 @@ import React, { useState, useEffect } from "react";
 import Grid from '@material-ui/core/Grid';
 import { ThemeProvider } from "@material-ui/styles";
 import theme from './utils/themeUtil'
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom'
+
 import MyFriendsPage from './pages/MyFriendsPage'
-import { Router, Switch } from 'react-router-dom'
 
 import {
   PropsRoute,
@@ -41,14 +48,17 @@ const App = () => {
     <Router>
       <ThemeProvider theme={theme}>
         <Grid container direction="row">
+        <Nav />
           <Switch>
-            <PropsRoute exact path='/' component={LandingPage} toggleAuthenticateStatus={toggleAuthenticateStatus} />
-            <LoggedOutRoute exact path='/login' component={LoginPage} toggleAuthenticateStatus={toggleAuthenticateStatus} />
-            <LoggedOutRoute exact path='/signup' component={SignupPage} />
-            <LoggedOutRoute exact path='/profile' component={ProfilePage} />
-            <LoggedOutRoute exact path='/discover' component={DiscoverPage} />
-            <LoggedOutRoute exact path='/myfriends' component={MyFriendsPage} />
-            <LoggedOutRoute exact path='/logout' component={LogoutFunction} />
+
+            <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />}/>
+            <Route exact path='/profile' component={ProfilePage}/>
+            <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />}/>
+            <Route exact path='/signup' component={SignupPage}/>
+            <Route exact path='/discover' component={DiscoverPage}/>
+            {/* <Route exact path='/mytrove' component={TrovePage} /> */}
+            <Route path="/logout" component={LogoutFunction}/>
+            
           </Switch>
         </Grid>
       </ThemeProvider>
