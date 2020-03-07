@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import theme from '../../utils/themeUtil'
+import clsx from 'clsx';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -15,8 +16,8 @@ const useStyles = makeStyles(theme => ({
         height: theme.spacing(3),
     },
     large: {
-        width: theme.spacing(10),
-        height: theme.spacing(10),
+        width: theme.spacing(20),
+        height: theme.spacing(20),
     },
     teal: {
         color: 'white',
@@ -29,7 +30,7 @@ export default function AvatarImage() {
 
     return (
         <div className={classes.root}>
-            <Avatar alt="Jiliene Circelli" src="/static/images/avatar/1.jpg" className={classes.large, classes.teal} />
+            <Avatar alt="Jiliene Circelli" src="/static/images/avatar/1.jpg" className={clsx(classes.large, classes.teal)} />
         </div>
     );
 }
