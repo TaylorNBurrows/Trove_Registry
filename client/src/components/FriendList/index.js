@@ -7,11 +7,16 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import theme from '../../utils/themeUtil'
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
+  tableHeader:{
+    backgroundColor: theme.palette.secondary.light
+  }
+
 });
 
 function createData(name, calories, fat, carbs, protein) {
@@ -32,7 +37,7 @@ const FriendsList = () => {
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
-        <TableHead>
+        <TableHead className={classes.tableHeader}>
           <TableRow>
             <TableCell>Dessert (100g serving)</TableCell>
             <TableCell align="right">Calories</TableCell>
