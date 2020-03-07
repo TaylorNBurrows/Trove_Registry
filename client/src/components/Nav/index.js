@@ -11,6 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import BrandLogo from '../BrandLogo/index';
+import LogoutFunction from '../../pages/LogoutFunction';
 
 import island from '../../images/pngIcons/049-island.png'
 import treasureChest from '../../images/pngIcons/046-treasureChest.png'
@@ -32,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Nav = () => {
+const Nav = (props) => {
     const classes = useStyles();
 
     return (
@@ -41,7 +42,7 @@ const Nav = () => {
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar classes={{ root: classes.toolbarRoot }}>
                     <BrandLogo />
-                    <Button color="inherit">Logout</Button>
+                    <Button color="inherit" onClick={props.LogoutFunction}>Logout</Button>
                 </Toolbar>
             </AppBar>
         </div>

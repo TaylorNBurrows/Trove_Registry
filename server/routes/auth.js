@@ -79,7 +79,7 @@ function validateLoginForm(payload) {
   };
 }
 
-router.post('/auth/signup', (req, res, next) => {
+router.post('/signup', (req, res, next) => {
   const validationResult = validateSignupForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({
@@ -99,7 +99,7 @@ router.post('/auth/signup', (req, res, next) => {
           success: false,
           message: 'Check the form for errors.',
           errors: {
-            email: 'This email is already taken.'
+            username: 'This username is already taken.'
           }
         });
       }
@@ -117,7 +117,7 @@ router.post('/auth/signup', (req, res, next) => {
   })(req, res, next);
 });
 
-router.post('/auth/login', (req, res, next) => {
+router.post('/login', (req, res, next) => {
   const validationResult = validateLoginForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({

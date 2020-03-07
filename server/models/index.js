@@ -1,4 +1,4 @@
 module.exports = {
-    // load models
-    User: require('./user-model')
-  };
+  // load models
+  User: require('./user-model')
+};

@@ -1,77 +1,66 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card } from '@material-ui/core';
-import RaisedButton from '@material-ui/core/Button';
+import { Card, CardContent } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-const SignUpForm = ({
-  onSubmit,
-  onChange,
-  errors,
-  user,
-}) => (
+const SignUpForm = (props) =>{
+
+return(
   <Card className="container">
-    <form action="/" onSubmit={onSubmit}>
+    <form action="/" >
       <h2 className="card-heading">Sign Up</h2>
-
-      {errors.summary && <p className="error-message">{errors.summary}</p>}
+      {console.log(props.errors.summary)}
+      {/* {props.state.errors.summary && <p className="error-message">{props.state.errors.summary}</p>} */}
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Username"
+          placeholder="Username"
           name="username"
-          errorText={errors.username}
-          onChange={onChange}
-          value={user.username}
+          error={props.errors.username}
+          onChange={props.onChange}
+          value={props.user.username}
         />
       </div>
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Name"
+          placeholder="Name"
           name="name"
-          errorText={errors.name}
-          onChange={onChange}
-          value={user.name}
+          error={props.errors.name}
+          onChange={props.onChange}
+          value={props.user.name}
         />
       </div>
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Email"
+          placeholder="Email"
           name="email"
-          errorText={errors.email}
-          onChange={onChange}
-          value={user.email}
+          error={props.errors.email}
+          onChange={props.onChange}
+          value={props.user.email}
         />
       </div>
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Password"
+          placeholder="Password"
           type="password"
           name="password"
-          onChange={onChange}
-          errorText={errors.password}
-          value={user.password}
+          onChange={props.onChange}
+          error={props.errors.password}
+          value={props.user.password}
         />
       </div>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Create New Account" primary />
+        <Button variant="outlined" type="submit" label="Create New Account" primary="true" onSubmit={props.onSubmit}>Create New</Button>
       </div>
 
-      <Card>Already have an account? <Link to={'/login'}>Log in</Link></Card>
+      <CardContent>Already have an account? <Link to={'/login'}>Log in</Link></CardContent>
     </form>
   </Card>
-);
-
-SignUpForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
-};
+)};
 
 export default SignUpForm;
