@@ -1,4 +1,6 @@
 {
   "dbUri": "mongodb://localhost/trovedb",
-  "jwtSecret": "a secret phrase!!"
+  "jwtSecret": "a secret phrase!!",
+  "cookie" :{
+    "expires" : 60000000}
 }
