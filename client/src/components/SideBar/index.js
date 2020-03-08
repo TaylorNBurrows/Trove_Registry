@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -50,22 +51,22 @@ const SideBar = () => {
                 <List>
                     <ListItem button key='Home'>
                         <ListItemIcon> <img className={classes.icon} src={island} alt="home" /> </ListItemIcon>
-                        <Typography>Home</Typography>
+                        <Link to="/profile"><Typography>Home</Typography></Link>
                     </ListItem>
                     <Divider />
                     <ListItem button key='MyTrove'>
                         <ListItemIcon> <img className={classes.icon} src={treasureChest} alt="Trove" /> </ListItemIcon>
-                        <Typography>My Trove</Typography>
+                        <Link to="/mytrove"><Typography>My Trove</Typography></Link>
                     </ListItem>
                     <Divider />
-                    <ListItem button key='Discover'>
+                    <ListItem button key='Friends'>
                         <ListItemIcon> <img className={classes.icon} src={pirate} alt='Friends' /> </ListItemIcon>
-                        <Typography>My Friends</Typography>
+                        <Link to="/friends"><Typography>My Friends</Typography></Link>
                     </ListItem>
                     <Divider />
                     <ListItem button key='Discover'>
-                        <ListItemIcon> <img className={classes.icon} src={compass} alt='discover' /> </ListItemIcon>
-                        <Typography>Discover</Typography>
+                        <ListItemIcon> <img className={classes.icon} src={compass} alt='Discover' /> </ListItemIcon>
+                        <Link to="/discover"><Typography>Discover</Typography></Link>
                     </ListItem>
                 </List>
                 <Divider />
