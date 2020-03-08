@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import clsx from 'clsx';
 import { spacing } from '@material-ui/system';
+import SearchBar from '../SearchBar'
+import TextField from '@material-ui/core/TextField'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -25,8 +27,8 @@ const useStyles = makeStyles(theme => ({
     },
     spacing: {
         marginTop: "-150px",
-        marginLeft: "25px"
-    }
+        marginLeft: "275px"
+    },
 }));
 
 export default function AvatarImage() {
