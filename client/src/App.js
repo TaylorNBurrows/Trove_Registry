@@ -36,24 +36,23 @@ const App = () => {
   const [Authenticate, setAuthenticate] = useState({
     authenticated: false
   })
-
+  console.log(Authenticate)
   useEffect(() => {
     // check if user is logged in on refresh
     toggleAuthenticateStatus()
-    console.log(Authenticate);
   }, []);
 
   useEffect(() => {
     return () => {
       Auth.deauthenticateUser()
-      setAuthenticate({authenticated: Auth.isUserAuthenticated()})
+      localStorage.removeItem('token');
     }
   }, []);
 
   const toggleAuthenticateStatus = () => {
     // check authenticated status and toggle state based on that
-    setAuthenticate({ authenticated: Auth.isUserAuthenticated() })
-    console.log(Authenticate)
+    setAuthenticate({authenticated: Auth.isUserAuthenticated()})
+
   }
 
   return (
@@ -68,13 +67,14 @@ const App = () => {
             ) : <Redirect to="/" />}
   
           <Switch>
-              <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
-              <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
-              <Route exact path='/signup' component={SignupPage} />
-              <Route exact path='/profile' component={ProfilePage} />
-              <Route exact path='/discover' component={DiscoverPage} />
-              <Route path='/myfriends' component={MyFriendsPage} />
-              <Route path="/logout" render={(props) => <LogoutFunction {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
+
+            <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
+            <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
+            <Route exact path='/signup' component={SignupPage} />
+            <Route exact path='/profile' render={(props) => <ProfilePage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
+            <Route exact path='/discover' component={DiscoverPage} />
+            <Route path='/friends' component={MyFriendsPage} />
+            <Route path="/logout" render={(props) => <LogoutFunction {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
 
             </Switch>
       </ThemeProvider>
