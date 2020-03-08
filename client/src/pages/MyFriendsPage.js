@@ -1,7 +1,5 @@
 import React from 'react'
 import Main from '../components/Main'
-import Nav from '../components/Nav'
-import SideBar from '../components/SideBar'
 import FriendsList from '../components/FriendTable'
 
 const MyFriendsPage = () => {

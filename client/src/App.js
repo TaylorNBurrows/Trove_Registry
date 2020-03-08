@@ -4,6 +4,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import theme from './utils/themeUtil'
 import Nav from './components/Nav/index'
 import LogoutFunction from './pages/LogoutFunction'
+import Main from './components/Main'
 
 import {
   BrowserRouter as Router,
@@ -31,7 +32,7 @@ import SideBar from "./components/SideBar";
 // remove tap delay, essential for MaterialUI to work properly
 
 const App = () => {
-  
+
   const [Authenticate, setAuthenticate] = useState({
     authenticated: false
   })
@@ -51,35 +52,35 @@ const App = () => {
 
   const toggleAuthenticateStatus = () => {
     // check authenticated status and toggle state based on that
-    setAuthenticate({authenticated: Auth.isUserAuthenticated()})
+    setAuthenticate({ authenticated: Auth.isUserAuthenticated() })
     console.log(Authenticate)
   }
 
   return (
     <Router>
       <ThemeProvider theme={theme}>
-          { localStorage.getItem('token') ? (
-            <div>
-              <Nav />
-              <SideBar />
+        {localStorage.getItem('token') ? (
+          <div>
+            <Nav />
+            <SideBar />
             </div>
 
-          ) : <Redirect to = "/" />}
-
+            ) : <Redirect to="/" />}
+  
           <Switch>
-            <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
-            <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
-            <Route exact path='/signup' component={SignupPage} />
-            <Route exact path='/profile' component={ProfilePage} />
-            <Route exact path='/discover' component={DiscoverPage} />
-            <Route path='/myfriends' component={MyFriendsPage} />
-            <Route path="/logout" render={(props) => <LogoutFunction {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
+              <Route exact path='/' render={(props) => <LandingPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
+              <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
+              <Route exact path='/signup' component={SignupPage} />
+              <Route exact path='/profile' component={ProfilePage} />
+              <Route exact path='/discover' component={DiscoverPage} />
+              <Route path='/myfriends' component={MyFriendsPage} />
+              <Route path="/logout" render={(props) => <LogoutFunction {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
 
-          </Switch>
+            </Switch>
       </ThemeProvider>
     </Router >
 
-  )
-}
-
-export default App;
+      )
+    }
+    
+    export default App;

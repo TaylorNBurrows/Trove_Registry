@@ -9,17 +9,16 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.secondary.light,
         height: '250px',
         borderRadius: '10px',
-        padding: '10px'
+        padding: '10px',
+        marginTop: '50px',
+        marginLeft: '250px',
     },
 }));
 
 const ProfileBanner = () => {
     const classes = useStyles();
     return (
-        <div>
-            <div className={classes.teal}> Profile Page </div>
-        </div>
-
+        <div className={classes.teal}> </div>
     )
 }
 
