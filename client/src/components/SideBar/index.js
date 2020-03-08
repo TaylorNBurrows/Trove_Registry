@@ -49,19 +49,19 @@ const SideBar = () => {
                 }}>
                 <div className={classes.toolbar} />
                 <List>
-                    <ListItem button key='Home'>
+                    {/* <ListItem button key='Home'>
                         <ListItemIcon> <img className={classes.icon} src={island} alt="home" /> </ListItemIcon>
                         <Link to="/profile"><Typography>Home</Typography></Link>
                     </ListItem>
-                    <Divider />
+                    <Divider /> */}
                     <ListItem button key='MyTrove'>
                         <ListItemIcon> <img className={classes.icon} src={treasureChest} alt="Trove" /> </ListItemIcon>
-                        <Link to="/mytrove"><Typography>My Trove</Typography></Link>
+                        <Link to="/profile"><Typography>My Trove</Typography></Link>
                     </ListItem>
                     <Divider />
                     <ListItem button key='Friends'>
                         <ListItemIcon> <img className={classes.icon} src={pirate} alt='Friends' /> </ListItemIcon>
-                        <Link to="/friends"><Typography>My Friends</Typography></Link>
+                        <Link to="/myfriends"><Typography>My Friends</Typography></Link>
                     </ListItem>
                     <Divider />
                     <ListItem button key='Discover'>

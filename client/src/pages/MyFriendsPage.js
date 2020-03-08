@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar'
 import FriendTable from '../components/FriendTable'
 import API from '../utils/API'
 
+
 const MyFriendsPage = () => {
 
     const [search, setSearch] = useState('');
