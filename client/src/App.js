@@ -42,6 +42,13 @@ const App = () => {
     console.log(Authenticate);
   }, []);
 
+  useEffect(() => {
+    return () => {
+      Auth.deauthenticateUser()
+      setAuthenticate({authenticated: Auth.isUserAuthenticated()})
+    }
+  }, []);
+
   const toggleAuthenticateStatus = () => {
     // check authenticated status and toggle state based on that
     setAuthenticate({authenticated: Auth.isUserAuthenticated()})

@@ -29,9 +29,7 @@ const LoginPage = (props) => {
 
     setSuccessMessage(successMessage);
     console.log(successMessage)
-    setErrors({
-      errors: {}
-    });
+
   }, [])
 
   /**
@@ -68,11 +66,17 @@ const LoginPage = (props) => {
       setErrors(
         errors
       );
-
     });
-
   }
 
+  useEffect(() => {
+    return () => {
+      setErrors({
+        errors: {}
+      })
+    }
+  }, [])
+  
   /**
    * Change the user object.
    *
