@@ -27,16 +27,16 @@ const useStyles = makeStyles(theme => ({
     },
     spacing: {
         marginTop: "-150px",
-        marginLeft: "275px"
+        marginLeft: "20px"
     },
 }));
 
-export default function AvatarImage() {
+export default function AvatarImage(props) {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-            <Avatar alt="Jiliene Circelli" src="/static/images/avatar/1.jpg" className={clsx(classes.large, classes.teal, classes.spacing)} />
+            <Avatar alt={props.user.username} src="/static/images/avatar/1.jpg" className={clsx(classes.large, classes.teal, classes.spacing)} />
         </div>
     );
 }

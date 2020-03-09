@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -6,9 +6,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button'
 import Toolbar from '@material-ui/core/Toolbar';
 import BrandLogo from '../BrandLogo/index';
-
-const drawerWidth = 200;
-
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -28,7 +25,7 @@ const Nav = (props) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+        <Fragment>
             <CssBaseline />
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar classes={{ root: classes.toolbarRoot }}>
@@ -36,7 +33,7 @@ const Nav = (props) => {
                     <Link to="/logout"><Button color="inherit" >Logout</Button></Link>
                 </Toolbar>
             </AppBar>
-        </div>
+        </Fragment>
     );
 }
 

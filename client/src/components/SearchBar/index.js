@@ -39,6 +39,7 @@ const useStyles = makeStyles(theme => ({
             width: 200,
         },
     },
+    
 }));
 
 const SearchBar = (props) => {

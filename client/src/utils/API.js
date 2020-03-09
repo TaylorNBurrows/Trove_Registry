@@ -8,6 +8,6 @@ export default {
   	 axios.post('/auth/signup', userData),
   dashboard: token =>
      axios.get('/api/profile', {headers: {Authorization: `bearer ${token}`}}),
-   findFriends: userData =>
-      axios.get('/api/search/friends', userData)
+   // findFriends: search =>
+   //    axios.get('/api/search/friends', search),
 };
