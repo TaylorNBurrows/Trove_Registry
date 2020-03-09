@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
     spacing: {
         marginTop: "-150px",
-        marginLeft: "20px"
+        marginLeft: "55px"
     },
 }));
 

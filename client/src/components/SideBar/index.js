@@ -23,11 +23,11 @@ const useStyles = makeStyles(theme => ({
         zIndex: theme.zIndex.drawer + 1,
       },
       drawer: {
-        width: "25%",
+        width: "15%",
         flexShrink: 0,
       },
       drawerPaper: {
-        width: "25%",
+        width: "15%",
       },
     content: {
         width: "100%",
@@ -58,9 +58,14 @@ const SideBar = () => {
                         <Link to="/profile"><Typography>Home</Typography></Link>
                     </ListItem>
                     <Divider /> */}
+                <ListItem button key='MyProfile'>
+                    <ListItemIcon><img className={classes.icon} src={island} alt="Profile" /></ListItemIcon>
+                    <Link to="/profile"><Typography>My Profile</Typography></Link>
+                </ListItem>
+                <Divider />
                 <ListItem button key='MyTrove'>
                     <ListItemIcon><img className={classes.icon} src={treasureChest} alt="Trove" /></ListItemIcon>
-                    <Link to="/profile"><Typography>My Trove</Typography></Link>
+                    <Link to="/mytrove"><Typography>My Trove</Typography></Link>
                 </ListItem>
                 <Divider />
                 <ListItem button key='Friends'>
