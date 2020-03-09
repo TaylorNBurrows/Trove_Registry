@@ -17,7 +17,7 @@ const SignUpPage = (props) => {
    *
    * @param {object} event - the JavaScript event object
    */
-  let history = useHistory
+
   const processForm = (event) => {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault();

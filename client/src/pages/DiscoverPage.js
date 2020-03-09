@@ -1,5 +1,5 @@
-import React from 'react'
-import Main from '../components/Main'
+import React, {Fragment} from 'react'
+import Grid from '@material-ui/core/Grid'
 import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
 import AvatarImage from '../components/Avatar'
@@ -8,16 +8,23 @@ import TroveCard from '../components/TroveCard'
 
 const DiscoverPage = () => {
     return (
-        <div>
-            <Main>
-                <div>
+        <Fragment>
+            <Grid container spacing={0} direction="row">
+                <Grid item md={12}>
+                    <Nav />
+                </Grid>
+            </Grid>
+            <Grid container spacing={0} direction="row">
+                <Grid item md={3} sm={3}>
+                    <SideBar />
+                </Grid>
+                <Grid item md={9} sm={9}>
                     <ProfileBanner />
                     <AvatarImage />
                     <TroveCard />
-                </div>
-
-            </Main>
-        </div>
+                </Grid>
+            </Grid>
+        </Fragment>
 
     )
 }
