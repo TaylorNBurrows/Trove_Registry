@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useHistory } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import Auth from '../utils/Auth';
 import LoginForm from '../components/LoginForm';
 import API from '../utils/API';
-import Main from '../components/Main'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 const LoginPage = (props) => {
   console.log(props)

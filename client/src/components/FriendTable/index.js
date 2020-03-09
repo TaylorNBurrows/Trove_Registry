@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
   layout: {
     marginTop: '50px',
     marginBottom: '50px',
-    marginLeft: '250px',
+    marginRight: '50px',
   },
   avatar: {
     height: '5px',
@@ -50,7 +51,7 @@ const FriendTable = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.layout}>
+    <Grid className={classes.layout}>
       <Paper elevation={1} className={classes.HeaderDiv}>
         <div>
           <span className={classes.span}>Your Friends</span>
@@ -75,7 +76,7 @@ const FriendTable = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
+    </Grid>
   );
 }
 export default FriendTable;
