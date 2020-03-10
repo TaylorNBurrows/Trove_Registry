@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Auth from '../utils/Auth';
 
 
@@ -7,12 +7,11 @@ const LogoutFunction = (props) => {
     Auth.deauthenticateUser();
     // change the current URL to / after logout
     props.history.push('/');
-    props.checkAuthenticateStatus();
 
     return (
-      <div>
+      <Fragment>
         <p>Logging out...</p>
-      </div>
+      </Fragment>
     )
 
 }

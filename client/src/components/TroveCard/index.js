@@ -10,9 +10,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
+import ShareBtn from '../../components/ShareBtn'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import DefaultImage from '../../images/pngIcons/016-lifebuoy.png'
+import EditIcon from '../EditProfileBtn'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -56,16 +57,17 @@ const TroveCard = () => {
             />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
+                    <h4>Description:</h4>
                     This impressive paella is a perfect party dish and a fun meal to cook together with your
                     guests. Add 1 cup of frozen peas along with the mussels, if you like.
         </Typography>
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
+                    <EditIcon />
                 </IconButton>
                 <IconButton aria-label="share">
-                    <ShareIcon />
+                    <ShareBtn />
                 </IconButton>
                 <IconButton
                     className={clsx(classes.expand, {
