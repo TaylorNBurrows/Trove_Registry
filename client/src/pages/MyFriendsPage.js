@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Main from '../components/Main'
 import SearchBar from '../components/SearchBar'
 import FriendTable from '../components/FriendTable'
@@ -12,11 +12,11 @@ const MyFriendsPage = () => {
     const onChange = (e) => setSearch({
         ...search,
         [e.target.name]: e.target.value,
-      });
+    });
 
     const onSearch = () => {
-        API.findFriends(search).then((err, res) =>{
-            if(err) throw err;
+        API.findFriends(search).then((err, res) => {
+            if (err) throw err;
             console.log()
         })
     }
@@ -24,7 +24,7 @@ const MyFriendsPage = () => {
     return (
         <div>
             <Main>
-                <SearchBar onChange={onChange} onSearch={onSearch}/>
+                <SearchBar onChange={onChange} onSearch={onSearch} />
                 <FriendTable />
             </Main>
         </div>
