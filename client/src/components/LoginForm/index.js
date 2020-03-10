@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx'
 
 
+
 const useStyles = makeStyles(theme => ({
 
   alignItemsAndJustifyContent: {
@@ -17,15 +18,10 @@ const useStyles = makeStyles(theme => ({
     border: '0',
     boxShadow: 'none'
   },
-  
   root: {
     backgroundColor: theme.palette.secondary.dark, 
     color: 'white'
-
   }
-
-
-
 }));
 
 const LoginForm = ({successMessage, errors, onSubmit, onChange, user}) => {
@@ -33,6 +29,7 @@ const LoginForm = ({successMessage, errors, onSubmit, onChange, user}) => {
   const classes = useStyles();
 
   return (
+  
   <Card className={clsx(classes.alignItemsAndJustifyContent, classes.root)}>
     <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading">Login</h2>
