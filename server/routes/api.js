@@ -12,15 +12,12 @@ router.get('/profile', (req, res) => {
   });
 });
 
-router.get('/search/friends', (req, res) => {
-  console.log(req.body);
-  const name = req.body;
-  User.find({ name: { $in: [req.body] } }, (err, user)=>{
-    if (err || !user) {
-      console.log(err)
-      // return res.status(401).end();
-    }
-    console.log(res.json(user))
+router.get('/search/friends/:name', (req, res) => {
+  console.log(req.params.name);
+  console.log(res)
+  User.find({ name: { "$regex": req.params.name, "$options": "i" } }, (err, user) => {
+    console.log(user)
+    res.status(200).json(user)
   })
-})
+});
 module.exports = router;
