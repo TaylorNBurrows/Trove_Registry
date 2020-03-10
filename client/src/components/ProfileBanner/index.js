@@ -7,6 +7,8 @@ import { mergeClasses } from '@material-ui/styles';
 const useStyles = makeStyles(theme => ({
     teal: {
         color: 'white',
+        marginTop: '90px',
+        marginRight:'15px',
         backgroundColor: theme.palette.secondary.light,
         height: '250px',
         borderRadius: '10px',

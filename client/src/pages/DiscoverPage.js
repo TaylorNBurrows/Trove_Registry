@@ -2,7 +2,7 @@ import React, {Fragment, useState, useEffect} from 'react'
 import Grid from '@material-ui/core/Grid'
 import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
-import AvatarImage from '../components/Avatar'
+import Avatar from '../components/Avatar'
 import ProfileBanner from '../components/ProfileBanner'
 import TroveCard from '../components/TroveCard'
 import API from '../utils/API';

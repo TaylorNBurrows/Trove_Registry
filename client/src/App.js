@@ -20,6 +20,7 @@ import SignupPage from './pages/SignupPage.js';
 import ProfilePage from './pages/ProfilePage';
 import DiscoverPage from './pages/DiscoverPage';
 import MyFriendsPage from './pages/MyFriendsPage';
+import MyTrovePage from './pages/MyTrovePage';
 
 import Auth from './utils/Auth';
 
@@ -57,6 +58,7 @@ const App = () => {
           <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
           <Route exact path='/signup' component={SignupPage} />
           <Route exact path='/profile' render={(props) => <ProfilePage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
+          <Route exact path='/mytrove' render={(props) => <MyTrovePage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />}/>
           <Route exact path='/discover' component={DiscoverPage} />
           <Route path='/friends' component={MyFriendsPage} />
           <Route path="/logout" render={(props) => <LogoutFunction {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
