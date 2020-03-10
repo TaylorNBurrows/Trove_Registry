@@ -4,6 +4,7 @@ import SideBar from '../components/SideBar'
 import SearchBar from '../components/SearchBar'
 import FriendTable from '../components/FriendTable'
 import API from '../utils/API'
+import Auth from '../utils/Auth'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -15,17 +16,18 @@ const useStyles = makeStyles({
 
 const MyFriendsPage = () => {
     const classes = useStyles();
-    const [search, setSearch] = useState('');
+    const [search, setSearch] = useState();
+    const [searchResult, setSearchResult] = useState();
 
-    const onChange = (e) => setSearch({
-        ...search,
-        [e.target.name]: e.target.value,
-    });
+    console.log(search)
+
+    const onChange = (e) => setSearch(
+        e.target.value
+    );
 
     const onSearch = () => {
-        API.findFriends(search).then((err, res) => {
-            if (err) throw err;
-            console.log(res)
+        API.findFriends(search, Auth.getToken()).then(res=>{
+            console.log(res.data)
         })
     }
 
