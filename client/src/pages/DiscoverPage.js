@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import Grid from '@material-ui/core/Grid'
 import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
@@ -32,7 +32,7 @@ const DiscoverPage = (props) => {
                 </Grid>
                 <Grid item md={10} sm={10}>
                     <ProfileBanner />
-                    <AvatarImage user={user}/>
+                    <Avatar user={user} />
                     <TroveCard />
                 </Grid>
             </Grid>

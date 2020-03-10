@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     layout: {
-      marginTop: '75px',
+        marginTop: '75px',
     },
 })
 
@@ -26,7 +26,7 @@ const MyFriendsPage = () => {
     );
 
     const onSearch = () => {
-        API.findFriends(search, Auth.getToken()).then(res=>{
+        API.findFriends(search, Auth.getToken()).then(res => {
             console.log(res.data)
         })
     }
