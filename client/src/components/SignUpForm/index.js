@@ -3,11 +3,30 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx'
+
+const useStyles = makeStyles(theme => ({
+
+  alignItemsAndJustifyContent: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: '0',
+    boxShadow: 'none'
+  },
+  root: {
+    backgroundColor: theme.palette.secondary.dark, 
+    color: 'white'
+  }
+}));
 
 const SignUpForm = ({errors, user, onChange, onSubmit}) =>{
 console.log(user)
+const classes = useStyles();
+
 return(
-  <Card className="container">
+  <Card className={clsx(classes.alignItemsAndJustifyContent, classes.root)}>
     <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading">Sign Up</h2>
       {console.log(errors.summary)}
