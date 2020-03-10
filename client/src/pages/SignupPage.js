@@ -1,4 +1,4 @@
-import React, { useState, useHistory } from 'react';
+import React, { useEffect, useState, useHistory } from 'react';
 import SignUpForm from '../components/SignUpForm';
 import API from '../utils/API';
 
@@ -17,7 +17,7 @@ const SignUpPage = (props) => {
    *
    * @param {object} event - the JavaScript event object
    */
-  let history = useHistory
+
   const processForm = (event) => {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault();
@@ -47,6 +47,14 @@ const SignUpPage = (props) => {
       );
     });
   }
+
+  useEffect(() => {
+    return () => {
+      setErrors({
+        errors: {}
+      })
+    }
+  }, [])
 
   /**
    * Change the user object.
