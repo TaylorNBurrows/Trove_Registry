@@ -2,7 +2,7 @@ import React, {Fragment} from 'react'
 import Grid from '@material-ui/core/Grid'
 import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
-import AvatarImage from '../components/Avatar'
+import Avatar from '../components/Avatar'
 import ProfileBanner from '../components/ProfileBanner'
 import TroveCard from '../components/TroveCard'
 
@@ -20,7 +20,7 @@ const DiscoverPage = () => {
                 </Grid>
                 <Grid item md={9} sm={9}>
                     <ProfileBanner />
-                    <AvatarImage />
+                    <Avatar />
                     <TroveCard />
                 </Grid>
             </Grid>
