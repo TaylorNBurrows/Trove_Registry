@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
     layout: {
       marginTop: '75px',
-    }
+    },
 })
 
 const MyFriendsPage = () => {
@@ -43,7 +43,7 @@ const MyFriendsPage = () => {
                     <SideBar />
                 </Grid>
                 <Grid item md={10} sm={10} className={classes.layout}>
-                    <SearchBar onChange={onChange} onSearch={onSearch} />
+                    <SearchBar className={classes.search} onChange={onChange} onSearch={onSearch} />
                     <FriendTable />
                 </Grid>
             </Grid>

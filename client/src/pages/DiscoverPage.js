@@ -27,10 +27,10 @@ const DiscoverPage = (props) => {
                 </Grid>
             </Grid>
             <Grid container spacing={0} direction="row">
-                <Grid item md={3} sm={3}>
+                <Grid item md={2} sm={2}>
                     <SideBar />
                 </Grid>
-                <Grid item md={9} sm={9}>
+                <Grid item md={10} sm={10}>
                     <ProfileBanner />
                     <AvatarImage user={user}/>
                     <TroveCard />
