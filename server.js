@@ -14,7 +14,7 @@ const app = express();
 // uses environmental variable for deployment (Heroku) or defaults to local config
 const uri = process.env.MONGODB_URI || config.dbUri;
 
-mongoose.connect(uri);
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true  });
 // plug in the promise library:
 mongoose.Promise = global.Promise;
 

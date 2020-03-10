@@ -10,8 +10,14 @@ const UserSchema = new mongoose.Schema({
     index: { unique: true }
   },
   password: String,
-  treasures: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'ItemPost'
+  troves: {
+    trove: {
+      name: String,
+      imgsrc: String,
+      items: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'ItemPost'
+      }
+    } 
   },
   friends: {
     type: mongoose.Schema.Types.ObjectId, ref: 'User'

@@ -2,6 +2,7 @@ import React from "react";
 import { fade, makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles(theme => ({
     search: {
@@ -57,6 +58,7 @@ const SearchBar = (props) => {
                     inputProps={{ 'aria-label': 'search' }}
                     onChange = {props.onChange}
                 />
+                <Button color="inherit" onClick={props.onSearch}>Search</Button>
             </div>
         </div>
     )
