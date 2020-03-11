@@ -10,19 +10,13 @@ const UserSchema = new mongoose.Schema({
     index: { unique: true }
   },
   password: String,
-  troves: {
-    trove: {
-      name: String,
-      imgsrc: String,
-      items: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'ItemPost'
-      }
-    } 
-  },
-  friends: {
+  troves: [{
+    type: mongoose.Schema.Types.ObjectId, ref: "Trove"
+  }],
+  friends: [{
     type: mongoose.Schema.Types.ObjectId, ref: 'User'
-  }
-  
+  }]
+
 });
 
 

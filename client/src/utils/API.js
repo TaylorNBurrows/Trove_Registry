@@ -10,5 +10,7 @@ export default {
       axios.get('/api/profile', { headers: { Authorization: `bearer ${token}` } }),
    findFriends: (search, token) => {
       return axios.get('/api/search/friends/'+ search, { headers: { Authorization: `bearer ${token}` } })
-   }
+   },
+   getTrove: userData =>
+      axios.get('/api/trove', userData)
 }
