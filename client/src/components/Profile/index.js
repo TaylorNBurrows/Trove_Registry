@@ -27,22 +27,29 @@ const Profile = (props) => {
     <form className={classes.background} noValidate autoComplete="off">
         <Grid container alignItems='center' justify='center' spacing={2}>
           <Grid item xs={6} md={6}>
-            <TextField
-              required
-              id="filled-required"
-              label="Username"
+          <TextField
+              id="filled-full-width"
+              label="Name"
+              value={props.user.username}
               fullWidth
-              value= {props.user.username}
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
               variant="filled"
             />
           </Grid>
           <Grid item xs={6} md={6}>
-            <TextField
-              id="filled-password-input-required"
+          <TextField
+              id="filled-full-width"
               label="Password"
               type="password"
+              value={props.user.name}
               fullWidth
-              autoComplete="current-password"
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
               variant="filled"
             />
           </Grid>
