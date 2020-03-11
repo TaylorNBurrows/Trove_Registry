@@ -42,7 +42,7 @@ const ProfilePage = (props) => {
                     <Grid item xs={12} alignItems='center' justify='center'>
                         <ProfileBanner />
                         <Avatar user={user} />
-                        <Profile />
+                        <Profile user={ user } />
                     </Grid>
                         
                 </Grid>
