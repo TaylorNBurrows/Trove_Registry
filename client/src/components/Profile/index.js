@@ -2,26 +2,20 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
+import { maxWidth } from '@material-ui/system';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: 200,
-      marginTop: '50px'
-    },
-  },
-  divStyles: {
+
+  background: {
     backgroundColor: theme.palette.secondary.light,
     borderRadius: '10px',
-    marginBottom: '50px',
-    marginRight: '20px',
-    alignItems: 'center',
-    justify: 'center'
+    margin:'50px auto',
+    maxWidth: '600px',
+    padding: '20px'
   },
 }));
 
-const Profile = () => {
+const Profile = (props) => {
   const classes = useStyles();
   const handleChange = event => {
     setValue(event.target.value);
@@ -29,84 +23,59 @@ const Profile = () => {
   const [value, setValue] = React.useState('Controlled');
 
   return (
-    <Grid container alignItems='center' justify='center'>
-      <div className={classes.divStyles}>
-        <form className={classes.root} noValidate autoComplete="off">
-          <div style={{ alignItems: 'center' }}>
-            <Grid item xs={12} md={12}>
-              <TextField
-                required
-                id="filled-required"
-                label="Username"
-                defaultValue="Username"
-                variant="filled"
-              />
-              <TextField
-                id="filled-password-input-required"
-                label="Password"
-                type="password"
-                autoComplete="current-password"
-                variant="filled"
-              />
-            </Grid>
-            <Grid item xs={12} md={12}>
-              <TextField
-                required
-                id="filled-required"
-                label="First Name"
-                defaultValue="First Name"
-                variant="filled"
-              />
-              <TextField
-                required
-                id="filled-required"
-                label="Last Name"
-                defaultValue="Last Name"
-                variant="filled"
-              />
-            </Grid>
-            <Grid item xs={12} md={12}>
-              <TextField
-                id="filled-full-width"
-                label="About Me"
-                style={{ margin: 8 }}
-                rows='8'
-                placeholder="About Me"
-                fullWidth
-                multiline
-                margin="normal"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                variant="filled"
-              />
-              <TextField
-                id="filled-full-width"
-                label="About Me"
-                style={{ margin: 8 }}
-                rows='8'
-                placeholder="About Me"
-                fullWidth
-                multiline
-                margin="normal"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                variant="filled"
-              />
-            </Grid>
 
-            {/* <TextField
-          disabled
-          id="filled-disabled"
-          label="Disabled"
-          defaultValue="Hello World"
-          variant="filled"
-        /> */}
-          </div>
-        </form>
-      </div>
-    </Grid>
+    <form className={classes.background} noValidate autoComplete="off">
+        <Grid container alignItems='center' justify='center' spacing={2}>
+          <Grid item xs={6} md={6}>
+            <TextField
+              required
+              id="filled-required"
+              label="Username"
+              fullWidth
+              value= {props.user.username}
+              variant="filled"
+            />
+          </Grid>
+          <Grid item xs={6} md={6}>
+            <TextField
+              id="filled-password-input-required"
+              label="Password"
+              type="password"
+              fullWidth
+              autoComplete="current-password"
+              variant="filled"
+            />
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <TextField
+              id="filled-full-width"
+              label="Name"
+              value={props.user.name}
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="filled"
+            />
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <TextField
+              id="filled-full-width"
+              label="About Me"
+              rows='8'
+              placeholder="Tell us about yourself..."
+              fullWidth
+              multiline
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="filled"
+            />
+          </Grid>
+        </Grid>
+    </form>
 
   );
 }
