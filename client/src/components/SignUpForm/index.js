@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx'
@@ -16,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     boxShadow: 'none'
   },
   root: {
-    backgroundColor: theme.palette.secondary.dark, 
+    backgroundColor: "white", 
     color: 'white'
   }
 }));
