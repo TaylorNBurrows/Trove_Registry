@@ -3,10 +3,12 @@ import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
 import SearchBar from '../components/SearchBar'
 import FriendTable from '../components/FriendTable'
+import NewFriendsDialogModal from '../components/NewFriendsDialogModal'
 import API from '../utils/API'
 import Auth from '../utils/Auth'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     layout: {
@@ -18,12 +20,18 @@ const MyFriendsPage = () => {
     const classes = useStyles();
     const [search, setSearch] = useState();
     const [searchResult, setSearchResult] = useState();
+    const [open, setOpen] = React.useState(false);
+
 
     console.log(search)
 
     const onChange = (e) => setSearch(
         e.target.value
     );
+    const handleClickOpen = () => {
+        setOpen(true);
+      };
+
 
     const onSearch = () => {
         API.findFriends(search, Auth.getToken()).then(res => {
@@ -43,7 +51,12 @@ const MyFriendsPage = () => {
                     <SideBar />
                 </Grid>
                 <Grid item md={10} sm={10} className={classes.layout}>
-                    <SearchBar className={classes.search} onChange={onChange} onSearch={onSearch} />
+                {/* <Link to="/logout"><Button color="inherit" >Logout</Button></Link> */}
+                    {/* <SearchBar className={classes.search} onChange={onChange} onSearch={onSearch} /> */}
+                    {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+  Search Friends
+</Button> */}
+<NewFriendsDialogModal/>
                     <FriendTable />
                 </Grid>
             </Grid>
