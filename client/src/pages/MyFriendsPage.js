@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
 import SearchBar from '../components/SearchBar'
@@ -20,10 +20,13 @@ const MyFriendsPage = () => {
     const classes = useStyles();
     const [search, setSearch] = useState();
     const [searchResult, setSearchResult] = useState();
+    const [user, setUser] = useState();
+    const [friends, setFriends] = useState();
     const [open, setOpen] = React.useState(false);
 
 
     console.log(search)
+    console.log(user)
 
     const onChange = (e) => setSearch(
         e.target.value
@@ -39,6 +42,18 @@ const MyFriendsPage = () => {
         })
     }
 
+    useEffect(() => {
+        API.dashboard(Auth.getToken())
+            .then(res => {
+                setUser(res.data.user)
+                API.getFriends(res.data.user._id, Auth.getToken()).then(blah => {
+                    // setFriends(res.data.user.friends)
+                    console.log(blah)
+                
+                });
+            })
+    }, [])
+
     return (
         <Fragment>
             <Grid container spacing={0} direction="row">
@@ -51,13 +66,14 @@ const MyFriendsPage = () => {
                     <SideBar />
                 </Grid>
                 <Grid item md={10} sm={10} className={classes.layout}>
+                    <FriendTable friends={friends} />
                 {/* <Link to="/logout"><Button color="inherit" >Logout</Button></Link> */}
                     {/* <SearchBar className={classes.search} onChange={onChange} onSearch={onSearch} /> */}
                     {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
   Search Friends
 </Button> */}
 <NewFriendsDialogModal/>
-                    <FriendTable />
+               
                 </Grid>
             </Grid>
         </Fragment>

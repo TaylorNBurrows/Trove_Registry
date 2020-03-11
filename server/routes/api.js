@@ -20,4 +20,10 @@ router.get('/search/friends/:name', (req, res) => {
     res.status(200).json(user)
   })
 });
+
+router.get('/friends/:id', (req, res) =>{
+  User.findOne({_id: req.params.id}).populate('friends').then((friends) => {res.json(friends)
+  console.log(friends)
+  })
+})
 module.exports = router;
