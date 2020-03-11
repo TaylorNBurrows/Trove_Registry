@@ -10,5 +10,7 @@ export default {
       axios.get('/api/profile', { headers: { Authorization: `bearer ${token}` } }),
    findFriends: (search, token) => {
       return axios.get('/api/search/friends/'+ search, { headers: { Authorization: `bearer ${token}` } })
-   }
+   },
+   getFriends: (userData, token) =>
+      axios.get('/api/friends/'+ userData, { headers: { Authorization: `bearer ${token}` } } )
 }

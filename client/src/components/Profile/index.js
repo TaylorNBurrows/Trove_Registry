@@ -3,6 +3,8 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import { maxWidth } from '@material-ui/system';
+import EditProfileBtn from '../EditProfileBtn';
+import SaveProfileBtn from '../SaveBtn'
 
 const useStyles = makeStyles(theme => ({
 
@@ -80,6 +82,10 @@ const Profile = (props) => {
               }}
               variant="filled"
             />
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <EditProfileBtn /> 
+            <SaveProfileBtn />
           </Grid>
         </Grid>
     </form>

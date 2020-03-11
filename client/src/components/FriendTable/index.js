@@ -35,19 +35,8 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
 
-const rows = [
-  createData('Yogurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
-const FriendTable = () => {
+const FriendTable = ( props ) => {
   const classes = useStyles();
 
   return (
@@ -59,24 +48,27 @@ const FriendTable = () => {
       </Paper>
 
 
-
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
-          <TableBody>
-            {rows.map(row => (
-              <TableRow key={row.name}>
-                <TableCell align="center">Avatar</TableCell>
-                <TableCell align="center">Username</TableCell>
-                <TableCell align="center">Name</TableCell>
-                <TableCell align="center">ViewLink</TableCell>
-                <TableCell align="center">Action (+)</TableCell>
-                <TableCell align="center">Action (-)</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Grid>
+    {
+      props.friends
+      ? <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="simple table">
+            <TableBody>
+              {props.friends.map(friend => (
+                <TableRow key={friend.name}>
+                  <TableCell align="center">Avatar</TableCell>
+                  <TableCell align="center">{friend.username}</TableCell>
+                  <TableCell align="center">{friend.name}</TableCell>
+                  <TableCell align="center">ViewLink</TableCell>
+                  <TableCell align="center">Action (-)</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      : null
+    }
+</Grid>
+      
   );
 }
 export default FriendTable;
