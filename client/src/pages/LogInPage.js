@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import Auth from '../utils/Auth';
+import Nav from '../components/Nav';
+import Grid from '@material-ui/core/Grid';
 import LoginForm from '../components/LoginForm';
 import API from '../utils/API';
 
@@ -89,6 +91,13 @@ const LoginPage = (props) => {
    */
 
   return (
+    <Fragment>
+      <Grid>
+
+    <Nav />
+    <br></br>
+    
+
     <LoginForm
       onSubmit={processForm}
       onChange={changeUser}
@@ -96,6 +105,8 @@ const LoginPage = (props) => {
       successMessage={successMessage}
       user={user}
     />
+    </Grid>
+    </Fragment>
   );
 }
 

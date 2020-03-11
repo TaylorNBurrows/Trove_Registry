@@ -1,6 +1,8 @@
-import React, { useEffect, useState, useHistory } from 'react';
+import React, { useEffect, useState, useHistory, Fragment } from 'react';
 import SignUpForm from '../components/SignUpForm';
 import API from '../utils/API';
+import Nav from '../components/Nav';
+import Grid from '@material-ui/core/Grid';
 
 const SignUpPage = (props) => {
   // set the initial component state
@@ -73,12 +75,17 @@ const SignUpPage = (props) => {
    */
 
   return (
+    <Fragment>
+<Grid>
+   <Nav />
     <SignUpForm
       onSubmit={processForm}
       onChange={changeUser}
       errors={errors}
       user={user}
-    />
+    /> 
+    </Grid>
+     </Fragment>
   );
 
 
