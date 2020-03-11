@@ -13,4 +13,6 @@ export default {
    },
    getTrove: userData =>
       axios.get('/api/trove', userData)
+   getFriends: (userData, token) =>
+      axios.get('/api/friends/'+ userData, { headers: { Authorization: `bearer ${token}` } } )
 }

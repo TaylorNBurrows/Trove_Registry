@@ -20,6 +20,7 @@ router.get('/search/friends/:name', (req, res) => {
   })
 });
 
+
 router.get('/trove', (req, res) => {
   User.findOne({ _id: userData._id }).populate('troves').populate('items').then((user) =>{
     console.log(user)
@@ -27,4 +28,9 @@ router.get('/trove', (req, res) => {
   })
 })
 
+router.get('/friends/:id', (req, res) =>{
+  User.findOne({_id: req.params.id}).populate('friends').then((friends) => {res.json(friends)
+  console.log(friends)
+  })
+})
 module.exports = router;

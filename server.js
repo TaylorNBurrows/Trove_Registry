@@ -11,7 +11,7 @@ const app = express();
 
 // connect to the database and load models
 // uses environmental variable for deployment (Heroku) or defaults to local config
-const uri = process.env.MONGODB_URI || config.dbUri;
+const uri = process.env.MONGODB_URI || "mongodb://localhost/trovedb";
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true  });
 // plug in the promise library:
