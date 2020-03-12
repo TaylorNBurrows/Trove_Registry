@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     },
 })
 
-const MyFriendsPage = () => {
+const FriendsPage = () => {
     const classes = useStyles();
     const [search, setSearch] = useState();
     const [searchResult, setSearchResult] = useState();
@@ -80,4 +80,4 @@ const MyFriendsPage = () => {
     )
 }
 
-export default MyFriendsPage
+export default FriendsPage;

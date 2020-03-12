@@ -15,14 +15,22 @@ router.get('/profile', (req, res) => {
 router.get('/search/friends/:name', (req, res) => {
   console.log(req.params.name);
   console.log(res)
-  User.find({ name: { "$regex": req.params.name, "$options": "i" }}).populate('troves').populate('friends').then((user) =>{
-    res.json(user)
+  User.find({ name: { "$regex": req.params.name, "$options": "i" }}).populate({
+    path: 'troves',
+    populate: {
+      path: 'items',
+    }}).populate('friends').then((user) =>{
+    return res.json(user)
   })
 });
 
-
-router.get('/trove', (req, res) => {
-  User.findOne({ _id: userData._id }).populate('troves').populate('items').then((user) =>{
+router.get('/user/trove/:id', (req, res) => {
+  User.findOne({ _id: req.params.id }).populate({
+    path: 'troves',
+    populate: {
+      path: 'items',
+    }})
+    .then((user) =>{
     console.log(user)
     res.json(user)
   })

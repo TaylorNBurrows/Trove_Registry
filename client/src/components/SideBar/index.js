@@ -65,7 +65,7 @@ const SideBar = () => {
                 <Divider />
                 <ListItem button key='MyTrove'>
                     <ListItemIcon><img className={classes.icon} src={treasureChest} alt="Trove" /></ListItemIcon>
-                    <Link to="/mytrove"><Typography>My Trove</Typography></Link>
+                    <Link to="/trove"><Typography>My Trove</Typography></Link>
                 </ListItem>
                 <Divider />
                 <ListItem button key='Friends'>
