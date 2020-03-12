@@ -33,7 +33,7 @@ const FriendsPage = () => {
     );
     const handleClickOpen = () => {
         setOpen(true);
-      };
+    };
 
 
     const onSearch = () => {
@@ -49,7 +49,7 @@ const FriendsPage = () => {
                 API.getFriends(res.data.user._id, Auth.getToken()).then(blah => {
                     // setFriends(res.data.user.friends)
                     console.log(blah)
-                
+
                 });
             })
     }, [])
@@ -66,14 +66,10 @@ const FriendsPage = () => {
                     <SideBar />
                 </Grid>
                 <Grid item md={10} sm={10} className={classes.layout}>
+                    <NewFriendsDialogModal onChange={onChange} onSearch={onSearch} />
                     <FriendTable friends={friends} />
-                {/* <Link to="/logout"><Button color="inherit" >Logout</Button></Link> */}
+                    {/* <Link to="/logout"><Button color="inherit" >Logout</Button></Link> */}
                     {/* <SearchBar className={classes.search} onChange={onChange} onSearch={onSearch} /> */}
-                    {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-  Search Friends
-</Button> */}
-<NewFriendsDialogModal/>
-               
                 </Grid>
             </Grid>
         </Fragment>

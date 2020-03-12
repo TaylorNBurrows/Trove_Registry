@@ -15,9 +15,10 @@ const TroveSchema = new Schema({
         trim: true,
     },
     items: [{
-        type: mongoose.Schema.Types.ObjectId, ref: 'Item'
+        type: mongoose.Schema.Types.ObjectId, ref: 'Items'
     }]
 });
 
-module.exports = mongoose.model("Troves", TroveSchema, "troves");
+const Troves = mongoose.model("Troves", TroveSchema, "troves");
+module.exports = Troves;
 

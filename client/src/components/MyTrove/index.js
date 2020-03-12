@@ -15,32 +15,21 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const MyTrove = () => {
+const MyTrove = (props) => {
     const classes = useStyles();
 
     return (
+        
         <Grid container direction="row" spacing={1} className={classes.layout}>
             <Grid item xs={12} className={classes.search}>
                 <SearchBar />
             </Grid>
-            <Grid item xs={4} md={3}>
-                <TroveCard title="Add New Trove"/>
-            </Grid>
-            {/* <Grid item xs={4} md={3}>
-                <TroveCard />
-            </Grid>
-            <Grid item xs={4} md={3}>
-                <TroveCard />
-            </Grid>
-            <Grid item xs={4} md={3}>
-                <TroveCard />
-            </Grid>
-            <Grid item xs={4} md={3}>
-                <TroveCard />
-            </Grid>
-            <Grid item xs={4} md={3}>
-                <TroveCard />
-            </Grid> */}
+            {props.trove.length ? props.trove.map((item, key) =>{
+                return (<Grid item xs={4} md={3}>
+                <TroveCard trove={item} key={key}/>
+            </Grid>)
+            }) : null}
+            
         </Grid>
     )
 }
