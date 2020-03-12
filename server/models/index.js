@@ -1,5 +1,6 @@
 module.exports = {
   // load models
   User: require('./user-model'),
-  Item: require('./item-model')
+  Troves: require('./trove-model'),
+  Items: require('./item-model')
 };
