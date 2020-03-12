@@ -19,6 +19,5 @@ const TroveSchema = new Schema({
     }]
 });
 
-mongoose.model("Troves", TroveSchema, "troves");
-module.exports = Troves;
+module.exports = mongoose.model("Troves", TroveSchema, "troves");
 

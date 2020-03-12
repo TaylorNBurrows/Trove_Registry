@@ -19,8 +19,8 @@ import LandingPage from './pages/LandingPage';
 import SignupPage from './pages/SignupPage.js';
 import ProfilePage from './pages/ProfilePage';
 import DiscoverPage from './pages/DiscoverPage';
-import MyFriendsPage from './pages/MyFriendsPage';
-import MyTrovePage from './pages/MyTrovePage';
+import FriendsPage from './pages/MyFriendsPage';
+import TrovePage from './pages/MyTrovePage';
 
 import Auth from './utils/Auth';
 
@@ -40,7 +40,6 @@ const App = () => {
   useEffect(() => {
     return () => {
       Auth.deauthenticateUser()
-      localStorage.removeItem('token');
     }
   }, []);
 
@@ -58,9 +57,9 @@ const App = () => {
           <Route exact path='/login' render={(props) => <LoginPage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
           <Route exact path='/signup' component={SignupPage} />
           <Route exact path='/profile' render={(props) => <ProfilePage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
-          <Route exact path='/mytrove' render={(props) => <MyTrovePage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />}/>
+          <Route exact path='/trove' render={(props) => <TrovePage {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
           <Route exact path='/discover' component={DiscoverPage} />
-          <Route path='/friends' component={MyFriendsPage} />
+          <Route exact path='/friends' component={FriendsPage} />
           <Route path="/logout" render={(props) => <LogoutFunction {...props} checkAuthenticateStatus={toggleAuthenticateStatus} />} />
         </Switch>
       </ThemeProvider>

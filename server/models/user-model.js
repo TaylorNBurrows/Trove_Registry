@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
   },
   password: String,
   troves: [{
-    type: mongoose.Schema.Types.ObjectId, ref: "Trove"
+    type: mongoose.Schema.Types.ObjectId, ref: "Troves"
   }],
   friends: [{
     type: mongoose.Schema.Types.ObjectId, ref: 'User'

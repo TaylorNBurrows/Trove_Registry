@@ -9,7 +9,7 @@ import Avatar from '../components/Avatar'
 import ProfileBanner from '../components/ProfileBanner'
 import Grid from '@material-ui/core/Grid'
 
-const ProfilePage = (props) => {
+const TrovePage = (props) => {
     const [user, setUser] = useState({});
 
     console.log(user)
@@ -50,4 +50,4 @@ const ProfilePage = (props) => {
 
 }
 
-export default ProfilePage;
+export default TrovePage;

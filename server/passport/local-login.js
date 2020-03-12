@@ -20,7 +20,11 @@ module.exports = new PassportLocalStrategy({
   };
 
   // find a user by email address
-  return db.User.findOne({ username: userData.username }, (err, user) => {
+  return db.User.findOne({ username: userData.username }).populate({
+    path: 'troves',
+    populate: {
+      path: 'items',
+    }}).populate('friends').then((err, user) => {
     if (err) { return done(err); }
 
     if (!user) {
