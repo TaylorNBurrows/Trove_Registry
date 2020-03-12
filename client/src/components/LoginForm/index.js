@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     boxShadow: 'none'
   },
   root: {
-    backgroundColor: theme.palette.secondary.dark, 
+    backgroundColor: "white", 
     color: 'white'
   }
 }));
