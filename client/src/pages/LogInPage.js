@@ -6,7 +6,7 @@ import LoginForm from '../components/LoginForm';
 import API from '../utils/API';
 
 const LoginPage = (props) => {
-  console.log(props)
+
   // set the initial component state
 
   const [errors, setErrors] = useState({});
@@ -75,7 +75,7 @@ const LoginPage = (props) => {
       })
     }
   }, [])
-  
+
   /**
    * Change the user object.
    *
@@ -94,18 +94,18 @@ const LoginPage = (props) => {
     <Fragment>
       <Grid>
 
-    <Nav />
-    <br></br>
-    
+        <Nav />
+        <br></br>
 
-    <LoginForm
-      onSubmit={processForm}
-      onChange={changeUser}
-      errors={errors}
-      successMessage={successMessage}
-      user={user}
-    />
-    </Grid>
+
+        <LoginForm
+          onSubmit={processForm}
+          onChange={changeUser}
+          errors={errors}
+          successMessage={successMessage}
+          user={user}
+        />
+      </Grid>
     </Fragment>
   );
 }

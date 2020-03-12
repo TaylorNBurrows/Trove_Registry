@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const TroveCard = () => {
+const TroveCard = (props) => {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -48,18 +48,17 @@ const TroveCard = () => {
     };
 
     return (
-        <Card className={classes.root}>
-            <CardHeader />
+        <Card className={classes.root} id={props.key}>
+            <CardHeader>{props.trove.title}</CardHeader>
             <CardMedia
                 className={classes.media}
-                image={DefaultImage}
+                src={props.trove.imgurl}
                 title="Default Image"
             />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
                     <h4>Description:</h4>
-                    This impressive paella is a perfect party dish and a fun meal to cook together with your
-                    guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                    {props.trove.description}
         </Typography>
             </CardContent>
             <CardActions disableSpacing>
