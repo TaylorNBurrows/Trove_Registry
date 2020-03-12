@@ -17,12 +17,8 @@ const ItemSchema = new Schema({
   },
   category: {
     type: String
-  },
-  date: {
-    type: Date,
-    default: Date.now
   }
 });
 
-const ItemPost = mongoose.model("ItemPost", ItemSchema);
-module.exports = ItemPost;
+const Item = mongoose.model("Item", ItemSchema, "items");
+module.exports = Item;

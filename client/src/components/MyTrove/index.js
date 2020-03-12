@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Profile = () => {
+const MyTrove = () => {
     const classes = useStyles();
 
     return (
@@ -24,6 +24,9 @@ const Profile = () => {
                 <SearchBar />
             </Grid>
             <Grid item xs={4} md={3}>
+                <TroveCard title="Add New Trove"/>
+            </Grid>
+            {/* <Grid item xs={4} md={3}>
                 <TroveCard />
             </Grid>
             <Grid item xs={4} md={3}>
@@ -37,14 +40,11 @@ const Profile = () => {
             </Grid>
             <Grid item xs={4} md={3}>
                 <TroveCard />
-            </Grid>
-            <Grid item xs={4} md={3}>
-                <TroveCard />
-            </Grid>
+            </Grid> */}
         </Grid>
     )
 }
 
 
 
-export default Profile;
+export default MyTrove;

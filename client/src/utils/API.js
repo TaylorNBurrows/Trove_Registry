@@ -11,6 +11,8 @@ export default {
    findFriends: (search, token) => {
       return axios.get('/api/search/friends/'+ search, { headers: { Authorization: `bearer ${token}` } })
    },
+   getTrove: userData =>
+      axios.get('/api/trove', userData)
    getFriends: (userData, token) =>
       axios.get('/api/friends/'+ userData, { headers: { Authorization: `bearer ${token}` } } )
 }

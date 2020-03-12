@@ -10,8 +10,9 @@ import ProfileBanner from '../components/ProfileBanner'
 import Grid from '@material-ui/core/Grid'
 
 const ProfilePage = (props) => {
-    const [secretData, setSecretData] = useState('');
     const [user, setUser] = useState({});
+
+    console.log(user)
 
     useEffect(() => {
         // update authenticated state on logout
@@ -21,7 +22,6 @@ const ProfilePage = (props) => {
     useEffect(() => {
         API.dashboard(Auth.getToken())
             .then(res => {
-                setSecretData(res.data.message)
                 setUser(res.data.user)
             });
     }, [])

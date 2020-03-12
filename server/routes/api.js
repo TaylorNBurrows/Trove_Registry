@@ -15,11 +15,18 @@ router.get('/profile', (req, res) => {
 router.get('/search/friends/:name', (req, res) => {
   console.log(req.params.name);
   console.log(res)
-  User.find({ name: { "$regex": req.params.name, "$options": "i" } }, (err, user) => {
-    console.log(user)
-    res.status(200).json(user)
+  User.find({ name: { "$regex": req.params.name, "$options": "i" }}).populate('troves').populate('friends').then((user) =>{
+    res.json(user)
   })
 });
+
+
+router.get('/trove', (req, res) => {
+  User.findOne({ _id: userData._id }).populate('troves').populate('items').then((user) =>{
+    console.log(user)
+    res.json(user)
+  })
+})
 
 router.get('/friends/:id', (req, res) =>{
   User.findOne({_id: req.params.id}).populate('friends').then((friends) => {res.json(friends)
