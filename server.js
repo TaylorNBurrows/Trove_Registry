@@ -6,7 +6,7 @@ const config = require('./server/config');
 const logger = require('morgan')
 const mongoose = require('mongoose')
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
