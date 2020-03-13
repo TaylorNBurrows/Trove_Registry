@@ -33,7 +33,6 @@ const DiscoverPage = (props) => {
                 <Grid item md={10} sm={10}>
                     <ProfileBanner />
                     <Avatar user={user} />
-                    <TroveCard />
                 </Grid>
             </Grid>
         </Fragment>

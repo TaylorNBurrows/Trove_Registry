@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import theme from '../../utils/themeUtil';
+import NoFriends from '../NoFriends/index'
 
 const useStyles = makeStyles({
   table: {
@@ -17,6 +18,14 @@ const useStyles = makeStyles({
 
   HeaderDiv: {
     backgroundColor: theme.palette.secondary.light,
+    fontSize: '20px',
+    textAlign: 'center',
+    padding: '10px',
+    borderRadius: '5px',
+    marginBottom: '15px',
+  },
+
+  BodyDiv: {
     fontSize: '20px',
     textAlign: 'center',
     padding: '10px',
@@ -33,10 +42,13 @@ const useStyles = makeStyles({
     height: '5px',
     width: '5px',
   },
+  noFriendsStyle: {
+    margin: '0 auto'
+  }
 });
 
 
-const FriendTable = ( props ) => {
+const FriendTable = (props) => {
   const classes = useStyles();
 
   return (
@@ -48,27 +60,31 @@ const FriendTable = ( props ) => {
       </Paper>
 
 
-    {
-      props.friends
-      ? <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label="simple table">
-            <TableBody>
-              {props.friends.map(friend => (
-                <TableRow key={friend.name}>
-                  <TableCell align="center">Avatar</TableCell>
-                  <TableCell align="center">{friend.username}</TableCell>
-                  <TableCell align="center">{friend.name}</TableCell>
-                  <TableCell align="center">ViewLink</TableCell>
-                  <TableCell align="center">Action (-)</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      : null
-    }
-</Grid>
-      
+      {
+        props.friends
+          ? <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="simple table">
+              <TableBody>
+                {props.friends.map(friend => (
+                  <TableRow key={friend.name}>
+                    <TableCell align="center">Avatar</TableCell>
+                    <TableCell align="center">{friend.username}</TableCell>
+                    <TableCell align="center">{friend.name}</TableCell>
+                    <TableCell align="center">ViewLink</TableCell>
+                    <TableCell align="center">Action (-)</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          : <Paper elevation={1} className={classes.BodyDiv}>
+          <div>
+            <NoFriends />
+          </div>
+        </Paper> 
+      }
+    </Grid>
+
   );
 }
 export default FriendTable;
