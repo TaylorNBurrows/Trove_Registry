@@ -8,7 +8,7 @@ import API from '../utils/API';
 import Avatar from '../components/Avatar'
 import ProfileBanner from '../components/ProfileBanner'
 import Grid from '@material-ui/core/Grid'
-import EditProfileBtn from '../components/EditProfileBtn'
+import EditProfileBtn from '../components/EditBannerBtn'
 import SaveBtn from '../components/SaveBtn'
 
 const ProfilePage = (props) => {
