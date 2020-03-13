@@ -1,6 +1,9 @@
 const express = require('express');
 const validator = require('validator');
 const passport = require('passport');
+const db = require('../models')
+require('mongoose').model('Items');
+require('mongoose').model('Troves')
 
 const router = new express.Router();
 
@@ -152,6 +155,19 @@ router.post('/login', (req, res, next) => {
       user: userData
     });
   })(req, res, next);
+});
+
+router.put('/friends/:id/:friend', (req, res, next) => {
+  console.log(req.params.id, req.params.friend)
+  var query = { _id: req.params.id }
+  console.log(query)
+  var update = { $push: { friends: req.params.friend } }
+  var options ={new: true}
+  db.User.findOneAndUpdate(query, update, options).populate('friends').then((user) => {
+    res.json(user)
+  }).catch(err => {
+    console.log(err)
+  })
 });
 
 module.exports = router;

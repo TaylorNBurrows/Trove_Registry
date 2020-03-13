@@ -1,23 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemText from '@material-ui/core/ListItemText';
+import API from '../../utils/API'
+import Auth from '../../utils/Auth'
 import SearchBar from '../SearchBar'
 import DialogTitle from '@material-ui/core/DialogTitle';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
-
-import PersonIcon from '@material-ui/icons/Person';
-import AddIcon from '@material-ui/icons/Add';
-import Typography from '@material-ui/core/Typography';
 import { blue } from '@material-ui/core/colors';
 
-const emails = ['username@gmail.com', 'user02@gmail.com'];
 const useStyles = makeStyles({
   avatar: {
     backgroundColor: blue[100],
@@ -25,13 +15,37 @@ const useStyles = makeStyles({
   },
 });
 
-function SimpleDialog(props) {
+function NewFriendsDialog(props) {
+  console.log(props)
   const classes = useStyles();
-  const { onClose, selectedValue, open, onSearch, onChange } = props;
+
+  const { onClose, open, selectedValue } = props;
+  const [result, setResult] = useState([]);
+  const [search, setSearch] = useState();
 
   const handleClose = () => {
     onClose(selectedValue);
   };
+
+  const onChange = (e) => setSearch(
+    e.target.value
+  );
+
+  const onSearch = () => {
+    API.findFriends(search, Auth.getToken()).then(res => {
+      setResult(res.data)
+    })
+  }
+
+  const addFriend = (e) => {
+    console.log(Auth.getToken())
+    var data={id: props.user._id, friend: e.target.parentNode.id}
+    API.addFriend(data, Auth.getToken()).then((res) =>{
+      props.setFriends(res.data.friends)
+    })
+
+  }
+
 
   const handleListItemClick = value => {
     onClose(value);
@@ -41,24 +55,22 @@ function SimpleDialog(props) {
     <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
       <DialogTitle id="simple-dialog-title">Find New Friends</DialogTitle>
       {/* <SearchBar className={classes.search} onChange={onChange} onSearch={onSearch} />  */}
-      
-      <SearchBar className={classes.search} onChange={onChange} onSearch={onSearch} />
-      
 
-    
+      <SearchBar className={classes.search} onChange={onChange} onSearch={onSearch} />
+
+      {result ? result.map((person, key) => {
+        console.log(person)
+        return <div><li key={person._id}>{person.name}<Button id={person._id} variant="outlined" color="primary" onClick={addFriend}>Add Friend</Button></li></div>
+      }) : console.log("error")}
+
     </Dialog>
   );
 }
 
-SimpleDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired,
-};
+export default function NewFriendsDialogModal(props) {
+  console.log(props)
+  const [open, setOpen] = useState(false);
 
-export default function SimpleDialogDemo() {
-  const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -66,17 +78,16 @@ export default function SimpleDialogDemo() {
 
   const handleClose = value => {
     setOpen(false);
-    setSelectedValue(value);
   };
 
   return (
     <div>
-        
+
       <br />
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Find Friends
       </Button>
-      <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
+      <NewFriendsDialog open={open} onClose={handleClose} setFriends={props.setFriends} user={props.user}/>
     </div>
   );
 }

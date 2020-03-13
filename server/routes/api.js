@@ -5,7 +5,6 @@ require('mongoose').model('Troves')
 const router = new express.Router();
 
 router.get('/profile', (req, res) => {
-  console.log(res.user)
   res.status(200).json({
     message: "You're authorized to see this secret message.",
     // user values passed through from auth middleware
@@ -39,12 +38,14 @@ router.get('/user/trove/:id', (req, res) => {
       console.log("REsult", user)
       res.json(user)
     })
-})
+});
 
 router.get('/friends/:id', (req, res) => {
-  db.User.findOne({ _id: req.params.id }).populate('friends').then((friends) => {
-    res.json(friends)
-    console.log(friends)
-  })
-})
+  db.User.findOne({ _id: req.params.id }).populate('friends')
+    .then((friends) => {
+      res.json(friends)
+      console.log(friends)
+    })
+});
+
 module.exports = router;
