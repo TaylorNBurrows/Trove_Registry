@@ -18,18 +18,31 @@ const MyFriendsPage = () => {
     const classes = useStyles();
     const [search, setSearch] = useState();
     const [searchResult, setSearchResult] = useState();
+    const [user, setUser] = useState();
+    const [friends, setFriends] = useState([]);
+    const [open, setOpen] = React.useState(false);
 
     console.log(search)
+    console.log(user)
+    console.log(friends)
 
-    const onChange = (e) => setSearch(
-        e.target.value
-    );
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
 
-    const onSearch = () => {
-        API.findFriends(search, Auth.getToken()).then(res => {
-            console.log(res.data)
-        })
-    }
+    useEffect(() => {
+        API.dashboard(Auth.getToken())
+            .then(res => {
+                setUser(res.data.user)
+                API.getFriends(res.data.user._id, Auth.getToken()).then(friend => {
+                    // setFriends(res.data.user.friends)
+                    console.log(friend.data.friends)
+                    setFriends(friend.data.friends)
+
+                });
+            })
+    }, [])
+
 
     return (
         <Fragment>
@@ -43,6 +56,7 @@ const MyFriendsPage = () => {
                     <SideBar />
                 </Grid>
                 <Grid item md={10} sm={10} className={classes.layout}>
+                    <NewFriendsDialogModal searchResult={searchResult} setFriends={setFriends} user={user}/>
                     <FriendTable friends={friends} />
                     <FriendTable />
                 </Grid>

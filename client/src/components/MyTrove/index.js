@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
 
 const MyTrove = (props) => {
     const classes = useStyles();
+    console.log(props.trove.length)
 
     return (
         
@@ -24,9 +25,8 @@ const MyTrove = (props) => {
             <Grid item xs={12} className={classes.search}>
                 <SearchBar />
             </Grid>
-            {
-            props.trove.trove 
-            ? props.trove.map((item, key) =>{
+
+            {props.trove.trove ? props.trove.trove.map((item, key) =>{
                 return (<Grid item xs={4} md={3}>
                 <TroveCard trove={item} key={key}/>
             </Grid>)
