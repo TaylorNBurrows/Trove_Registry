@@ -23,7 +23,7 @@ const EditProfileBtn = () => {
                 startIcon={<EditIcon />}
             >
                 Edit
-      </Button>
+            </Button>
         </div>
     );
 }
