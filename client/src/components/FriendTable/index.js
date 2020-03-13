@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, Fragment } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
@@ -9,7 +9,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import theme from '../../utils/themeUtil';
-import NoFriends from '../NoFriends/index'
+import NoFriends from '../NoFriends/index';
+import NewFriendsDialogModal from '../NewFriendsDialogModal';
+import API from '../../utils/API';
+import Auth from '../../utils/Auth';
 
 const useStyles = makeStyles({
   table: {
@@ -34,7 +37,7 @@ const useStyles = makeStyles({
   },
 
   layout: {
-    marginTop: '50px',
+    marginTop: '20px',
     marginBottom: '50px',
     marginRight: '50px',
   },
@@ -44,18 +47,45 @@ const useStyles = makeStyles({
   },
   noFriendsStyle: {
     margin: '0 auto'
+  },
+  modalButton: {
+    display: 'flex',
+    flexDirection: 'row-reverse'
   }
+
 });
 
 
 const FriendTable = (props) => {
   const classes = useStyles();
+  const [search, setSearch] = useState();
+
+  const onChange = (e) => setSearch(
+    e.target.value
+  );
+
+  const onSearch = () => {
+    API.findFriends(search, Auth.getToken()).then(res => {
+      console.log(res.data)
+    })
+  }
 
   return (
     <Grid className={classes.layout}>
       <Paper elevation={1} className={classes.HeaderDiv}>
-        <div>
-          <span className={classes.span}>Your Friends</span>
+        <div className={classes.span}>
+          <Grid container spacing={3}>
+            <Grid item xs>
+
+            </Grid>
+            <Grid item xs>
+              Your Friends
+            </Grid>
+            <Grid item xs className={classes.modalButton}>
+              <NewFriendsDialogModal onChange={onChange} onSearch={onSearch} />
+            </Grid>
+          </Grid>
+
         </div>
       </Paper>
 
@@ -78,10 +108,10 @@ const FriendTable = (props) => {
             </Table>
           </TableContainer>
           : <Paper elevation={1} className={classes.BodyDiv}>
-          <div>
-            <NoFriends />
-          </div>
-        </Paper> 
+            <div>
+              <NoFriends />
+            </div>
+          </Paper>
       }
     </Grid>
 

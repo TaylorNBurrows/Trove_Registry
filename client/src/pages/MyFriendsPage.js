@@ -43,7 +43,7 @@ const MyFriendsPage = () => {
                     <SideBar />
                 </Grid>
                 <Grid item md={10} sm={10} className={classes.layout}>
-                    <SearchBar className={classes.search} onChange={onChange} onSearch={onSearch} />
+                    <FriendTable friends={friends} />
                     <FriendTable />
                 </Grid>
             </Grid>
