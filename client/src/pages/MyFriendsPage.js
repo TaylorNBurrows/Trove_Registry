@@ -3,7 +3,6 @@ import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
 import SearchBar from '../components/SearchBar'
 import FriendTable from '../components/FriendTable'
-import NewFriendsDialogModal from '../components/NewFriendsDialogModal'
 import API from '../utils/API'
 import Auth from '../utils/Auth'
 import Grid from '@material-ui/core/Grid'
@@ -66,10 +65,8 @@ const FriendsPage = () => {
                     <SideBar />
                 </Grid>
                 <Grid item md={10} sm={10} className={classes.layout}>
-                    <NewFriendsDialogModal onChange={onChange} onSearch={onSearch} />
                     <FriendTable friends={friends} />
-                    {/* <Link to="/logout"><Button color="inherit" >Logout</Button></Link> */}
-                    {/* <SearchBar className={classes.search} onChange={onChange} onSearch={onSearch} /> */}
+
                 </Grid>
             </Grid>
         </Fragment>

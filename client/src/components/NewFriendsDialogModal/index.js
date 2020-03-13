@@ -39,13 +39,8 @@ function SimpleDialog(props) {
 
   return (
     <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-      <DialogTitle id="simple-dialog-title">Find New Friends</DialogTitle>
-      {/* <SearchBar className={classes.search} onChange={onChange} onSearch={onSearch} />  */}
-      
+      <DialogTitle id="simple-dialog-title">Find New Friends</DialogTitle>      
       <SearchBar className={classes.search} onChange={onChange} onSearch={onSearch} />
-      
-
-    
     </Dialog>
   );
 }
@@ -71,9 +66,7 @@ export default function SimpleDialogDemo() {
 
   return (
     <div>
-        
-      <br />
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button size="small" variant="outlined" color="primary" onClick={handleClickOpen}>
         Find Friends
       </Button>
       <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
