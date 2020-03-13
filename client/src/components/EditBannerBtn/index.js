@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 import EditIcon from '@material-ui/icons/Edit';
+import clsx from 'clsx';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -12,6 +13,11 @@ const useStyles = makeStyles(theme => ({
     extendedIcon: {
         marginRight: theme.spacing(1),
     },
+    spacing: {
+        marginTop: "-150px",
+        marginLeft: "900px"
+    },
+    
 }));
 
 const EditProfileBtn = () => {
@@ -22,10 +28,10 @@ const EditProfileBtn = () => {
             <Button
                 variant="contained"
                 color="Primary"
-                className={classes.button}
+                className={clsx(classes.button, classes.spacing)}
                 startIcon={<EditIcon />}
             >
-                Edit
+                Customize My Trove
       </Button>
         </div>
     );
