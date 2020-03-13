@@ -53,6 +53,7 @@ function NewFriendsDialog(props) {
 
   return (
     <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+
       <DialogTitle id="simple-dialog-title">Find New Friends</DialogTitle>
       {/* <SearchBar className={classes.search} onChange={onChange} onSearch={onSearch} />  */}
 

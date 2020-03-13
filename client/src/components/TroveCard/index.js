@@ -14,7 +14,6 @@ import ShareBtn from '../../components/ShareBtn'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import DefaultImage from '../../images/pngIcons/016-lifebuoy.png'
 import EditIcon from '../EditProfileBtn'
-
 const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 345,
@@ -38,15 +37,12 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: red[500],
     },
 }));
-
 const TroveCard = (props) => {
     const classes = useStyles();
     const [expanded, setExpanded] = useState(false);
-
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-
     return (
         <Card className={classes.root} id={props.key}>
             <CardHeader>{props.trove.title}</CardHeader>
@@ -81,5 +77,4 @@ const TroveCard = (props) => {
         </Card>
     );
 }
-
 export default TroveCard;
