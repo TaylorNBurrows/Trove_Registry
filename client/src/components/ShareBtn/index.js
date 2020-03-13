@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const EditProfileBtn = () => {
+const ShareBtn = () => {
     const classes = useStyles();
 
     return (
@@ -26,5 +26,5 @@ const EditProfileBtn = () => {
     );
 }
 
-export default EditProfileBtn
+export default ShareBtn
 
