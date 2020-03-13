@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button'
+import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
 const useStyles = makeStyles(theme => ({
     root: {
@@ -12,19 +12,14 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(1),
     },
 }));
-const EditProfileBtn = () => {
+const EditBtn = () => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <Button
-                variant="contained"
-                color="Primary"
-                className={classes.button}
-                startIcon={<EditIcon />}
-            >
-                Edit
-            </Button>
+            <Fab color="secondary" aria-label="edit">
+                <EditIcon />
+            </Fab>
         </div>
     );
 }
-export default EditProfileBtn
+export default EditBtn

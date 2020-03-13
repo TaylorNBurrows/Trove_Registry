@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
+import EditBannerBtn from '../EditBannerBtn'
 
 const useStyles = makeStyles(theme => ({
     teal: {
@@ -17,7 +18,10 @@ const useStyles = makeStyles(theme => ({
 const ProfileBanner = () => {
     const classes = useStyles();
     return (
+        <Fragment>
         <Grid className={classes.teal} />
+        <EditBannerBtn />
+        </Fragment>
     )
 }
 
