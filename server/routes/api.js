@@ -40,8 +40,10 @@ router.get('/user/trove/:id', (req, res) => {
   console.log("small api", req.params)
   db.User.findOne({ _id: req.params.id }).populate({
     path: 'troves',
+    model: 'Troves',
     populate: {
       path: 'items',
+      model: 'Items'
     }
   })
     .then((user) => {

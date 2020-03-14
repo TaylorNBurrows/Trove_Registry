@@ -24,13 +24,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const TroveForm = ({onAdd, onChange, newTrove, trove}) => {
+const EditTroveForm = ({onEdit, onChange, trove, newTrove}) => {
   const classes = useStyles();
 
   return (
   
   <Card className={clsx(classes.alignItemsAndJustifyContent, classes.root)}>
-    <form onSubmit={onAdd}>
+    <form onSubmit={onEdit}>
       <h2 className="card-heading">Login</h2>
 
       <div className="field-line">
@@ -38,7 +38,7 @@ const TroveForm = ({onAdd, onChange, newTrove, trove}) => {
           placeholder="Title"
           name="title"
           onChange={onChange}
-          error={newTrove.title === ""}
+          error={trove.title === ""}
           value={newTrove.title}
         />
       </div>
@@ -48,7 +48,7 @@ const TroveForm = ({onAdd, onChange, newTrove, trove}) => {
           placeholder="Description"
           name="description"
           onChange={onChange}
-          error={newTrove.description === ""}
+          error={trove.description === ""}
           value={newTrove.description}
         />
       </div>
@@ -58,16 +58,16 @@ const TroveForm = ({onAdd, onChange, newTrove, trove}) => {
           placeholder="Image URL"
           name="imgurl"
           onChange={onChange}
-          error={newTrove.imgurl === ""}
+          error={trove.imgurl === ""}
           value={newTrove.imgurl}
         />
       </div>
 
       <div className="button-line">
-        <Button type="submit" label="Log in" primary="true" >Submit</Button>
+        <Button type="submit" label="Log in" primary="true" >Save</Button>
       </div>
     </form>
   </Card>
 )};
 
-export default TroveForm;
+export default EditTroveForm;
