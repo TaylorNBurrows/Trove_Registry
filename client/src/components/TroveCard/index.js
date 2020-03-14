@@ -8,9 +8,17 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
+<<<<<<< HEAD
 import EditTroveDialogModal from '../EditTroveDialogModal'
 import AddItemBtn from '../AddItemBtn'
 
+=======
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareBtn from '../../components/ShareBtn'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import DefaultImage from '../../images/pngIcons/016-lifebuoy.png'
+import EditIcon from '../EditProfileBtn'
+>>>>>>> f07c6b7beaf5bdd4d282720ed343ca5d66119fe0
 const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 345,
@@ -33,15 +41,12 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: red[500],
     },
 }));
-
 const TroveCard = (props) => {
     const classes = useStyles();
     const [expanded, setExpanded] = useState(false);
-
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-
     return (
         <Card className={classes.root} id={props.key}>
             <CardHeader title ={props.trove.title} />
@@ -63,5 +68,4 @@ const TroveCard = (props) => {
         </Card>
     );
 }
-
 export default TroveCard;

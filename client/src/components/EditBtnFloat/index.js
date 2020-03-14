@@ -1,8 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
-import ShareIcon from '@material-ui/icons/Share';
-
+import EditIcon from '@material-ui/icons/Edit';
 const useStyles = makeStyles(theme => ({
     root: {
         '& > *': {
@@ -13,18 +12,14 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(1),
     },
 }));
-
-const ShareBtn = () => {
+const EditBtn = () => {
     const classes = useStyles();
-
     return (
         <div className={classes.root}>
             <Fab color="secondary" aria-label="edit">
-                <ShareIcon />
+                <EditIcon />
             </Fab>
         </div>
     );
 }
-
-export default ShareBtn
-
+export default EditBtn

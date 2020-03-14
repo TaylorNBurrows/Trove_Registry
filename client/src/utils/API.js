@@ -9,9 +9,9 @@ export default {
    dashboard: token =>
       axios.get('/api/profile', { headers: { Authorization: `bearer ${token}` } }),
    findFriends: (search, token) => {
-      return axios.get('/api/search/friends/'+ search, { headers: { Authorization: `bearer ${token}` } })
+      return axios.get('/api/search/friends/' + search, { headers: { Authorization: `bearer ${token}` } })
    },
-   getTrove: (userData, token) =>{
+   getTrove: (userData, token) => {
       console.log("Big API", userData)
       return axios.get('/api/user/trove/'+ userData, { headers: { Authorization: `bearer ${token}` } })
    },
@@ -25,5 +25,8 @@ export default {
       axios.get('/api/friends/'+ userData, { headers: { Authorization: `bearer ${token}` } } ),
    addFriend: (userData) => {
       return axios.put("/auth/friends/"+ userData.id +"/" + userData.friend)
-   }
+   },
+   updateUser: userData => {
+      axios.put('/auth/profile', userData)
+
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, Fragment } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
@@ -9,6 +9,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import theme from '../../utils/themeUtil';
+import NoFriends from '../NoFriends/index';
+import NewFriendsDialogModal from '../NewFriendsDialogModal';
+import API from '../../utils/API';
+import Auth from '../../utils/Auth';
 
 const useStyles = makeStyles({
   table: {
@@ -24,8 +28,16 @@ const useStyles = makeStyles({
     marginBottom: '15px',
   },
 
+  BodyDiv: {
+    fontSize: '20px',
+    textAlign: 'center',
+    padding: '10px',
+    borderRadius: '5px',
+    marginBottom: '15px',
+  },
+
   layout: {
-    marginTop: '50px',
+    marginTop: '20px',
     marginBottom: '50px',
     marginRight: '50px',
   },
@@ -33,42 +45,76 @@ const useStyles = makeStyles({
     height: '5px',
     width: '5px',
   },
+  noFriendsStyle: {
+    margin: '0 auto'
+  },
+  modalButton: {
+    display: 'flex',
+    flexDirection: 'row-reverse'
+  }
+
 });
 
 
-const FriendTable = ( props ) => {
+const FriendTable = (props) => {
   const classes = useStyles();
+  const [search, setSearch] = useState();
+
+  const onChange = (e) => setSearch(
+    e.target.value
+  );
+
+  const onSearch = () => {
+    API.findFriends(search, Auth.getToken()).then(res => {
+      console.log(res.data)
+    })
+  }
 
   return (
     <Grid className={classes.layout}>
       <Paper elevation={1} className={classes.HeaderDiv}>
-        <div>
-          <span className={classes.span}>Your Friends</span>
+        <div className={classes.span}>
+          <Grid container spacing={3}>
+            <Grid item xs>
+
+            </Grid>
+            <Grid item xs>
+              Your Friends
+            </Grid>
+            <Grid item xs className={classes.modalButton}>
+              <NewFriendsDialogModal onChange={onChange} onSearch={onSearch} />
+            </Grid>
+          </Grid>
+
         </div>
       </Paper>
 
 
-    {
-      props.friends
-      ? <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label="simple table">
-            <TableBody>
-              {props.friends.map(friend => (
-                <TableRow key={friend.name}>
-                  <TableCell align="center">Avatar</TableCell>
-                  <TableCell align="center">{friend.username}</TableCell>
-                  <TableCell align="center">{friend.name}</TableCell>
-                  <TableCell align="center">ViewLink</TableCell>
-                  <TableCell align="center">Action (-)</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      : null
-    }
-</Grid>
-      
+      {
+        props.friends
+          ? <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="simple table">
+              <TableBody>
+                {props.friends.map(friend => (
+                  <TableRow key={friend.name}>
+                    <TableCell align="center">Avatar</TableCell>
+                    <TableCell align="center">{friend.username}</TableCell>
+                    <TableCell align="center">{friend.name}</TableCell>
+                    <TableCell align="center">ViewLink</TableCell>
+                    <TableCell align="center">Action (-)</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          : <Paper elevation={1} className={classes.BodyDiv}>
+            <div>
+              <NoFriends />
+            </div>
+          </Paper>
+      }
+    </Grid>
+
   );
 }
 export default FriendTable;
