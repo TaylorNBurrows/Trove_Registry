@@ -21,6 +21,9 @@ export default {
    editTrove: (troveId, troveData) => {
       return axios.put("/auth/trove/" + troveId, { body: troveData })
    },
+   deleteTrove: (troveId, userData) => {
+      return axios.delete("/auth/trove/" + troveId, { body: userData })
+   },
    getFriends: (userData, token) =>
       axios.get('/api/friends/' + userData, { headers: { Authorization: `bearer ${token}` } }),
    addFriend: (userData) => {

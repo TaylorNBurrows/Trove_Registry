@@ -23,7 +23,7 @@ const DeleteBtn = (props) => {
                 size='small'
                 color="primary"
                 className={classes.button}
-                onClick={props.onClick}
+                onClick={props.onDelete}
                 id={props.id}
             >
                 <DeleteIcon />

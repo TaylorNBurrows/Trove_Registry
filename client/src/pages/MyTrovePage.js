@@ -60,11 +60,18 @@ const TrovePage = (props) => {
     }
 
     const onEdit = () => {
+        console.log(troveId)
         API.editTrove(troveId, newTrove).then(res => {
             console.log(res)
         })
     }
 
+    const onDelete = () => {
+        console.log(troveId)
+        API.deleteTrove(troveId, user._id).then(res => {
+         console.log(res)
+        })
+    }
     const findItem = () =>{
         API.searchItem(searchItem, Auth.getToken()).then(res =>{
             console.log(res)
@@ -87,6 +94,7 @@ const TrovePage = (props) => {
                     <Avatar user={user} />
                     <NewTroveDialogModal onChange={onChange} onAdd={onAdd} newTrove={newTrove} />
                     <MyTrove trove={trove} onEdit={onEdit} setTroveId={setTroveId} newTrove={newTrove} onChange={onChange} searchItem={searchItem} onSearchChange={onSearchChange} findItem={findItem}/>
+
                 </Grid>
             </Grid>
         </Fragment>

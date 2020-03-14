@@ -16,7 +16,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     border: '0',
-    boxShadow: 'none'
+    boxShadow: 'none',
+    margin: '15px'
   },
   root: {
     backgroundColor: "white", 

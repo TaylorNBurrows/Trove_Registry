@@ -8,10 +8,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import DefaultImage from '../../images/pngIcons/016-lifebuoy.png'
-import EditTroveDialogModal from '../EditTroveDialogModal'
+import EditTroveDialogModal from '../EditTroveDialogModal';
+import DeleteTroveDialogModal from '../DeleteTroveDialog';
 import AddItemDialogModal from '../AddItemDialogModal'
-import DeleteBtn from '../DeleteBtn';
+import AddItemBtn from '../AddItemBtn';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -46,8 +46,8 @@ const TroveCard = (props) => {
             <CardHeader title={props.trove.title} />
             <CardMedia
                 className={classes.media}
-            src={props.trove.imgurl}
-            title={props.trove.title}
+                src={props.trove.imgurl}
+                title={props.trove.title}
             />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="h4">
@@ -55,10 +55,10 @@ const TroveCard = (props) => {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                 <AddItemDialogModal aria-label="Add Items" trove={props.trove} setTroveId={props.setTroveId} searchItem={props.searchItem} onSearchChange={props.onSearchChange} findItem={props.findItem}/>
-                <EditTroveDialogModal aria-label="edit" trove={props.trove} onEdit={props.onEdit} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange}/>
+                <AddItemDialogModal aria-label="Add Items" trove={props.trove} setTroveId={props.setTroveId} searchItem={props.searchItem} onSearchChange={props.onSearchChange} findItem={props.findItem} />
+                <EditTroveDialogModal aria-label="edit" trove={props.trove} onEdit={props.onEdit} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange} />
                 {/* <ShareBtn aria-label="share" trove={props.trove}/> */}
-                <DeleteBtn aria-label="delete" />
+                <DeleteTroveDialogModal aria-label="delete" trove={props.trove} onDelete={props.onDelete} setTroveId={props.setTroveId} />
             </CardActions>
         </Card>
     );
