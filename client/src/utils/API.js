@@ -13,14 +13,16 @@ export default {
    },
    getTrove: (userData, token) => {
       console.log("Big API", userData)
-      return axios.get('/api/user/trove/'+ userData, { headers: { Authorization: `bearer ${token}` } })
-   },   
-   getFriends: (userData, token) =>
-      axios.get('/api/friends/'+ userData, { headers: { Authorization: `bearer ${token}` } } ),
+      return axios.get('/api/user/trove/' + userData, { headers: { Authorization: `bearer ${token}` } })
+   },
+   getFriends: (userData, token) => {
+      axios.get('/api/friends/' + userData, { headers: { Authorization: `bearer ${token}` } })
+   },
    addFriend: (userData) => {
-      return axios.put("/auth/friends/"+ userData.id +"/" + userData.friend)
+      return axios.put("/auth/friends/" + userData.id + "/" + userData.friend)
    },
    updateUser: userData => {
       axios.put('/auth/profile', userData)
 
+   }
 }

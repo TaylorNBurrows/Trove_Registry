@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
 import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
 import SearchBar from '../components/SearchBar'
@@ -7,6 +7,7 @@ import API from '../utils/API'
 import Auth from '../utils/Auth'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles';
+import NewFriendsDialogModal from '../components/NewFriendsDialogModal'
 
 const useStyles = makeStyles({
     layout: {
@@ -56,7 +57,7 @@ const MyFriendsPage = () => {
                     <SideBar />
                 </Grid>
                 <Grid item md={10} sm={10} className={classes.layout}>
-                    <NewFriendsDialogModal searchResult={searchResult} setFriends={setFriends} user={user}/>
+                    <NewFriendsDialogModal searchResult={searchResult} setFriends={setFriends} user={user} />
                     <FriendTable friends={friends} />
                     <FriendTable />
                 </Grid>
