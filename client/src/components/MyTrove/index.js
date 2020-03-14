@@ -22,13 +22,9 @@ const MyTrove = (props) => {
     return (
         
         <Grid container direction="row" spacing={1} className={classes.layout}>
-            <Grid item xs={12} className={classes.search}>
-                <SearchBar />
-            </Grid>
-
-            {props.trove.trove ? props.trove.trove.map((item, key) =>{
+            {props.trove.troves ? props.trove.troves.map((item, key) =>{
                 return (<Grid item xs={4} md={3}>
-                <TroveCard trove={item} key={key}/>
+                <TroveCard trove={item} key={key} onEdit={props.onEdit} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange}/>
             </Grid>)
             }) : null}
             

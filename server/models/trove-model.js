@@ -15,7 +15,8 @@ const TroveSchema = new Schema({
         trim: true,
     },
     items: [{
-        type: mongoose.Schema.Types.ObjectId, ref: 'Items'
+        type: Schema.Types.ObjectId, 
+        ref: 'Items'
     }]
 });
 

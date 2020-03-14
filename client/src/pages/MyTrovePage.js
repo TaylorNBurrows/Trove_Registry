@@ -17,8 +17,10 @@ const TrovePage = (props) => {
         description: '',
         imgurl: ''
     });
+    const [troveId, setTroveId] = useState();
 
     console.log(user)
+    console.log(trove.troves)
 
     useEffect(() => {
         // update authenticated state on logout
@@ -38,13 +40,21 @@ const TrovePage = (props) => {
             });
     }, [])
 
-    const onChange = (e) => setNewTrove({
-        ...newTrove,
-        [e.target.name]: e.target.value,
-      });
+    const onChange = (e) => {
+        setNewTrove({
+            ...newTrove,
+            [e.target.name]: e.target.value,
+        })
+    };
 
     const onAdd = () => {
-        API.addTrove(user.id, newTrove).then(res => {
+        API.addTrove(user._id, newTrove).then(res => {
+            console.log(res)
+        })
+    }
+
+    const onEdit = () => {
+        API.editTrove(troveId, newTrove).then(res => {
             console.log(res)
         })
     }
@@ -63,8 +73,8 @@ const TrovePage = (props) => {
                 <Grid item md={10} sm={10}>
                     <ProfileBanner />
                     <Avatar user={user} />
-                    <NewTroveDialogModal onChange={onChange} onAdd={onAdd} newTrove={newTrove}/>
-                    <MyTrove trove={trove} />
+                    <NewTroveDialogModal onChange={onChange} onAdd={onAdd} newTrove={newTrove} />
+                    <MyTrove trove={trove} onEdit={onEdit} setTroveId={setTroveId} newTrove={newTrove} onChange={onChange}/>
                 </Grid>
             </Grid>
         </Fragment>

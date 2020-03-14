@@ -2,6 +2,7 @@ const express = require('express');
 const validator = require('validator');
 const passport = require('passport');
 const db = require('../models')
+const Troves = require("../models/trove-model");
 require('mongoose').model('Items');
 require('mongoose').model('Troves')
 
@@ -162,12 +163,47 @@ router.put('/friends/:id/:friend', (req, res, next) => {
   var query = { _id: req.params.id }
   console.log(query)
   var update = { $push: { friends: req.params.friend } }
-  var options ={new: true}
+  var options = { new: true }
   db.User.findOneAndUpdate(query, update, options).populate('friends').then((user) => {
     res.json(user)
   }).catch(err => {
     console.log(err)
   })
+});
+
+router.post("/trove/:id", (req, res, next) => {
+  console.log("REquest...." + req.body)
+  console.log(req.body.body)
+  Troves.create(req.body.body)
+    .then((data) => {
+      db.User.findOneAndUpdate({ _id: req.params.id }, { $push: { troves: data._id } }, { new: true })
+        .populate({
+          path: 'troves',
+          populate: ({
+            path: 'items',
+          })
+        }).then(dbUser => {
+          res.json(dbUser);
+        })
+        .catch(err => {
+          console.log(err)
+          res.json(err);
+        })
+
+    })
+});
+
+router.put("/trove/:id", (req, res, next) => {
+  console.log("REquest...." + req.body)
+  console.log(req.body.body)
+  Troves.findOneAndUpdate({ _id: req.params.id }, { $set: req.body.body }, { new: true })
+    .then(dbUser => {
+      res.json(dbUser);
+    })
+    .catch(err => {
+      console.log(err)
+      res.json(err);
+    })
 });
 
 module.exports = router;

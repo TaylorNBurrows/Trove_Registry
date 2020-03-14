@@ -6,20 +6,24 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
+<<<<<<< HEAD
+import EditTroveDialogModal from '../EditTroveDialogModal'
+import AddItemBtn from '../AddItemBtn'
+
+=======
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareBtn from '../../components/ShareBtn'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import DefaultImage from '../../images/pngIcons/016-lifebuoy.png'
 import EditIcon from '../EditProfileBtn'
+>>>>>>> f07c6b7beaf5bdd4d282720ed343ca5d66119fe0
 const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 345,
     },
     media: {
-        height: 0,
         paddingTop: '56.25%', // 16:9
         backgroundSize:'contain'
     },
@@ -45,34 +49,21 @@ const TroveCard = (props) => {
     };
     return (
         <Card className={classes.root} id={props.key}>
-            <CardHeader>{props.trove.title}</CardHeader>
+            <CardHeader title ={props.trove.title} />
             <CardMedia
                 className={classes.media}
                 src={props.trove.imgurl}
-                title="Default Image"
+                title={props.trove.title}
             />
             <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    <h4>Description:</h4>
-                    {props.trove.description}
+                <Typography variant="body2" color="textSecondary" component="h4">
+                    Description: {props.trove.description}
         </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <EditIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                    <ShareBtn />
-                </IconButton>
-                <IconButton
-                    className={clsx(classes.expand, {
-                        [classes.expandOpen]: expanded,
-                    })}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                >
-                </IconButton>
+                <AddItemBtn aria-label="Add Items"/>
+                <EditTroveDialogModal aria-label="edit" trove={props.trove} onEdit={props.onEdit} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange}/>
+                {/* <ShareBtn aria-label="share" trove={props.trove}/> */}
             </CardActions>
         </Card>
     );

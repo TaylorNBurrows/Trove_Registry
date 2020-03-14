@@ -15,9 +15,14 @@ export default {
       console.log("Big API", userData)
       return axios.get('/api/user/trove/' + userData, { headers: { Authorization: `bearer ${token}` } })
    },
-   getFriends: (userData, token) => {
-      axios.get('/api/friends/' + userData, { headers: { Authorization: `bearer ${token}` } })
+   addTrove: (userData, troveData) => {
+      return axios.post("/auth/trove/" + userData, { body: troveData })
    },
+   editTrove: (troveId, troveData) => {
+      return axios.put("/auth/trove/" + troveId, { body: troveData })
+   },
+   getFriends: (userData, token) =>
+      axios.get('/api/friends/' + userData, { headers: { Authorization: `bearer ${token}` } }),
    addFriend: (userData) => {
       return axios.put("/auth/friends/" + userData.id + "/" + userData.friend)
    },
