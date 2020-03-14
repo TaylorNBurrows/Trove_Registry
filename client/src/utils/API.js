@@ -26,8 +26,8 @@ export default {
    addFriend: (userData) => {
       return axios.put("/auth/friends/" + userData.id + "/" + userData.friend)
    },
-   updateUser: userData => {
-      axios.put('/auth/profile', userData)
+   updateUser: (userData, token) => {
+      axios.put('/auth/profile' + userData, { headers: { Authorization: `bearer ${token}` }, body: userData })
 
    }
 }
