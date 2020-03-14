@@ -52,6 +52,17 @@ router.get('/user/trove/:id', (req, res) => {
     })
 });
 
+router.delete('/trove/:id', (req, res) => {
+  console.log("small api, deleted trove id", req.params.id)
+  console.log("small api, deleted trove body", req.body.userData)
+  db.User.findOneAndUpdate({ _id: req.body.userData }, {$pull:{troves:req.params.id}})
+  .then(Troves.findOneAndDelete({_id: req.params.id}))
+  .then((troves) => {
+    res.json(troves)
+    console.log(troves)
+  })
+});
+
 router.get('/friends/:id', (req, res) => {
   db.User.findOne({ _id: req.params.id }).populate('friends')
     .then((friends) => {

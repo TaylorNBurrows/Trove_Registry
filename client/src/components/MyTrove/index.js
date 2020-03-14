@@ -26,7 +26,7 @@ const MyTrove = (props) => {
                 ? props.trove.troves.map((item, key) => {
                     return (
                         <Grid item xs={4} md={3}>
-                            <TroveCard trove={item} key={key} onEdit={props.onEdit} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange} />
+                            <TroveCard trove={item} key={key} onEdit={props.onEdit} onDelete={props.onDelete} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange} />
                         </Grid>)
                 })
                 : <Grid container alignItems='center' justify='center' spacing={2}>

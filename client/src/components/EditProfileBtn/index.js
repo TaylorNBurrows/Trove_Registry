@@ -20,11 +20,10 @@ const EditProfileBtn = (props) => {
                 variant="contained"
                 color="primary"
                 className={classes.button}
-                startIcon={<EditIcon />}
                 onClick={props.onClick}
                 id={props.id}
             >
-                Edit
+                <EditIcon />
             </Button>
         </div>
     );
