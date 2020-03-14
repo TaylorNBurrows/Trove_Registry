@@ -39,6 +39,7 @@ function NewFriendsDialog(props) {
 
   const addFriend = (e) => {
     console.log(Auth.getToken())
+    console.log(props.user)
     var data={id: props.user._id, friend: e.target.parentNode.id}
     API.addFriend(data, Auth.getToken()).then((res) =>{
       props.setFriends(res.data.friends)
