@@ -10,6 +10,7 @@ import ProfileBanner from '../components/ProfileBanner'
 import Grid from '@material-ui/core/Grid'
 import EditProfileBtn from '../components/EditBannerBtn'
 import SaveBtn from '../components/SaveBtn'
+import EditBannerBtn from '../components/EditBannerBtn'
 
 const ProfilePage = (props) => {
     const [secretData, setSecretData] = useState('');
@@ -43,6 +44,7 @@ const ProfilePage = (props) => {
                     <Grid item xs={12} alignItems='center' justify='center'>
                         <ProfileBanner />
                         <Avatar user={user} />
+                        <EditBannerBtn />
                         <Profile user={user} />
                     </Grid>
                 </Grid>
