@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
-import EditIcon from '@material-ui/icons/Edit';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -14,24 +14,22 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const EditProfileBtn = (props) => {
+const AddItemBtn = () => {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
             <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 className={classes.button}
-                startIcon={<EditIcon />}
-                onClick={props.onClick}
-                id = {props.id}
+                startIcon={<AddCircleIcon />}
             >
-                Edit
+                Items
       </Button>
         </div>
     );
 }
 
-export default EditProfileBtn
+export default AddItemBtn
 

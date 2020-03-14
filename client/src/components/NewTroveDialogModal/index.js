@@ -47,7 +47,8 @@ TroveDialog.propTypes = {
   selectedValue: PropTypes.string.isRequired,
 };
 
-export default function TroveDialog2() {
+export default function NewTroveDialogModal(props) {
+  console.log(props)
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(emails[1]);
 
@@ -57,7 +58,6 @@ export default function TroveDialog2() {
 
   const handleClose = value => {
     setOpen(false);
-    setSelectedValue(value);
   };
 
   return (
@@ -66,7 +66,7 @@ export default function TroveDialog2() {
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Add Trove
       </Button>
-      <TroveDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
+      <TroveDialog selectedValue={selectedValue} open={open} onClose={handleClose} newTrove={props.newTrove} onChange={props.onChange} onAdd={props.onAdd}/>
     </div>
   );
 }
