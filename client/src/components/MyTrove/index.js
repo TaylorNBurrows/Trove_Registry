@@ -22,7 +22,7 @@ const MyTrove = (props) => {
     return (
 
         <Grid container direction="row" spacing={1} className={classes.layout}>
-            {props.trove.troves
+            {props.trove.troves.length
                 ? props.trove.troves.map((item, key) => {
                     return (
                         <Grid item xs={4} md={3}>
