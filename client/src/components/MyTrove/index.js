@@ -29,6 +29,7 @@ const MyTrove = (props) => {
                             <TroveCard trove={item} key={key} onEdit={props.onEdit} onDelete={props.onDelete} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange} />
                         </Grid>)
                 })
+
                 : <Grid container alignItems='center' justify='center' spacing={2}>
                     <Grid item>
                         <NoTroveDefault />

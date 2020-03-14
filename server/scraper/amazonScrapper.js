@@ -2,10 +2,10 @@ const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
 
 
-const etsyScraper = (async (url) => {
-    const url = 'https://www.amazon.com/Echo-Dot/dp/B07FZ8S74R/ref=zg_bs_electronics_home_3?_encoding=UTF8&psc=1&refRID=ZBJ62K7CYMVZF0HSXZMR';
-
-    const browser = await puppeteer.launch();
+function amazonScraper(url){
+    return(async () => {
+    let item = {}
+    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage();
     await page.goto(url);
 
@@ -22,6 +22,12 @@ const etsyScraper = (async (url) => {
     console.log(description)
     console.log(imgSource)
     browser.close()
+    item ={
+        'title': title,
+        'price': price,
+        'description': description,
+        'imgsrc': imgSource
+    }
+    return item;
 })
-
-export default etsyScraper;
+}

@@ -1,13 +1,13 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import Auth from '../utils/Auth';
-import MyTrove from '../components/MyTrove'
-import Nav from '../components/Nav'
-import SideBar from '../components/SideBar'
+import MyTrove from '../components/MyTrove';
+import Nav from '../components/Nav';
+import SideBar from '../components/SideBar';
 import API from '../utils/API';
-import Avatar from '../components/Avatar'
-import ProfileBanner from '../components/ProfileBanner'
-import NewTroveDialogModal from "../components/NewTroveDialogModal"
-import Grid from '@material-ui/core/Grid'
+import Avatar from '../components/Avatar';
+import ProfileBanner from '../components/ProfileBanner';
+import NewTroveDialogModal from "../components/NewTroveDialogModal";
+import Grid from '@material-ui/core/Grid';
 
 const TrovePage = (props) => {
     const [user, setUser] = useState({});
@@ -18,6 +18,8 @@ const TrovePage = (props) => {
         imgurl: ''
     });
     const [troveId, setTroveId] = useState();
+    const [searchItem, setSearchItem] = useState('');
+    const [item, setItem] = useState({})
 
     console.log(user)
     console.log(trove.troves)
@@ -47,6 +49,10 @@ const TrovePage = (props) => {
         })
     };
 
+    const onSearchChange = (e) => {
+        setSearchItem(e.target.value)
+    }
+
     const onAdd = () => {
         API.addTrove(user._id, newTrove).then(res => {
             console.log(res)
@@ -66,6 +72,11 @@ const TrovePage = (props) => {
          console.log(res)
         })
     }
+    const findItem = () =>{
+        API.searchItem(searchItem, Auth.getToken()).then(res =>{
+            console.log(res)
+        })
+    };
 
     return (
         <Fragment>
@@ -82,7 +93,8 @@ const TrovePage = (props) => {
                     <ProfileBanner />
                     <Avatar user={user} />
                     <NewTroveDialogModal onChange={onChange} onAdd={onAdd} newTrove={newTrove} />
-                    <MyTrove trove={trove} onEdit={onEdit} onDelete={onDelete} setTroveId={setTroveId} newTrove={newTrove} onChange={onChange}/>
+                    <MyTrove trove={trove} onEdit={onEdit} setTroveId={setTroveId} newTrove={newTrove} onChange={onChange} searchItem={searchItem} onSearchChange={onSearchChange} findItem={findItem}/>
+
                 </Grid>
             </Grid>
         </Fragment>

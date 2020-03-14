@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema({
     index: { unique: true }
   },
   password: String,
+  about: String,
   troves: [{
     type: mongoose.Schema.Types.ObjectId, ref: "Troves"
   }],
