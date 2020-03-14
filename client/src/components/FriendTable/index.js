@@ -97,7 +97,14 @@ const FriendTable = (props) => {
           <Table className={classes.table} aria-label="simple table">
             <TableBody>
               {props.friends
-                ? (
+                ?
+                <Paper elevation={1} className={classes.BodyDiv}>
+                  <div>
+                    <NoFriends />
+                  </div>
+                </Paper>
+                :
+                (
                   props.friends.map(friend => (
                     <TableRow key={friend.name}>
                       <TableCell align="center">Avatar</TableCell>
@@ -108,11 +115,6 @@ const FriendTable = (props) => {
                     </TableRow>
                   ))
                 )
-                : <Paper elevation={1} className={classes.BodyDiv}>
-                  <div>
-                    <NoFriends />
-                  </div>
-                </Paper>
 
               }
             </TableBody>
