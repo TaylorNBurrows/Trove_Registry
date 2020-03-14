@@ -59,6 +59,9 @@ const useStyles = makeStyles({
 const FriendTable = (props) => {
   const classes = useStyles();
   const [search, setSearch] = useState();
+  const [friends, setFriends] = useState([]);
+  const [searchResult, setSearchResult] = useState();
+  const [user, setUser] = useState();
 
   const onChange = (e) => setSearch(
     e.target.value
@@ -82,7 +85,7 @@ const FriendTable = (props) => {
               Your Friends
             </Grid>
             <Grid item xs className={classes.modalButton}>
-              <NewFriendsDialogModal onChange={onChange} onSearch={onSearch} />
+              <NewFriendsDialogModal onChange={onChange} onSearch={onSearch} searchResult={searchResult} setFriends={setFriends} user={user} />
             </Grid>
           </Grid>
 
@@ -91,7 +94,7 @@ const FriendTable = (props) => {
 
 
       {
-        props.friends
+        props.friends.friends
           ? <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
               <TableBody>

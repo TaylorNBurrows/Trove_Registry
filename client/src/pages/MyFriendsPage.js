@@ -18,7 +18,6 @@ const useStyles = makeStyles({
 const MyFriendsPage = () => {
     const classes = useStyles();
     const [search, setSearch] = useState();
-    const [searchResult, setSearchResult] = useState();
     const [user, setUser] = useState();
     const [friends, setFriends] = useState([]);
     const [open, setOpen] = React.useState(false);
@@ -57,9 +56,7 @@ const MyFriendsPage = () => {
                     <SideBar />
                 </Grid>
                 <Grid item md={10} sm={10} className={classes.layout}>
-                    <NewFriendsDialogModal searchResult={searchResult} setFriends={setFriends} user={user} />
                     <FriendTable friends={friends} />
-                    <FriendTable />
                 </Grid>
             </Grid>
         </Fragment>
