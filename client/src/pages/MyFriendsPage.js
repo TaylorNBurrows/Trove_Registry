@@ -1,13 +1,11 @@
 import React, { useState, Fragment, useEffect } from 'react'
 import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
-import SearchBar from '../components/SearchBar'
 import FriendTable from '../components/FriendTable'
 import API from '../utils/API'
 import Auth from '../utils/Auth'
 import Grid from '@material-ui/core/Grid'
-import { makeStyles } from '@material-ui/core/styles';
-import NewFriendsDialogModal from '../components/NewFriendsDialogModal'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
     layout: {

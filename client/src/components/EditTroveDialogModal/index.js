@@ -30,7 +30,7 @@ function EditTroveDialog(props) {
   };
 
   return (
-    <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open} onChange={onChange} onEdit={onEdit} trove={trove}>
+    <Dialog onClose={handleClose} aria-labeledby="simple-dialog-title" open={open} onChange={onChange} onEdit={onEdit} trove={trove}>
       <DialogTitle id="simple-dialog-title">Edit Trove Details</DialogTitle>
       <EditTroveForm 
         onChange ={onChange}
@@ -62,7 +62,6 @@ export default function EditTroveDialogModal(props) {
 
   return (
     <div>
-      <br />
       <EditTroveBtn aria-label="edit" id={props.trove._id} onClick={handleClickOpen} />
       <EditTroveDialog open={open} onClose={handleClose} trove={props.trove} onChange={props.onChange} onEdit={props.onEdit} newTrove={props.newTrove}/>
     </div>

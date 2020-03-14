@@ -8,12 +8,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareBtn from '../../components/ShareBtn'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import DefaultImage from '../../images/pngIcons/016-lifebuoy.png'
 import EditTroveDialogModal from '../EditTroveDialogModal'
 import AddItemBtn from '../AddItemBtn'
+import DeleteBtn from '../DeleteBtn';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -48,8 +46,8 @@ const TroveCard = (props) => {
             <CardHeader title={props.trove.title} />
             <CardMedia
                 className={classes.media}
-                src={props.trove.imgurl}
-                title={props.trove.title}
+            src={props.trove.imgurl}
+            title={props.trove.title}
             />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="h4">
@@ -57,9 +55,9 @@ const TroveCard = (props) => {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <AddItemBtn aria-label="Add Items" />
+                <AddItemBtn aria-label="add" />
                 <EditTroveDialogModal aria-label="edit" trove={props.trove} onEdit={props.onEdit} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange} />
-                {/* <ShareBtn aria-label="share" trove={props.trove}/> */}
+                <DeleteBtn aria-label="delete" />
             </CardActions>
         </Card>
     );

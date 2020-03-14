@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button'
+import Fab from '@material-ui/core/Fab'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const useStyles = makeStyles(theme => ({
@@ -19,14 +19,13 @@ const AddItemBtn = () => {
 
     return (
         <div className={classes.root}>
-            <Button
-                variant="contained"
-                color="secondary"
+            <Fab
+                color="primary"
                 className={classes.button}
-                startIcon={<AddCircleIcon />}
+                size='small'
             >
-                Items
-      </Button>
+                <AddCircleIcon />
+            </Fab>
         </div>
     );
 }

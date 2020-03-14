@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button'
+import Fab from '@material-ui/core/Fab'
 import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles(theme => ({
@@ -19,16 +19,15 @@ const EditProfileBtn = (props) => {
 
     return (
         <div className={classes.root}>
-            <Button
-                variant="contained"
+            <Fab
                 color="primary"
                 className={classes.button}
-                startIcon={<EditIcon />}
                 onClick={props.onClick}
+                size='small'
                 id = {props.id}
             >
-                Edit
-      </Button>
+                <EditIcon />
+      </Fab>
         </div>
     );
 }
