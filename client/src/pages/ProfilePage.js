@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid'
 import EditProfileBtn from '../components/EditBannerBtn'
 import SaveBtn from '../components/SaveBtn'
 import EditBannerBtn from '../components/EditBannerBtn'
+import SimpleDialogDemo from '../components/CustomizeBannerModal'
 
 const ProfilePage = (props) => {
     const [secretData, setSecretData] = useState('');
@@ -45,7 +46,8 @@ const ProfilePage = (props) => {
                         <ProfileBanner />
                         <Avatar user={user} />
                         <EditBannerBtn />
-                        <Profile user={user} />
+                        <SimpleDialogDemo />
+                        <Profile user={user} setUser={setUser} />
                     </Grid>
                 </Grid>
             </Grid>
