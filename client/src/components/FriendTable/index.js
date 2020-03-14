@@ -74,55 +74,52 @@ const FriendTable = (props) => {
   }
 
   return (
-    <Grid className={classes.layout}>
-      <Paper elevation={1} className={classes.HeaderDiv}>
-        <div className={classes.span}>
-          <Grid container spacing={3}>
-            <Grid item xs>
+    <Fragment>
+      <Grid className={classes.layout}>
+        <Paper elevation={1} className={classes.HeaderDiv}>
+          <div className={classes.span}>
+            <Grid container spacing={3}>
+              <Grid item xs>
 
+              </Grid>
+              <Grid item xs>
+                Your Friends
             </Grid>
-            <Grid item xs>
-              Your Friends
+              <Grid item xs className={classes.modalButton}>
+                <NewFriendsDialogModal onChange={onChange} onSearch={onSearch} searchResult={props.searchResult} setFriends={props.setFriends} user={props.user} />
+              </Grid>
             </Grid>
-            <Grid item xs className={classes.modalButton}>
-              <NewFriendsDialogModal onChange={onChange} onSearch={onSearch} searchResult={props.searchResult} setFriends={props.setFriends} user={props.user} />
-            </Grid>
-            <Grid item xs>
-              <TableContainer component={Paper}>
-                <Table className={classes.table} aria-label="simple table">
-                  <TableBody>
-                    {props.friends
-                      ? (
-                        props.friends.map(friend => (
-                          <TableRow key={friend.name}>
-                            <TableCell align="center">Avatar</TableCell>
-                            <TableCell align="center">{friend.username}</TableCell>
-                            <TableCell align="center">{friend.name}</TableCell>
-                            <TableCell align="center">ViewLink</TableCell>
-                            <TableCell align="center">Action (-)</TableCell>
-                          </TableRow>
-                        ))
-                      ) : <Paper elevation={1} className={classes.BodyDiv}>
+          </div>
+        </Paper >
+      </Grid >
+      <Grid className={classes.layout}>
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="simple table">
+            <TableBody>
+              {props.friends
+                ? (
+                  props.friends.map(friend => (
+                    <TableRow key={friend.name}>
+                      <TableCell align="center">Avatar</TableCell>
+                      <TableCell align="center">{friend.username}</TableCell>
+                      <TableCell align="center">{friend.name}</TableCell>
+                      <TableCell align="center">ViewLink</TableCell>
+                      <TableCell align="center">Action (-)</TableCell>
+                    </TableRow>
+                  ))
+                )
+                : <Paper elevation={1} className={classes.BodyDiv}>
+                  <div>
+                    <NoFriends />
+                  </div>
+                </Paper>
 
-                        <NoFriends />
-
-                      </Paper>
-                    }
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </Grid>
-          </Grid>
-
-
-
-        </div>
-      </Paper>
-
-
-
-    </Grid>
-
+              }
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Grid >
+    </Fragment>
   );
 }
 export default FriendTable;
