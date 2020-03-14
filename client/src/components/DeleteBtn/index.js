@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
-import ShareIcon from '@material-ui/icons/Share';
+import Fab from '@material-ui/core/Fab'
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -14,17 +14,23 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const ShareBtn = () => {
+const DeleteBtn = (props) => {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-            <Fab color="secondary" aria-label="edit">
-                <ShareIcon />
+            <Fab
+                size='small'
+                color="primary"
+                className={classes.button}
+                onClick={props.onClick}
+                id={props.id}
+            >
+                <DeleteIcon />
             </Fab>
         </div>
     );
 }
 
-export default ShareBtn
+export default DeleteBtn
 

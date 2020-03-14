@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(1),
     },
 }));
-const EditProfileBtn = () => {
+const EditProfileBtn = (props) => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
@@ -21,6 +21,8 @@ const EditProfileBtn = () => {
                 color="primary"
                 className={classes.button}
                 startIcon={<EditIcon />}
+                onClick={props.onClick}
+                id={props.id}
             >
                 Edit
             </Button>

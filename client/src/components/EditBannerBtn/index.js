@@ -14,14 +14,25 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(1),
     },
     spacing: {
-        marginTop: "-150px",
-        marginLeft: "900px"
+        marginTop: "-20%",
+        marginLeft: "88%",
+
     },
-    
+
 }));
 
 const EditProfileBtn = () => {
     const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+    const [selectedValue, setSelectedValue] = React.useState('');
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = value => {
+        setOpen(false);
+    };
 
     return (
         <div className={classes.root}>
@@ -31,7 +42,7 @@ const EditProfileBtn = () => {
                 className={clsx(classes.button, classes.spacing)}
                 startIcon={<EditIcon />}
             >
-                Customize My Trove
+                Customize
       </Button>
         </div>
     );

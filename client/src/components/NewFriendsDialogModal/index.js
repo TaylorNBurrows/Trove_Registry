@@ -83,8 +83,6 @@ export default function NewFriendsDialogModal(props) {
 
   return (
     <div>
-
-      <br />
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Find Friends
       </Button>
