@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const AddItemBtn = () => {
+const AddItemBtn = (props) => {
     const classes = useStyles();
 
     return (
@@ -22,9 +22,8 @@ const AddItemBtn = () => {
             <Fab
                 color="primary"
                 className={classes.button}
-                size='small'
-            >
-                <AddCircleIcon />
+                startIcon={<AddCircleIcon />}
+                onClick={props.onClick}
             </Fab>
         </div>
     );

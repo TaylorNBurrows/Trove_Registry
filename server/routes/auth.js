@@ -5,6 +5,11 @@ const db = require('../models')
 const Troves = require("../models/trove-model");
 require('mongoose').model('Items');
 require('mongoose').model('Troves')
+const amazonScraper = require('../scraper/amazonScrapper')
+const etsyScraper = require('../scraper/etsyScraper')
+const targetScraper = require('../scraper/targetScraper')
+const walmartScraper = require('../scraper/walmartScraper')
+
 
 const router = new express.Router();
 
@@ -205,5 +210,24 @@ router.put("/trove/:id", (req, res, next) => {
       res.json(err);
     })
 });
+
+router.post('/finditem', (req, res) => {
+  console.log("Scraper", req)
+  if(req.body.indexOf('amazon')){
+    amazonScraper(req.body).then(data => console.log(data))
+  }
+  else if(req.body.indexOf('etsy')){
+    etsyScraper(req.body).then(data => console.log(data))
+  }
+  else if(req.body.indexOf('target')){
+    targetScraper(req.body).then(data => console.log(data))
+  }
+  else if(req.body.indexOf('walmart')){
+    walmartScraper(req.body).then(data => console.log(data))
+  }
+  else{
+    res.json("Error")
+  }
+})
 
 module.exports = router;
