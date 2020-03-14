@@ -82,7 +82,7 @@ const FriendTable = (props) => {
               Your Friends
             </Grid>
             <Grid item xs className={classes.modalButton}>
-              <NewFriendsDialogModal onChange={onChange} onSearch={onSearch} />
+              <NewFriendsDialogModal searchResult={props.searchResult} setFriends={props.setFriends} user={props.user} />
             </Grid>
           </Grid>
 

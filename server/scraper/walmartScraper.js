@@ -2,10 +2,10 @@ const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
 
 
-const walmartScraper = (async (url) => {
-    const url = 'https://www.walmart.com/ip/Blush-Minerals-I-Print-Wall-Art-By-Jarman-Fagalde/598034155';
-
-    const browser = await puppeteer.launch();
+function walmartScraper(url) {
+    return(async () => {
+    let item = {};
+    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage();
     await page.goto(url);
 
@@ -22,6 +22,12 @@ const walmartScraper = (async (url) => {
     console.log(description)
     console.log(imgSource)
     browser.close()
+    item ={
+        'title': title,
+        'price': price,
+        'description': description,
+        'imgSrc': imgSource
+    }
+    return item;
 })
-
-export default walmartScraper;
+};

@@ -21,8 +21,6 @@ const EditProfileBtn = () => {
                 color="primary"
                 className={classes.button}
                 startIcon={<EditIcon />}
-                onClick={props.onClick}
-                id = {props.id}
             >
                 Edit
             </Button>

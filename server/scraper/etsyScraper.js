@@ -2,9 +2,10 @@ const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
 
 
-const etsyScraper = (async (url) => {
-    const url = 'https://www.etsy.com/listing/153535737/handmade-black-fingerless-steampunk?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=&ref=sr_gallery-1-3&frs=1';
-    const browser = await puppeteer.launch();
+function etsyScraper(url){
+    return (async () => {
+    let item = {};
+    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage();
     await page.goto(url);
 
@@ -21,6 +22,12 @@ const etsyScraper = (async (url) => {
     console.log(description)
     console.log(imgSource)
     browser.close()
+    item = {
+        'title': title,
+        'price': price,
+        'description': description,
+        'imgSrc': imgSource
+    }
+    return item
 })
-
-export default etsyScraper;
+}

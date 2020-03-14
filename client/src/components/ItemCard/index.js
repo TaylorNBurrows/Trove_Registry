@@ -9,7 +9,7 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import EditTroveDialogModal from '../EditTroveDialogModal'
-import AddItemDialogModal from '../AddItemDialogModal'
+import AddItemBtn from '../AddItemBtn'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -53,7 +53,7 @@ const TroveCard = (props) => {
         </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <AddItemDialogModal aria-label="Add Items" trove={props.trove} setTroveId={props.setTroveId} searchItem={props.searchItem} onSearchChange={props.onSearchChange} findItem={props.findItem}/>
+                <AddItemBtn aria-label="Add Items"/>
                 <EditTroveDialogModal aria-label="edit" trove={props.trove} onEdit={props.onEdit} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange}/>
                 {/* <ShareBtn aria-label="share" trove={props.trove}/> */}
             </CardActions>

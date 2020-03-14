@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import EditTroveForm from '../EditTroveForm'
 import { blue } from '@material-ui/core/colors';
-import EditTroveBtn from '../EditTroveBtn'
+import EditTroveBtn from '../EditTroveBtn';
 
 const useStyles = makeStyles({
   avatar: {

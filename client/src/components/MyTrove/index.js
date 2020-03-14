@@ -24,7 +24,7 @@ const MyTrove = (props) => {
         <Grid container direction="row" spacing={1} className={classes.layout}>
             {props.trove.troves ? props.trove.troves.map((item, key) =>{
                 return (<Grid item xs={4} md={3}>
-                <TroveCard trove={item} key={key} onEdit={props.onEdit} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange}/>
+                <TroveCard trove={item} key={key} onEdit={props.onEdit} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange} searchItem={props.searchItem} onSearchChange={props.onSearchChange} findItem={props.findItem}/>
             </Grid>)
             }) : null}
             

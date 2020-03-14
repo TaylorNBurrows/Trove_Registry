@@ -4,6 +4,7 @@ const path = require("path");
 const passport = require('passport');
 const config = require('./server/config');
 const logger = require('morgan')
+const cors = require('cors')
 const mongoose = require('mongoose')
 
 const PORT = process.env.PORT || 3001;
@@ -35,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // pass the passport middleware
 app.use(passport.initialize());
+app.use(cors());
 
 // load passport strategies
 const localSignupStrategy = require('./server/passport/local-signup');

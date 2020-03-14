@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const AddItemBtn = () => {
+const AddItemBtn = (props) => {
     const classes = useStyles();
 
     return (
@@ -24,8 +24,9 @@ const AddItemBtn = () => {
                 color="secondary"
                 className={classes.button}
                 startIcon={<AddCircleIcon />}
+                onClick={props.onClick}
             >
-                Items
+                Add Items
       </Button>
         </div>
     );

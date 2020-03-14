@@ -28,5 +28,9 @@ export default {
    },
    updateUser: userData => {
       axios.put('/auth/profile', userData)
+   },
+   searchItem: (url, token) => {
+      axios.post('/auth/finditem', {body: url}, { headers: { Authorization: `bearer ${token}` } } )
+   }
 
 }

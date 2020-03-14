@@ -1,7 +1,7 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
-import SearchBar from '../components/SearchBar'
+import NewFriendsDialogModal from '../components/NewFriendsDialogModal'
 import FriendTable from '../components/FriendTable'
 import API from '../utils/API'
 import Auth from '../utils/Auth'
@@ -17,10 +17,10 @@ const useStyles = makeStyles({
 const MyFriendsPage = () => {
     const classes = useStyles();
     const [search, setSearch] = useState();
-    const [searchResult, setSearchResult] = useState();
     const [user, setUser] = useState();
     const [friends, setFriends] = useState([]);
     const [open, setOpen] = React.useState(false);
+    const [searchResult, setSearchResult] = useState();
 
     console.log(search)
     console.log(user)
@@ -56,9 +56,7 @@ const MyFriendsPage = () => {
                     <SideBar />
                 </Grid>
                 <Grid item md={10} sm={10} className={classes.layout}>
-                    <NewFriendsDialogModal searchResult={searchResult} setFriends={setFriends} user={user}/>
-                    <FriendTable friends={friends} />
-                    <FriendTable />
+                    <FriendTable friends={friends} setFriends={setFriends} user={user} searchResult={searchResult} setSearchResult={setSearchResult}/>
                 </Grid>
             </Grid>
         </Fragment>
