@@ -33,8 +33,11 @@ export default {
    updateUser: (userData, token) => {
       axios.put('/auth/profile' + userData, { headers: { Authorization: `bearer ${token}` }, body: userData })
    },
-   searchItem: (url, token) => {
-      console.log("search", url);
-      return axios.post('/auth/finditem', {body: url}, { headers: { Authorization: `bearer ${token}` } } )
+   addItem: (troveId, Item) => {
+      console.log(troveId, Item);
+      return axios.post('/auth/trove/item/'+ troveId, {body: Item} )
+   },
+   getItems: (token) => {
+      return axios.get('/auth/items/', { headers: { Authorization: `bearer ${token}` } })
    }
 }

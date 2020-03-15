@@ -6,7 +6,6 @@ import EditTroveForm from '../EditTroveForm'
 import EditTroveBtn from '../EditTroveBtn';
 
 function EditTroveDialog(props) {
-  console.log(props)
   const { onClose, selectedValue, open, onChange, Edit, trove } = props;
 
   const handleClose = () => {

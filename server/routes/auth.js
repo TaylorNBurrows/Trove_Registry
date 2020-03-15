@@ -3,6 +3,7 @@ const validator = require('validator');
 const passport = require('passport');
 const db = require('../models')
 const Troves = require("../models/trove-model");
+const Items = require("../models/item-model");
 require('mongoose').model('Items');
 require('mongoose').model('Troves')
 const amazonScraper = require('../scraper/amazonScrapper')
@@ -168,7 +169,7 @@ router.put('/friends/:id/:friend', (req, res, next) => {
   var query = { _id: req.params.id }
   console.log(query)
   var update = { $push: { friends: req.params.friend } }
-  var options = { new: true }
+  var options = { new: true, upsert: true }
   db.User.findOneAndUpdate(query, update, options).populate('friends').then((user) => {
     res.json(user)
   }).catch(err => {
@@ -201,7 +202,7 @@ router.post("/trove/:id", (req, res, next) => {
 router.put("/trove/:id", (req, res, next) => {
   console.log("REquest...." + req.body)
   console.log(req.body.body)
-  Troves.findOneAndUpdate({ _id: req.params.id }, { $set: req.body.body }, { new: true })
+  Troves.findOneAndUpdate({ _id: req.params.id }, { $set: req.body.body }, { new: true, upsert: true })
     .then(dbUser => {
       res.json(dbUser);
     })
@@ -222,23 +223,20 @@ router.delete('/trove/:id/:userid', (req, res) => {
   Troves.findOneAndDelete({_id: req.params.id}).then((res) =>{console.log(res)})
 });
 
-router.get('/finditem', (req, res) => {
-  console.log("Scraper", req.body)
-  if(req.body.indexOf('amazon')){
-    amazonScraper(req.body).then(data => console.log(data))
-  }
-  else if(req.body.indexOf('etsy')){
-    etsyScraper(req.body).then(data => console.log(data))
-  }
-  else if(req.body.indexOf('target')){
-    targetScraper(req.body).then(data => console.log(data))
-  }
-  else if(req.body.indexOf('walmart')){
-    walmartScraper(req.body).then(data => console.log(data))
-  }
-  else{
-    res.json("Error")
-  }
-})
+router.post('/trove/item/:troveid', (req, res) => {
+  console.log(req.body.body)
+  Items.findOneAndUpdate({url: req.body.body.url}, {$set: req.body.body}, {new: true, upsert: true}).then((data)=>{
+    console.log(data)
+    Troves.findOneAndUpdate({ _id: req.params.troveid }, { $push: { items: data._id} }, { new: true, upsert: true }).then((item) =>{
+      res.json(item);
+    })
+  })
+});
+
+router.get("/items/", (req, res) => {
+  db.Items.find().then((items) => {
+    res.json(items)
+  })
+});
 
 module.exports = router;

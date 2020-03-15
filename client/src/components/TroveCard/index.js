@@ -9,6 +9,7 @@ import { red } from '@material-ui/core/colors';
 import EditTroveDialogModal from '../EditTroveDialogModal';
 import AddItemDialogModal from '../AddItemDialogModal'
 import DeleteTroveDialogModal from '../DeleteTroveDialogModal'
+import ItemDialogModal from '../ItemDialogModal'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -37,7 +38,9 @@ const TroveCard = (props) => {
     
     return (
         <Card className={classes.root} id={props.trove._id}>
-            <CardHeader title={props.trove.title} />
+            <CardHeader title={props.trove.title} >
+            </CardHeader>
+            <ItemDialogModal trove={props.trove}/>
             <img src={props.trove.imgurl} alt={props.trove.title} className={classes.root} />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="h4">

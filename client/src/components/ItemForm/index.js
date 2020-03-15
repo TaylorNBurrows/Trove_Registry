@@ -75,10 +75,10 @@ const ItemForm = ({createItem, onItemChange, newItem}) => {
       <div className="field-line">
         <TextField
           placeholder="Image URL"
-          name="imgurl"
+          name="imagesrc"
           onChange={onItemChange}
-          error={newItem.imgsrc === ""}
-          value={newItem.imgsrc}
+          error={newItem.imagesrc === ""}
+          value={newItem.imagesrc}
         />
       </div>
 

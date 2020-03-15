@@ -1,15 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import EditTroveDialogModal from '../EditTroveDialogModal'
-import AddItemBtn from '../AddItemBtn'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -17,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     },
     media: {
         paddingTop: '56.25%', // 16:9
-        backgroundSize:'contain'
+        backgroundSize: 'contain'
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -33,31 +30,30 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: red[500],
     },
 }));
-const TroveCard = (props) => {
+const ItemCard = (props) => {
     const classes = useStyles();
-    const [expanded, setExpanded] = useState(false);
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
+
     return (
         <Card className={classes.root} id={props.key}>
-            <CardHeader title ={props.trove.title} />
-            <CardMedia
-                className={classes.media}
-                src={props.trove.imgurl}
-                title={props.trove.title}
-            />
+            <CardHeader title={props.item.title} />
+            <img src={props.item.imagesrc} alt={props.item.title} className={classes.root} />
             <CardContent>
-                <Typography variant="body2" color="textSecondary" component="h4">
-                    Description: {props.trove.description}
-        </Typography>
+                <Typography variant="h4" color="textSecondary" component="h4">
+                    <b>Url:</b> <Link to={props.item.url}>{props.item.url}</Link>
+                </Typography>
+                <br />
+                <Typography variant="h4" color="textSecondary" component="h4">
+                    <b>Description:</b> {props.item.description}
+                </Typography>
+                <br />
+                <Typography variant="h4" color="textSecondary" component="h4">
+                    <b>Price:</b> {props.item.price}
+                </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <AddItemBtn aria-label="Add Items"/>
-                <EditTroveDialogModal aria-label="edit" trove={props.trove} onEdit={props.onEdit} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange}/>
-                {/* <ShareBtn aria-label="share" trove={props.trove}/> */}
+
             </CardActions>
-        </Card>
+        </Card >
     );
 }
-export default TroveCard;
+export default ItemCard;

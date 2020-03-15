@@ -24,8 +24,8 @@ const TrovePage = (props) => {
         title: '',
         price: '',
         description: '',
-        imgsrc: ''
-    })
+        imagesrc: '',
+    });
 
     // console.log(user)
     // console.log(trove.troves)
@@ -87,8 +87,9 @@ const TrovePage = (props) => {
     }
 
     const createItem = () => {
-        console.log(troveId)
-        console.log(newItem)
+        API.addItem(troveId, newItem).then(res => {
+            console.log(res)
+        })
     }
 
     return (
