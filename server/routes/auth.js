@@ -231,6 +231,12 @@ router.post('/trove/item/:troveid', (req, res) => {
       res.json(item);
     })
   })
-})
+});
+
+router.get("/items/", (req, res) => {
+  db.Items.find().then((items) => {
+    res.json(items)
+  })
+});
 
 module.exports = router;

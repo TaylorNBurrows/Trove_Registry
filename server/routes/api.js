@@ -60,4 +60,10 @@ router.get('/friends/:id', (req, res) => {
     })
 });
 
+router.get("/items/", (req, res) => {
+  db.Items.find().then((items) => {
+    res.json(items)
+  })
+})
+
 module.exports = router;

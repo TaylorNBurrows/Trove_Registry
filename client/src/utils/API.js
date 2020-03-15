@@ -36,5 +36,8 @@ export default {
    addItem: (troveId, Item) => {
       console.log(troveId, Item);
       return axios.post('/auth/trove/item/'+ troveId, {body: Item} )
+   },
+   getItems: (token) => {
+      return axios.get('/auth/items/', { headers: { Authorization: `bearer ${token}` } })
    }
 }
