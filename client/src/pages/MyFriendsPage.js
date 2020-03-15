@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
-import NewFriendsDialogModal from '../components/NewFriendsDialogModal'
 import FriendTable from '../components/FriendTable'
 import API from '../utils/API'
 import Auth from '../utils/Auth'
@@ -19,16 +18,11 @@ const MyFriendsPage = () => {
     const [search, setSearch] = useState();
     const [user, setUser] = useState();
     const [friends, setFriends] = useState([]);
-    const [open, setOpen] = React.useState(false);
     const [searchResult, setSearchResult] = useState();
 
     console.log(search)
     console.log(user)
     console.log(friends)
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
 
     useEffect(() => {
         API.dashboard(Auth.getToken())

@@ -14,25 +14,13 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(1),
     },
     spacing: {
-        marginTop: "-20%",
-        marginLeft: "88%",
-
-    },
-
+        marginTop: "-50%",
+        marginLeft: "80%",
+    }
 }));
 
-const EditProfileBtn = () => {
+const EditBannerBtn = () => {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-    const [selectedValue, setSelectedValue] = React.useState('');
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = value => {
-        setOpen(false);
-    };
 
     return (
         <div className={classes.root}>
@@ -48,5 +36,5 @@ const EditProfileBtn = () => {
     );
 }
 
-export default EditProfileBtn
+export default EditBannerBtn;
 

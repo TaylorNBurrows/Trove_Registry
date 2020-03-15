@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -12,8 +12,6 @@ import island from '../../images/pngIcons/049-island.png'
 import treasureChest from '../../images/pngIcons/046-treasureChest.png'
 import pirate from '../../images/pngIcons/029-pirate.png'
 import compass from '../../images/pngIcons/001-compass.png'
-
-const drawerWidth = "220px";
 
 const useStyles = makeStyles(theme => ({
     root: {
