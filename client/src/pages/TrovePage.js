@@ -27,8 +27,8 @@ const TrovePage = (props) => {
         imgsrc: ''
     })
 
-    console.log(user)
-    console.log(trove.troves)
+    // console.log(user)
+    // console.log(trove.troves)
 
     useEffect(() => {
         // update authenticated state on logout
@@ -68,7 +68,7 @@ const TrovePage = (props) => {
         })
     }
 
-    const onEdit = () => {
+    const Edit = () => {
         console.log(troveId)
         API.editTrove(troveId, newTrove).then(res => {
             console.log(res)
@@ -80,6 +80,11 @@ const TrovePage = (props) => {
         API.deleteTrove(troveId, user._id).then(res => {
          console.log(res)
         })
+    }
+
+    const createItem = () =>{
+        console.log(troveId)
+        console.log(newItem)
     }
 
     return (
@@ -97,7 +102,7 @@ const TrovePage = (props) => {
                     <ProfileBanner />
                     <Avatar user={user} />
                     <NewTroveDialogModal onChange={onChange} onAdd={onAdd} newTrove={newTrove} />
-                    <MyTrove trove={trove} onEdit={onEdit} setTroveId={setTroveId} newTrove={newTrove} onChange={onChange} onDelete={onDelete} item={item} setItem={setItem} newItem={newItem} setNewItem={setNewItem} onItemChange={onItemChange}/>
+                    <MyTrove trove={trove} Edit={Edit} setTroveId={setTroveId} newTrove={newTrove} onChange={onChange} onDelete={onDelete} item={item} setItem={setItem} newItem={newItem} setNewItem={setNewItem} onItemChange={onItemChange} createItem={createItem}/>
 
                 </Grid>
             </Grid>

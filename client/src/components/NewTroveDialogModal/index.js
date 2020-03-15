@@ -6,7 +6,6 @@ import Dialog from '@material-ui/core/Dialog';
 import TroveForm from '../TroveForm'
 
 function TroveDialog(props) {
-  console.log(props)
   const { onClose, open, onChange, onAdd, newTrove } = props;
 
   const handleClose = () => {
@@ -31,7 +30,6 @@ TroveDialog.propTypes = {
 };
 
 export default function NewTroveDialogModal(props) {
-  console.log(props)
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {

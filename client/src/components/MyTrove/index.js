@@ -17,16 +17,15 @@ const useStyles = makeStyles(theme => ({
 
 const MyTrove = (props) => {
     const classes = useStyles();
-    console.log(props.trove.length)
 
     return (
 
         <Grid container direction="row" spacing={1} className={classes.layout}>
             {props.trove.troves
-                ? props.trove.troves.map((trove) => {
+                ? props.trove.troves.map((trove, key) => {
                     return (
-                        <Grid item xs={4} md={3} key={props.trove.troves._id}>
-                            <TroveCard trove={trove} onEdit={props.onEdit} onDelete={props.onDelete} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange} item={props.item} setItem={props.setItem} newItem={props.newItem} setNewItem={props.setNewItem} onItemChange={props.onItemChange}/>
+                        <Grid item xs={4} md={3} key={key}>
+                            <TroveCard trove={trove} Edit={props.Edit} onDelete={props.onDelete} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange} item={props.item} setItem={props.setItem} newItem={props.newItem} setNewItem={props.setNewItem} onItemChange={props.onItemChange} createItem={props.createItem}/>
                         </Grid>)
                 })
 

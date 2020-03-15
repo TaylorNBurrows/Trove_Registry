@@ -26,7 +26,7 @@ const EditBannerBtn = () => {
         <div className={classes.root}>
             <Button
                 variant="contained"
-                color="Primary"
+                color="primary"
                 className={clsx(classes.button, classes.spacing)}
                 startIcon={<EditIcon />}
             >

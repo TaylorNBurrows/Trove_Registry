@@ -23,14 +23,24 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const TroveForm = ({onAdd, onItemChange, newItem, trove}) => {
+const ItemForm = ({createItem, onItemChange, newItem}) => {
   const classes = useStyles();
 
   return (
   
   <Card className={clsx(classes.alignItemsAndJustifyContent, classes.root)}>
-    <form>
+    <form onSubmit={createItem}>
       <h2 className="card-heading">Login</h2>
+
+      <div className="field-line">
+        <TextField
+          placeholder="Product URL"
+          name="url"
+          onChange={onItemChange}
+          error={newItem.url === ""}
+          value={newItem.url}
+        />
+      </div>
 
       <div className="field-line">
         <TextField
@@ -39,6 +49,16 @@ const TroveForm = ({onAdd, onItemChange, newItem, trove}) => {
           onChange={onItemChange}
           error={newItem.title === ""}
           value={newItem.title}
+        />
+      </div>
+
+      <div className="field-line">
+        <TextField
+          placeholder="Price"
+          name="price"
+          onChange={onItemChange}
+          error={newItem.price === ""}
+          value={newItem.price}
         />
       </div>
 
@@ -63,10 +83,10 @@ const TroveForm = ({onAdd, onItemChange, newItem, trove}) => {
       </div>
 
       <div className="button-line">
-        <Button type="submit" label="Log in" primary="true" >Submit</Button>
+        <Button type="submit" label="Add Item" primary="true" >Submit</Button>
       </div>
     </form>
   </Card>
 )};
 
-export default TroveForm;
+export default ItemForm;
