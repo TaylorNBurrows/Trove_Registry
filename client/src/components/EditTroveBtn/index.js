@@ -1,12 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab'
+import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles(theme => ({
     root: {
         '& > *': {
-            margin: theme.spacing(1),
+            margin: theme.spacing(0),
         },
     },
     extendedIcon: {
@@ -14,23 +14,21 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const EditProfileBtn = (props) => {
+const EditTroveBtn = (props) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            <Fab
-                color="primary"
-                className={classes.button}
-                onClick={props.onClick}
-                size='small'
-                id = {props.id}
-            >
-                <EditIcon />
-      </Fab>
-        </div>
+        <IconButton
+            className={classes.root}
+            color='primary'
+            onClick={props.onClick}
+            size='medium'
+            id={props.id}>
+                
+            <EditIcon color='primary' fontSize='large'/>
+        </IconButton>
     );
 }
 
-export default EditProfileBtn
+export default EditTroveBtn
 

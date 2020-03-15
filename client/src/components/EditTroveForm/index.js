@@ -22,13 +22,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const EditTroveForm = ({onEdit, onChange, trove, newTrove}) => {
+const EditTroveForm = ({Edit, onChange, trove, newTrove}) => {
   const classes = useStyles();
 
   return (
   
   <Card className={clsx(classes.alignItemsAndJustifyContent, classes.root)}>
-    <form onSubmit={onEdit}>
+    <form onSubmit={Edit}>
       <h2 className="card-heading">Login</h2>
 
       <div className="field-line">

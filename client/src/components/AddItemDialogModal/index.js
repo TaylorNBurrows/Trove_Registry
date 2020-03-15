@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 function AddItemDialog(props) {
   console.log(props)
   const classes = useStyles();
-  const { onClose, open, onItemChange, onEdit, trove } = props;
+  const { onClose, open, onItemChange, createItem, newItem } = props;
 
   const handleClose = () => {
     onClose();
@@ -33,8 +33,8 @@ function AddItemDialog(props) {
       <Card className={clsx(classes.alignItemsAndJustifyContent, classes.root)}>
         <ItemForm
           onItemChange={onItemChange}
-          // onAdd={onAdd}
-          newItem={props.newItem}
+          createItem={createItem}
+          newItem={newItem}
         />
       </Card>
     </Dialog>
@@ -51,7 +51,8 @@ export default function AddItemDialogModal(props) {
 
   const handleClickOpen = (e) => {
     setOpen(true);
-    props.setTroveId(e.target.parentNode.id)
+    props.setTroveId(e.target.parentNode.parentNode.id)
+    console.log("Add Button", e.target.parentNode.parentNode.id)
   };
 
   const handleClose = () => {
@@ -62,7 +63,7 @@ export default function AddItemDialogModal(props) {
     <div>
       <br />
       <AddItemBtn aria-label="edit" id={props.trove._id} onClick={handleClickOpen} />
-      <AddItemDialog open={open} onClose={handleClose} item={props.item} setItem={props.setItem} newItem={props.newItem} setNewItem={props.setNewItem} onItemChange={props.onItemChange} />
+      <AddItemDialog open={open} onClose={handleClose} item={props.item} setItem={props.setItem} newItem={props.newItem} setNewItem={props.setNewItem} onItemChange={props.onItemChange} createItem={props.createItem}/>
     </div>
   );
 }

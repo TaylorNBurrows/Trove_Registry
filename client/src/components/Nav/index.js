@@ -21,7 +21,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Nav = (props) => {
-    console.log(props)
     const classes = useStyles();
 
     return (
