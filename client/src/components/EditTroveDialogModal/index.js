@@ -7,18 +7,18 @@ import EditTroveBtn from '../EditTroveBtn';
 
 function EditTroveDialog(props) {
   console.log(props)
-  const { onClose, selectedValue, open, onChange, onEdit, trove } = props;
+  const { onClose, selectedValue, open, onChange, Edit, trove } = props;
 
   const handleClose = () => {
     onClose(selectedValue);
   };
 
   return (
-    <Dialog onClose={handleClose} aria-labelledby="edit-trove" open={open} onChange={onChange} onEdit={onEdit} trove={trove}>
+    <Dialog onClose={handleClose} aria-labelledby="edit-trove" open={open} onChange={onChange} trove={trove}>
       <DialogTitle id="edit-trove">Edit Trove Details</DialogTitle>
       <EditTroveForm 
         onChange ={onChange}
-        onEdit = {onEdit}
+        Edit = {Edit}
         trove = {trove}
         newTrove={props.newTrove}
       />
@@ -32,12 +32,12 @@ EditTroveDialog.propTypes = {
 };
 
 export default function EditTroveDialogModal(props) {
-  console.log(props)
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = (e) => {
     setOpen(true);
-    props.setTroveId(e.target.parentNode.id)
+    props.setTroveId(e.target.parentNode.parentNode.id)
+    console.log(e.target.parentNode.parentNode.id)
   };
 
   const handleClose = value => {
@@ -47,7 +47,7 @@ export default function EditTroveDialogModal(props) {
   return (
     <div>
       <EditTroveBtn aria-label="edit" id={props.trove._id} onClick={handleClickOpen} />
-      <EditTroveDialog open={open} onClose={handleClose} trove={props.trove} onChange={props.onChange} onEdit={props.onEdit} newTrove={props.newTrove}/>
+      <EditTroveDialog open={open} onClose={handleClose} trove={props.trove} onChange={props.onChange} Edit={props.Edit} newTrove={props.newTrove}/>
     </div>
   );
 }
