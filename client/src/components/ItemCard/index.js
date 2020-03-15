@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     },
     media: {
         paddingTop: '56.25%', // 16:9
-        backgroundSize:'contain'
+        backgroundSize: 'contain'
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -33,31 +33,24 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: red[500],
     },
 }));
-const TroveCard = (props) => {
+const ItemCard = (props) => {
     const classes = useStyles();
-    const [expanded, setExpanded] = useState(false);
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
+
     return (
         <Card className={classes.root} id={props.key}>
-            <CardHeader title ={props.trove.title} />
-            <CardMedia
-                className={classes.media}
-                src={props.trove.imgurl}
-                title={props.trove.title}
-            />
+            <CardHeader title={props.item.title} />
+            <img src={props.item.imagesrc} alt={props.item.title} className={classes.root} />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="h4">
-                    Description: {props.trove.description}
-        </Typography>
+                    Url: {props.item.url}
+                    Description: {props.item.description}
+                    Price: {props.item.price}
+                </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <AddItemBtn aria-label="Add Items"/>
-                <EditTroveDialogModal aria-label="edit" trove={props.trove} onEdit={props.onEdit} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange}/>
-                {/* <ShareBtn aria-label="share" trove={props.trove}/> */}
+
             </CardActions>
         </Card>
     );
 }
-export default TroveCard;
+export default ItemCard;
