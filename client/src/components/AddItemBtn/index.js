@@ -20,11 +20,12 @@ const AddItemBtn = (props) => {
     return (
         <div className={classes.root}>
             <Fab
+            size="small"
                 color="primary"
                 className={classes.button}
-                startIcon={<AddCircleIcon />}
                 onClick={props.onClick}
             />
+            ><AddCircleIcon /></Fab>
         </div>
     );
 }

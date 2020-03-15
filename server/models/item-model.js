@@ -18,9 +18,6 @@ const ItemSchema = new Schema({
   },
   imagesrc: {
     type: String,
-  },
-  category: {
-    type: String
   }
 });
 

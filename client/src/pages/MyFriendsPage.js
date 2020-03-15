@@ -19,16 +19,11 @@ const MyFriendsPage = () => {
     const [search, setSearch] = useState();
     const [user, setUser] = useState();
     const [friends, setFriends] = useState([]);
-    const [open, setOpen] = React.useState(false);
     const [searchResult, setSearchResult] = useState();
 
     console.log(search)
     console.log(user)
     console.log(friends)
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
 
     useEffect(() => {
         API.dashboard(Auth.getToken())
@@ -56,7 +51,7 @@ const MyFriendsPage = () => {
                     <SideBar />
                 </Grid>
                 <Grid item md={10} sm={10} className={classes.layout}>
-                    <FriendTable friends={friends} setFriends={setFriends} user={user} searchResult={searchResult} setSearchResult={setSearchResult}/>
+                    <FriendTable friends={friends} setFriends={setFriends} user={user} searchResult={searchResult} setSearchResult={setSearchResult} />
                 </Grid>
             </Grid>
         </Fragment>

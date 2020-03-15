@@ -18,8 +18,14 @@ const TrovePage = (props) => {
         imgurl: ''
     });
     const [troveId, setTroveId] = useState();
-    const [searchItem, setSearchItem] = useState('');
-    const [item, setItem] = useState({})
+    const [item, setItem] = useState([]);
+    const [newItem, setNewItem] = useState({
+        url: '',
+        title: '',
+        price: '',
+        description: '',
+        imgsrc: ''
+    })
 
     console.log(user)
     console.log(trove.troves)
@@ -49,9 +55,12 @@ const TrovePage = (props) => {
         })
     };
 
-    const onSearchChange = (e) => {
-        setSearchItem(e.target.value)
-    }
+    const onItemChange = (e) => {
+        setNewItem({
+            ...newItem,
+            [e.target.name]: e.target.value,
+        })
+    };
 
     const onAdd = () => {
         API.addTrove(user._id, newTrove).then(res => {
@@ -72,11 +81,6 @@ const TrovePage = (props) => {
          console.log(res)
         })
     }
-    const findItem = () =>{
-        API.searchItem(searchItem, Auth.getToken()).then(res =>{
-            console.log(res)
-        })
-    };
 
     return (
         <Fragment>
@@ -93,7 +97,7 @@ const TrovePage = (props) => {
                     <ProfileBanner />
                     <Avatar user={user} />
                     <NewTroveDialogModal onChange={onChange} onAdd={onAdd} newTrove={newTrove} />
-                    <MyTrove trove={trove} onEdit={onEdit} setTroveId={setTroveId} newTrove={newTrove} onChange={onChange} searchItem={searchItem} onSearchChange={onSearchChange} findItem={findItem}/>
+                    <MyTrove trove={trove} onEdit={onEdit} setTroveId={setTroveId} newTrove={newTrove} onChange={onChange} onDelete={onDelete} item={item} setItem={setItem} newItem={newItem} setNewItem={setNewItem} onItemChange={onItemChange}/>
 
                 </Grid>
             </Grid>

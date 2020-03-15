@@ -33,6 +33,7 @@ export default {
       axios.put('/auth/profile' + userData, { headers: { Authorization: `bearer ${token}` }, body: userData })
    },
    searchItem: (url, token) => {
-      axios.post('/auth/finditem', {body: url}, { headers: { Authorization: `bearer ${token}` } } )
+      console.log("search", url);
+      return axios.post('/auth/finditem', {body: url}, { headers: { Authorization: `bearer ${token}` } } )
    }
 }
