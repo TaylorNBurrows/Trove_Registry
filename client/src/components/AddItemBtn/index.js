@@ -24,6 +24,7 @@ const AddItemBtn = (props) => {
                 color="primary"
                 className={classes.button}
                 onClick={props.onClick}
+            />
             ><AddCircleIcon /></Fab>
         </div>
     );
