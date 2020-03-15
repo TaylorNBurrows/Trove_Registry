@@ -23,22 +23,22 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const TroveForm = ({onAdd, onChange, newTrove, trove}) => {
+const TroveForm = ({onAdd, onItemChange, newItem, trove}) => {
   const classes = useStyles();
 
   return (
   
   <Card className={clsx(classes.alignItemsAndJustifyContent, classes.root)}>
-    <form onSubmit={onAdd}>
+    <form>
       <h2 className="card-heading">Login</h2>
 
       <div className="field-line">
         <TextField
           placeholder="Title"
           name="title"
-          onChange={onChange}
-          error={newTrove.title === ""}
-          value={newTrove.title}
+          onChange={onItemChange}
+          error={newItem.title === ""}
+          value={newItem.title}
         />
       </div>
 
@@ -46,9 +46,9 @@ const TroveForm = ({onAdd, onChange, newTrove, trove}) => {
         <TextField
           placeholder="Description"
           name="description"
-          onChange={onChange}
-          error={newTrove.description === ""}
-          value={newTrove.description}
+          onChange={onItemChange}
+          error={newItem.description === ""}
+          value={newItem.description}
         />
       </div>
 
@@ -56,9 +56,9 @@ const TroveForm = ({onAdd, onChange, newTrove, trove}) => {
         <TextField
           placeholder="Image URL"
           name="imgurl"
-          onChange={onChange}
-          error={newTrove.imgurl === ""}
-          value={newTrove.imgurl}
+          onChange={onItemChange}
+          error={newItem.imgsrc === ""}
+          value={newItem.imgsrc}
         />
       </div>
 

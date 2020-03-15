@@ -211,8 +211,19 @@ router.put("/trove/:id", (req, res, next) => {
     })
 });
 
-router.post('/finditem', (req, res) => {
-  console.log("Scraper", req)
+router.delete('/trove/:id', (req, res) => {
+  console.log("small api, deleted trove id", req.params.id)
+  console.log("small api, deleted trove body", req.body.userData)
+  db.User.findOneAndUpdate({ _id: req.body.userData }, {$pull: {'troves': req.params.id}})
+  .then(Troves.findOneAndDelete({_id: req.params.id}))
+  .then((troves) => {
+    res.json(troves)
+    console.log(troves)
+  })
+});
+
+router.get('/finditem', (req, res) => {
+  console.log("Scraper", req.body)
   if(req.body.indexOf('amazon')){
     amazonScraper(req.body).then(data => console.log(data))
   }

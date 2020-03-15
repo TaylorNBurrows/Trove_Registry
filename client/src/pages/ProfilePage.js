@@ -1,17 +1,13 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import Auth from '../utils/Auth';
 import Profile from '../components/Profile/index'
-import Main from '../components/Main'
 import Nav from '../components/Nav'
 import SideBar from '../components/SideBar'
 import API from '../utils/API';
 import Avatar from '../components/Avatar'
 import ProfileBanner from '../components/ProfileBanner'
 import Grid from '@material-ui/core/Grid'
-import EditProfileBtn from '../components/EditBannerBtn'
-import SaveBtn from '../components/SaveBtn'
-import EditBannerBtn from '../components/EditBannerBtn'
-import SimpleDialogDemo from '../components/CustomizeBannerModal'
+import CustomizeBannerModal from '../components/CustomizeBannerModal'
 
 const ProfilePage = (props) => {
     const [secretData, setSecretData] = useState('');
@@ -45,16 +41,13 @@ const ProfilePage = (props) => {
                     <Grid item xs={12} alignItems='center' justify='center'>
                         <ProfileBanner />
                         <Avatar user={user} />
-                        <EditBannerBtn />
-                        <SimpleDialogDemo />
+                        <CustomizeBannerModal />
                         <Profile user={user} setUser={setUser} />
                     </Grid>
                 </Grid>
             </Grid>
         </Fragment>
-
     )
-
-}
+};
 
 export default ProfilePage;

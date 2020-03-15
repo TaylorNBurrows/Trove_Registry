@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
-import EditTroveForm from '../EditTroveForm'
 import { blue } from '@material-ui/core/colors';
 import DeleteBtn from '../DeleteBtn'
 
@@ -30,8 +27,9 @@ function DeleteTroveDialog(props) {
   };
 
   return (
-    <Dialog onClose={handleClose} aria-labeledby="simple-dialog-title" open={open} onChange={onChange} onEdit={onEdit} trove={trove}>
-      <DialogTitle id="simple-dialog-title">Edit Trove Details</DialogTitle>
+    <Dialog onClose={handleClose} aria-labelledby="delete-trove" open={open} onChange={onChange} onEdit={onEdit} trove={trove}>
+      <DialogTitle id="delete-trove">Delete this trove?</DialogTitle>
+
       
     </Dialog>
   );
@@ -43,8 +41,8 @@ DeleteTroveDialog.propTypes = {
 };
 
 export default function DeleteTroveDialogModal(props) {
-  console.log(props)
-  const [open, setOpen] = React.useState(false);
+  console.log("Delete Trove", props)
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = (e) => {
     setOpen(true);
@@ -52,13 +50,13 @@ export default function DeleteTroveDialogModal(props) {
     console.log(e.target.parentNode.id)
   };
 
-  const handleClose = value => {
+  const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <div>
-      <DeleteBtn aria-label="edit" id={props.trove._id} onClick={handleClickOpen} />
+      <DeleteBtn aria-label="delete" id={props.trove._id} onClick={handleClickOpen}/>
       <DeleteTroveDialog open={open} onClose={handleClose} trove={props.trove} onDelete={props.onDelete}/>
     </div>
   );
