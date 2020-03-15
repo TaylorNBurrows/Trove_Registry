@@ -51,8 +51,8 @@ export default function AddItemDialogModal(props) {
 
   const handleClickOpen = (e) => {
     setOpen(true);
-    props.setTroveId(e.target.parentNode.parentNode.id)
-    console.log("Add Button", e.target.parentNode.parentNode.id)
+    props.setTroveId(props.trove._id)
+    console.log("Add Button", props.trove._id)
   };
 
   const handleClose = () => {

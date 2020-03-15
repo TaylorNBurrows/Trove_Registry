@@ -78,11 +78,15 @@ const TrovePage = (props) => {
     const onDelete = () => {
         console.log(troveId)
         API.deleteTrove(troveId, user._id).then(res => {
-         console.log(res)
+            API.getTrove(user._id, Auth.getToken())
+                    .then((trove) => {
+                        console.log(trove.data)
+                        setTrove(trove.data)
+                    })
         })
     }
 
-    const createItem = () =>{
+    const createItem = () => {
         console.log(troveId)
         console.log(newItem)
     }
@@ -102,7 +106,7 @@ const TrovePage = (props) => {
                     <ProfileBanner />
                     <Avatar user={user} />
                     <NewTroveDialogModal onChange={onChange} onAdd={onAdd} newTrove={newTrove} />
-                    <MyTrove trove={trove} Edit={Edit} setTroveId={setTroveId} newTrove={newTrove} onChange={onChange} onDelete={onDelete} item={item} setItem={setItem} newItem={newItem} setNewItem={setNewItem} onItemChange={onItemChange} createItem={createItem}/>
+                    <MyTrove trove={trove} Edit={Edit} setTroveId={setTroveId} newTrove={newTrove} onChange={onChange} onDelete={onDelete} item={item} setItem={setItem} newItem={newItem} setNewItem={setNewItem} onItemChange={onItemChange} createItem={createItem} />
 
                 </Grid>
             </Grid>

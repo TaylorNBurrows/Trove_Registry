@@ -211,15 +211,15 @@ router.put("/trove/:id", (req, res, next) => {
     })
 });
 
-router.delete('/trove/:id', (req, res) => {
+router.delete('/trove/:id/:userid', (req, res) => {
   console.log("small api, deleted trove id", req.params.id)
-  console.log("small api, deleted trove body", req.body.userData)
-  db.User.findOneAndUpdate({ _id: req.body.userData }, {$pull: {'troves': req.params.id}})
-  .then(Troves.findOneAndDelete({_id: req.params.id}))
+  console.log("small api, deleted trove body", req.params.userid)
+  db.User.findOneAndUpdate({ _id: req.params.userid }, {$pull: {troves: req.params.id}})
   .then((troves) => {
     res.json(troves)
     console.log(troves)
   })
+  Troves.findOneAndDelete({_id: req.params.id}).then((res) =>{console.log(res)})
 });
 
 router.get('/finditem', (req, res) => {

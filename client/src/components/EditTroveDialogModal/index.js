@@ -36,8 +36,8 @@ export default function EditTroveDialogModal(props) {
 
   const handleClickOpen = (e) => {
     setOpen(true);
-    props.setTroveId(e.target.parentNode.parentNode.id)
-    console.log(e.target.parentNode.parentNode.id)
+    props.setTroveId(props.trove._id)
+    console.log(props.trove._id)
   };
 
   const handleClose = value => {

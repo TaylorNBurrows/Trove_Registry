@@ -7,8 +7,8 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import EditTroveDialogModal from '../EditTroveDialogModal';
-import DeleteTroveDialogModal from '../DeleteTroveDialogModal';
 import AddItemDialogModal from '../AddItemDialogModal'
+import DeleteTroveDialogModal from '../DeleteTroveDialogModal'
 
 const useStyles = makeStyles(theme => ({
     root: {
