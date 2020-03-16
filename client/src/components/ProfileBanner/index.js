@@ -12,13 +12,13 @@ const useStyles = makeStyles(theme => ({
         height: '250px',
         borderRadius: '10px',
         padding: '10px',
+
     },
     bannerImg: {
         height: "250px",
         width: "auto",
         borderRadius: "10px",
-        padding: "10px",
-        backgroundImage: { banner },
+        padding: "15px",
         backgroundRepeat: "repeat-x"
     }
 }));
