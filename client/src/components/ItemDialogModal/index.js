@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 function ItemDialog(props) {
   console.log(props)
   const classes = useStyles();
-  const { onClose, open, onItemChange, createItem, newItem } = props;
+  const { onClose, open } = props;
 
   const handleClose = () => {
     onClose();
@@ -30,7 +30,7 @@ function ItemDialog(props) {
       {props.trove.items ? props.trove.items.map((item, key) => {
         return (
           <Grid item xs={12} md={12} key={key}>
-            <ItemCard item={item} key={key}/>
+            <ItemCard item={item} key={key} setItemId={props.setItemId} onItemDelete={props.onItemDelete}/>
           </Grid>)
       }) : null}
     </Dialog>
@@ -47,6 +47,7 @@ export default function AddItemDialogModal(props) {
 
   const handleClickOpen = (e) => {
     setOpen(true);
+    props.setTroveId(props.trove._id)
   };
 
   const handleClose = () => {
@@ -57,7 +58,7 @@ export default function AddItemDialogModal(props) {
     <div>
       <br />
       <ShowItemsBtn aria-label="edit" id={props.trove._id} onClick={handleClickOpen} />
-      <ItemDialog open={open} onClose={handleClose} item={props.item} trove={props.trove} />
+      <ItemDialog open={open} onClose={handleClose} item={props.item} trove={props.trove} setItemId={props.setItemId} onItemDelete={props.onItemDelete} />
     </div>
   );
 }

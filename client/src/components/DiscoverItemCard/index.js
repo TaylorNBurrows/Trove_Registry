@@ -5,9 +5,9 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import DeleteItemDialogModal from '../DeleteItemDialogModal'
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
+import AddTroveItemDialogModal from '../AddTroveItemDialogModal';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: red[500],
     },
 }));
-const ItemCard = (props) => {
+const DiscoverItemCard = (props) => {
     const classes = useStyles();
 
     return (
@@ -52,9 +52,9 @@ const ItemCard = (props) => {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <DeleteItemDialogModal setItemId={props.setItemId} item={props.item} onItemDelete={props.onItemDelete}/>
+                <AddTroveItemDialogModal item={props.item} setItemId={props.setItemId} onChange={props.onChange} troveTitle={props.troveTitle} trove={props.trove} addItem={props.addItem}/>
             </CardActions>
         </Card >
     );
 }
-export default ItemCard;
+export default DiscoverItemCard;
