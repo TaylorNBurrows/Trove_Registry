@@ -13,7 +13,7 @@ const DiscoverPage = (props) => {
     const [user, setUser] = useState({});
     const [items, setItems] = useState([]);
     const [trove, setTrove] = useState({});
-    const [troveTitle, setTroveTitle] =useState('');
+    const [troveTitle, setTroveTitle] = useState('');
     const [itemId, setItemId] = useState({});
 
     console.log(user)
@@ -46,7 +46,7 @@ const DiscoverPage = (props) => {
 
     const addItem = () => {
         console.log(troveTitle, itemId)
-        API.addTroveItem(troveTitle, itemId).then(res =>{
+        API.addTroveItem(troveTitle, itemId).then(res => {
             console.log(res.data)
         })
     }
@@ -65,20 +65,19 @@ const DiscoverPage = (props) => {
                 <Grid item md={10} sm={10}>
                     <ProfileBanner />
                     <Avatar user={user} />
-                    {items
-                ? items.map((item, key) => {
-                    return (
-                        <Grid item xs={4} md={3} key={key}>
-                            <DiscoverItemCard item={item} setItemId={setItemId} onChange={onChange} troveTitle={troveTitle} trove={trove} addItem={addItem}/>
-                        </Grid>)
-                })
-
-                : <Grid container alignItems='center' justify='center' spacing={2}>
-                    <Grid item>
-                        <h3>No Items</h3>
+                    <Grid container direction='row'>
+                        {items
+                            ? items.map((item, key) => {
+                                return (
+                                    <Grid item xs={4} md={3} key={key}>
+                                        <DiscoverItemCard item={item} setItemId={setItemId} onChange={onChange} troveTitle={troveTitle} trove={trove} addItem={addItem} />
+                                    </Grid>)
+                            }) : <Grid container alignItems='center' justify='center' spacing={2}>
+                                <Grid item>
+                                    <h3>No Items</h3>
+                                </Grid>
+                            </Grid>}
                     </Grid>
-                </Grid>
-            }
                 </Grid>
             </Grid>
         </Fragment>
