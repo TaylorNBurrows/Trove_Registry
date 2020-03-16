@@ -31,6 +31,17 @@ app.use(logger("dev"));
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+app.use(function(req, res, next) {
+    var schema = req.headers["x-forwarded-proto"];
+
+    if (schema === "https") {
+      req.connection.encrypted = true;
+    }
+
+    next();
+  });
+
 // tell the app to parse HTTP body messages
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
