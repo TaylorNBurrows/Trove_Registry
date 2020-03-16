@@ -39,5 +39,11 @@ export default {
    },
    getItems: (token) => {
       return axios.get('/auth/items/', { headers: { Authorization: `bearer ${token}` } })
+   },
+   removeItem: (troveId, itemId) => {
+      return axios.delete("/auth/trove/item/" + troveId + "/" + itemId)
+   },
+   addTroveItem: (troveTitle, itemId) => {
+      return axios.put('/auth/trove/item/'+ itemId, {troveTitle})
    }
 }

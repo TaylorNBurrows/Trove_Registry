@@ -40,7 +40,7 @@ const TroveCard = (props) => {
         <Card className={classes.root} id={props.trove._id}>
             <CardHeader title={props.trove.title} >
             </CardHeader>
-            <ItemDialogModal trove={props.trove}/>
+            <ItemDialogModal trove={props.trove} setTroveId={props.setTroveId} itemId={props.itemId} setItemId={props.setItemId} onItemDelete={props.onItemDelete}/>
             <img src={props.trove.imgurl} alt={props.trove.title} className={classes.root} />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="h4">

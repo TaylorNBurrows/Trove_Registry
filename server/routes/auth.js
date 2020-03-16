@@ -239,4 +239,17 @@ router.get("/items/", (req, res) => {
   })
 });
 
+router.delete("/trove/item/:troveid/:itemid", (req, res) => {
+  db.Troves.findOneAndUpdate({ _id: req.params.troveid }, {$pull: {items: req.params.itemid}}).then((troves) => {
+    res.json(troves)
+  })
+});
+
+router.put("/trove/item/:itemid", (req, res) => {
+  console.log(req.body.troveTitle);
+  Troves.findOneAndUpdate({ title: req.body.troveTitle}, {$push: {items: req.params.itemid}}).then((troves) => {
+    res.json(troves)
+  })
+})
+
 module.exports = router;
