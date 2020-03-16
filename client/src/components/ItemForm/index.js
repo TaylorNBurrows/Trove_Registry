@@ -14,7 +14,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     border: '0',
-    boxShadow: 'none'
+    boxShadow: 'none',
+    margin: '15px'
   },
   root: {
     backgroundColor: "white", 
@@ -22,22 +23,42 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const EditTroveForm = ({Edit, onChange, trove, newTrove}) => {
+const ItemForm = ({createItem, onItemChange, newItem}) => {
   const classes = useStyles();
 
   return (
   
   <Card className={clsx(classes.alignItemsAndJustifyContent, classes.root)}>
-    <form onSubmit={Edit}>
+    <form onSubmit={createItem}>
       <h2 className="card-heading">Login</h2>
+
+      <div className="field-line">
+        <TextField
+          placeholder="Product URL"
+          name="url"
+          onChange={onItemChange}
+          error={newItem.url === ""}
+          value={newItem.url}
+        />
+      </div>
 
       <div className="field-line">
         <TextField
           placeholder="Title"
           name="title"
-          onChange={onChange}
-          error={trove.title === ""}
-          value={newTrove.title}
+          onChange={onItemChange}
+          error={newItem.title === ""}
+          value={newItem.title}
+        />
+      </div>
+
+      <div className="field-line">
+        <TextField
+          placeholder="Price"
+          name="price"
+          onChange={onItemChange}
+          error={newItem.price === ""}
+          value={newItem.price}
         />
       </div>
 
@@ -45,27 +66,27 @@ const EditTroveForm = ({Edit, onChange, trove, newTrove}) => {
         <TextField
           placeholder="Description"
           name="description"
-          onChange={onChange}
-          error={trove.description === ""}
-          value={newTrove.description}
+          onChange={onItemChange}
+          error={newItem.description === ""}
+          value={newItem.description}
         />
       </div>
 
       <div className="field-line">
         <TextField
           placeholder="Image URL"
-          name="imgurl"
-          onChange={onChange}
-          error={trove.imgurl === ""}
-          value={newTrove.imgurl}
+          name="imagesrc"
+          onChange={onItemChange}
+          error={newItem.imagesrc === ""}
+          value={newItem.imagesrc}
         />
       </div>
 
       <div className="button-line">
-        <Button type="submit" label="Log in" primary="true" >Save</Button>
+        <Button type="submit" label="Add Item" primary="true" >Submit</Button>
       </div>
     </form>
   </Card>
 )};
 
-export default EditTroveForm;
+export default ItemForm;

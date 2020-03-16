@@ -1,5 +1,7 @@
 const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
+const mongoose = require('mongoose');
+const db = require('../models');
 
 
 function amazonScraper(url){
@@ -23,11 +25,12 @@ function amazonScraper(url){
     console.log(imgSource)
     browser.close()
     item ={
+        'url': url,
         'title': title,
         'price': price,
         'description': description,
         'imgsrc': imgSource
     }
-    return item;
+    db.Items.findOneAndUpdate({url: item.url}, item, {new: true, upsert: true}).then((response) => console.log(response))
 })
 }

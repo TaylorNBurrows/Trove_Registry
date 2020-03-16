@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
+import OpenWithRoundedIcon from '@material-ui/icons/OpenWithRounded';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const DeleteBtn = (props) => {
+const ShowItemsBtn = (props) => {
     const classes = useStyles();
 
     return (
@@ -24,11 +24,12 @@ const DeleteBtn = (props) => {
             onClick={props.onClick}
             size='medium'
             id={props.id}>
-                
-            <DeleteIcon color='primary' fontSize='large'/>
+
+            <OpenWithRoundedIcon color='primary' fontSize='large' />
         </IconButton>
+
     );
 }
 
-export default DeleteBtn
+export default ShowItemsBtn
 

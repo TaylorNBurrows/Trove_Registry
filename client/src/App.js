@@ -20,7 +20,7 @@ import SignupPage from './pages/SignupPage.js';
 import ProfilePage from './pages/ProfilePage';
 import DiscoverPage from './pages/DiscoverPage';
 import FriendsPage from './pages/MyFriendsPage';
-import TrovePage from './pages/MyTrovePage';
+import TrovePage from './pages/TrovePage';
 
 import Auth from './utils/Auth';
 

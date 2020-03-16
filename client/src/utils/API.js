@@ -21,8 +21,9 @@ export default {
    editTrove: (troveId, troveData) => {
       return axios.put("/auth/trove/" + troveId, { body: troveData })
    },
-   deleteTrove: (troveId, userData) => {
-      return axios.delete("/auth/trove/" + troveId, { body: userData })
+   deleteTrove: (troveId, userid) => {
+      console.log(troveId, userid)
+      return axios.delete("/auth/trove/" + troveId + "/" + userid)
    },
    getFriends: (userData, token) =>
       axios.get('/api/friends/' + userData, { headers: { Authorization: `bearer ${token}` } }),
@@ -32,7 +33,17 @@ export default {
    updateUser: (userData, token) => {
       return axios.put('/auth/profile' + userData, { headers: { Authorization: `bearer ${token}` }, body: userData })
    },
-   searchItem: (url, token) => {
-      axios.post('/auth/finditem', {body: url}, { headers: { Authorization: `bearer ${token}` } } )
+   addItem: (troveId, Item) => {
+      console.log(troveId, Item);
+      return axios.post('/auth/trove/item/'+ troveId, {body: Item} )
+   },
+   getItems: (token) => {
+      return axios.get('/auth/items/', { headers: { Authorization: `bearer ${token}` } })
+   },
+   removeItem: (troveId, itemId) => {
+      return axios.delete("/auth/trove/item/" + troveId + "/" + itemId)
+   },
+   addTroveItem: (troveTitle, itemId) => {
+      return axios.put('/auth/trove/item/'+ itemId, {troveTitle})
    }
 }

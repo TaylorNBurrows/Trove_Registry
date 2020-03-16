@@ -18,11 +18,18 @@ const TrovePage = (props) => {
         imgurl: ''
     });
     const [troveId, setTroveId] = useState();
-    const [searchItem, setSearchItem] = useState('');
-    const [item, setItem] = useState({})
+    const [itemId, setItemId] = useState();
+    const [item, setItem] = useState([]);
+    const [newItem, setNewItem] = useState({
+        url: '',
+        title: '',
+        price: '',
+        description: '',
+        imagesrc: '',
+    });
 
-    console.log(user)
-    console.log(trove.troves)
+    // console.log(user)
+    // console.log(trove.troves)
 
     useEffect(() => {
         // update authenticated state on logout
@@ -49,9 +56,12 @@ const TrovePage = (props) => {
         })
     };
 
-    const onSearchChange = (e) => {
-        setSearchItem(e.target.value)
-    }
+    const onItemChange = (e) => {
+        setNewItem({
+            ...newItem,
+            [e.target.name]: e.target.value,
+        })
+    };
 
     const onAdd = () => {
         API.addTrove(user._id, newTrove).then(res => {
@@ -59,7 +69,7 @@ const TrovePage = (props) => {
         })
     }
 
-    const onEdit = () => {
+    const Edit = () => {
         console.log(troveId)
         API.editTrove(troveId, newTrove).then(res => {
             console.log(res)
@@ -69,14 +79,30 @@ const TrovePage = (props) => {
     const onDelete = () => {
         console.log(troveId)
         API.deleteTrove(troveId, user._id).then(res => {
-         console.log(res)
+            API.getTrove(user._id, Auth.getToken())
+                    .then((trove) => {
+                        console.log(trove.data)
+                        setTrove(trove.data)
+                    })
         })
     }
-    const findItem = () =>{
-        API.searchItem(searchItem, Auth.getToken()).then(res =>{
+
+    const onItemDelete = () => {
+        console.log(troveId, itemId)
+        API.removeItem(troveId, itemId).then(res => {
+            API.getTrove(user._id, Auth.getToken())
+                    .then((trove) => {
+                        console.log(trove.data)
+                        setTrove(trove.data)
+                    })
+        })
+    }
+
+    const createItem = () => {
+        API.addItem(troveId, newItem).then(res => {
             console.log(res)
         })
-    };
+    }
 
     return (
         <Fragment>
@@ -93,7 +119,7 @@ const TrovePage = (props) => {
                     <ProfileBanner />
                     <Avatar user={user} />
                     <NewTroveDialogModal onChange={onChange} onAdd={onAdd} newTrove={newTrove} />
-                    <MyTrove trove={trove} onEdit={onEdit} setTroveId={setTroveId} newTrove={newTrove} onChange={onChange} searchItem={searchItem} onSearchChange={onSearchChange} findItem={findItem}/>
+                    <MyTrove trove={trove} Edit={Edit} setTroveId={setTroveId} newTrove={newTrove} onChange={onChange} onDelete={onDelete} item={item} setItem={setItem} newItem={newItem} setNewItem={setNewItem} onItemChange={onItemChange} createItem={createItem} itemId={itemId} setItemId={setItemId} onItemDelete={onItemDelete}/>
 
                 </Grid>
             </Grid>
