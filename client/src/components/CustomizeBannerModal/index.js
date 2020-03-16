@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import EditBannerBtn from "../EditBannerBtn";
 // import { blue } from '@material-ui/core/colors';
 
-const imgchoices = ['username@gmail.com', 'user02@gmail.com'];
+const imgchoices = [''];
 // const useStyles = makeStyles({
 //     avatar: {
 //         backgroundColor: blue[100],
@@ -69,11 +69,9 @@ export default function CustomizeBannerModal() {
 
     return (
         <div>
-            <Typography variant="subtitle1">Selected: {selectedValue}</Typography>
-            <br />
             <EditBannerBtn variant="outlined" color="primary" onClick={handleClickOpen}>
                 Customize
-      </EditBannerBtn>
+            </EditBannerBtn>
             <CustomizeBannerDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
         </div>
     );

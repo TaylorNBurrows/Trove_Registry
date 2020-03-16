@@ -14,8 +14,8 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(1),
     },
     spacing: {
-        marginTop: "-50%",
-        marginLeft: "80%",
+        marginTop: "-33vh",
+        marginLeft: "145vh",
     }
 }));
 
