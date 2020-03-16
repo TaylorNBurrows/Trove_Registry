@@ -44,6 +44,7 @@ function AddTroveItemDialog(props) {
                 id: 'age-native-simple',
               }}
             >
+              <option value=''></option>
               {props.trove.troves ? props.trove.troves.map((t, key) => {
                 return <option value={t.title}>{t.title}</option>
               }) : null}
