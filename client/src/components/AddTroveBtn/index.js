@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
+import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles(theme => ({
@@ -18,11 +18,9 @@ const AddTroveBtn = () => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            <Fab color="primary" aria-label="add">
+            <IconButton color="primary" aria-label="add">
                 <AddIcon />
-            </Fab>
-        </div>
+            </IconButton>
     );
 }
 

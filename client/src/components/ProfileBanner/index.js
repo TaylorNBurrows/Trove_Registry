@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
         height: '250px',
         borderRadius: '10px',
         padding: '10px',
+        overflow:'hidden',
 
     },
     bannerImg: {

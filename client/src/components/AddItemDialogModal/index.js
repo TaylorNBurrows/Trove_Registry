@@ -61,7 +61,6 @@ export default function AddItemDialogModal(props) {
 
   return (
     <div>
-      <br />
       <AddItemBtn aria-label="edit" id={props.trove._id} onClick={handleClickOpen} />
       <AddItemDialog open={open} onClose={handleClose} item={props.item} setItem={props.setItem} newItem={props.newItem} setNewItem={props.setNewItem} onItemChange={props.onItemChange} createItem={props.createItem}/>
     </div>

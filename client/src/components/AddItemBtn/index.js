@@ -24,7 +24,6 @@ const AddItemBtn = (props) => {
             onClick={props.onClick}
             size='medium'
             id={props.id}>
-
             <AddCircleIcon color='primary' fontSize='large' />
         </IconButton>
 

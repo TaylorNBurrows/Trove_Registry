@@ -24,7 +24,6 @@ const DeleteBtn = (props) => {
             onClick={props.onClick}
             size='medium'
             id={props.id}>
-                
             <DeleteIcon color='primary' fontSize='large'/>
         </IconButton>
     );

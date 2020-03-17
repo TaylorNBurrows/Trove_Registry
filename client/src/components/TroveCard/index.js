@@ -48,9 +48,8 @@ const TroveCard = (props) => {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <AddItemDialogModal aria-label="Add Items" trove={props.trove} setTroveId={props.setTroveId} item={props.item} setItem={props.setItem} newItem={props.newItem} setNewItem={props.setNewItem} onItemChange={props.onItemChange} createItem={props.createItem}/>
+                <AddItemDialogModal aria-label="add" trove={props.trove} setTroveId={props.setTroveId} item={props.item} setItem={props.setItem} newItem={props.newItem} setNewItem={props.setNewItem} onItemChange={props.onItemChange} createItem={props.createItem}/>
                 <EditTroveDialogModal aria-label="edit" trove={props.trove} Edit={props.Edit} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange} />
-                {/* <ShareBtn aria-label="share" trove={props.trove}/> */}
                 <DeleteTroveDialogModal aria-label="delete" trove={props.trove} onDelete={props.onDelete} setTroveId={props.setTroveId} />
             </CardActions>
         </Card>
