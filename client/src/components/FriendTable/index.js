@@ -92,31 +92,31 @@ const FriendTable = (props) => {
         </Paper >
       </Grid >
       <Grid className={classes.layout}>
-        <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label="simple table">
-            <TableBody>
-              {props.friends.length
-                ? (
-                  props.friends.map((friend) => {
-                    return <TableRow key={friend.name}>
-                      <TableCell align="center">Avatar</TableCell>
-                      <TableCell align="center">{friend.username}</TableCell>
-                      <TableCell align="center">{friend.name}</TableCell>
-                      <TableCell align="center">Trove</TableCell>
-                      <TableCell align="center">Delete</TableCell>
-                    </TableRow>
-                  })
-                )
-                : <Paper elevation={1} className={classes.BodyDiv}>
-                  <div>
-                    <NoFriends />
-                  </div>
-                </Paper>
+        {props.friends.length
+          ? (
+            props.friends.map((friend) => {
+              return (
+                <TableContainer component={Paper}>
+                  <Table className={classes.table} aria-label="simple table">
+                    <TableBody>
+                      <TableRow key={friend.name}>
+                        <TableCell align="center">Avatar</TableCell>
+                        <TableCell align="center">{friend.username}</TableCell>
+                        <TableCell align="center">{friend.name}</TableCell>
+                        <TableCell align="center">Trove</TableCell>
+                        <TableCell align="center">Delete</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              )
 
-              }
-            </TableBody>
-          </Table>
-        </TableContainer>
+            })
+          )
+          : <Paper elevation={1} className={classes.BodyDiv}>
+            <NoFriends />
+          </Paper>
+        }
       </Grid >
     </Fragment>
   );

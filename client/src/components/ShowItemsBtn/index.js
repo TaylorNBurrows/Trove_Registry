@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import OpenWithRoundedIcon from '@material-ui/icons/OpenWithRounded';
+import Visibility from '@material-ui/icons/Visibility';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -25,7 +25,7 @@ const ShowItemsBtn = (props) => {
             size='medium'
             id={props.id}>
 
-            <OpenWithRoundedIcon color='primary' fontSize='large' />
+            <Visibility color='primary' fontSize='large' />
         </IconButton>
 
     );

@@ -24,7 +24,6 @@ const EditTroveBtn = (props) => {
             onClick={props.onClick}
             size='medium'
             id={props.id}>
-                
             <EditIcon color='primary' fontSize='large'/>
         </IconButton>
     );

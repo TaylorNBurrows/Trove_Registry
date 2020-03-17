@@ -25,15 +25,10 @@ const MyTrove = (props) => {
                 ? props.trove.troves.map((trove, key) => {
                     return (
                         <Grid item xs={4} md={3} key={key}>
-                            <TroveCard trove={trove} Edit={props.Edit} onDelete={props.onDelete} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange} item={props.item} setItem={props.setItem} newItem={props.newItem} setNewItem={props.setNewItem} onItemChange={props.onItemChange} createItem={props.createItem} itemId={props.itemId} onItemDelete={props.onItemDelete} setItemId={props.setItemId}/>
+                            <TroveCard trove={trove} Edit={props.Edit} onDelete={props.onDelete} setTroveId={props.setTroveId} newTrove={props.newTrove} onChange={props.onChange} item={props.item} setItem={props.setItem} newItem={props.newItem} setNewItem={props.setNewItem} onItemChange={props.onItemChange} createItem={props.createItem} itemId={props.itemId} onItemDelete={props.onItemDelete} setItemId={props.setItemId} />
                         </Grid>)
                 })
-
-                : <Grid container alignItems='center' justify='center' spacing={2}>
-                    <Grid item>
-                        <NoTroveDefault />
-                    </Grid>
-                </Grid>
+                : <NoTroveDefault />
             }
         </Grid>
     )
